@@ -1,0 +1,2 @@
+# this folder is for exercises
+# it conatains : leg abs chest delt back and arms folders

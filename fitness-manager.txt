@@ -1,0 +1,80 @@
+fitness-manager/
+│
+├── frontend/
+│   ├── assets/
+│   │   ├── images/
+│   │   ├── fonts/
+│   │   └── icons/
+         ├── workouts/
+              └── 2-days/
+              └── 3-days/
+              └── 4-days/
+              └── 5-days/
+     
+         ├── foods (static)/
+              └── protein/
+              └── carbs/
+              └── fat/
+              
+        └── exercises(static)/
+              └── chest/
+              └── back/
+              └── arms/
+                   └── biceps/
+                   └── triceps/
+                   └── forearms/
+              └── delts/
+                   └── front/
+                   └── lateral/
+                   └── rear/
+              └── abs/
+              └── legs/
+                   └── jambes/
+                   └── calves/
+│   ├── styles/
+│   │   ├── main.css # included in all html pages, contain common style among all the pages(header,footer,background,....)
+│   │   └── pages/
+              ├── register.css
+│             ├── login.css
+│             ├── home.css
+│             ├── create_diet.css
+│             ├── create-workout.css
+│             ├── see_diet.css
+│             ├── see_workout.css
+│             └── ai_model.css
+              └── static_food.css
+              └── static_exersises.css
+   #in each html file we include: 1-main.css    2-css file that corresponds to the html (home.html->home.css)
+
+│   │      
+│   ├── scripts/
+│   │   ├── common.js #like css it contains common staff (navbar interactivity, footer interactivity,....)
+│   │   └── pages/
+│   │         ├── register.js
+│             ├── login.js
+│             ├── home.js
+│             ├── create_diet.js
+│             ├── create-workout.js
+│             ├── see_diet.js
+│             ├── see_workout.js
+│             └── ai_model.js
+              └── static_food.js
+              └── static_exersises.js
+
+│   └── html_pages/
+│       ├── register.html
+│       ├── login.html
+│       ├── home.html
+│       ├── create_diet.html
+│       ├── create-workout.html
+│       ├── see_diet.html
+│       ├── see_workout.html
+│       └── ai_model.html
+        └── static_food.html
+        └── static_exersises.html
+
+0- each html page has its css and js -> easy to split the work.
+1- when we split the work,each one is responsible for his pages's html/css and js
+2- the common and repeated stuff in css and javascript are put in common files
+3- by Following this structure, we store in the database just the path to the images (example: arm-exercice:Desktop/GymBro/assets/workouts/arms/ .
+
