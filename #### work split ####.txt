@@ -1,0 +1,17 @@
+#### work split #### 
+ 1)Youcef : 
+    - Create diet Section (html & css)
+    - Create workout Section (html & css)
+
+2) Oussama:
+    - Home Page
+ 
+3)Yacine:
+    - Workout static
+4)Khalil:
+    - Login
+    - Register
+
+## not completed yet : 
+   1- about us
+   2- food static
