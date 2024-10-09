@@ -1,0 +1,27 @@
+/* CSS RESET */
+
+:root {
+    /*bgs*/
+--clr-primary-bg: #0E0E0E;
+--clr-secondary-bg: #282828;
+--clr-secondary-bg-light: #3C3C3C;
+
+
+   /*text button containers */
+--clr-light-white:#F9F9F9;
+--clr-button-midtext: #1677FF;
+
+--clr-gradient: linear-gradient(45deg, #002E6F, #1677FF);
+   
+/*font family*/
+--ff-primary:  font-family: "Poppins", sans-serif;
+
+--ff-body:var(var(--ff-primary));
+--ff-heading:var(var(--ff-primary));
+
+/*font weights*/
+--fw-light: 300;
+--fw-medium: 400;
+--fw-bold: 600;
+--fw-extra-bold:900;
+}
