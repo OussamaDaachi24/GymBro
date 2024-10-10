@@ -141,3 +141,22 @@ a{
   color:var(--clr-button-midtext);
 
 }
+
+/* Styling the footer */
+
+footer{
+  background-color:var(--clr-secondary-bg-light) ;
+  display:flex;
+  justify-content: space-evenly;
+  width:100%;
+  color:white;
+}
+
+.accounts{
+  display:flex;
+  flex-wrap: nowrap;
+}
+.accounts div{
+  width:50%;
+  min-width: 100px;
+}
