@@ -15,6 +15,7 @@
    
 /*font family*/
 --ff-primary:  font-family: "Poppins", sans-serif;
+--ff-secondary:  font-family: "Signika", sans-serif;
 
 --ff-body:var(var(--ff-primary));
 --ff-heading:var(var(--ff-primary));
@@ -23,6 +24,7 @@
 --fw-light: 300;
 --fw-medium: 400;
 --fw-bold: 600;
+--fw-bold-logo: 700;
 --fw-extra-bold:900;
 }
 
