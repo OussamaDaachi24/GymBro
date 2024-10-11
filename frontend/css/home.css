@@ -116,10 +116,11 @@
     background-color:var(--clr-secondary-bg);
     flex-shrink: 1;
     width:60%;
+    min-width:600px;
     height:70%;
-   margin-bottom: 10vh;
-   border-radius:10px;
-   color:white;
+    margin-bottom: 10vh;
+    border-radius:10px;
+    color:white;
 
 
 }
@@ -228,7 +229,7 @@ canvas{
     flex-direction: row;
     width:100%;
     height:90vh;
-    position:absolute;
+    position:relative;
     background-color: var(--clr-secondary-bg);
 }
 .sport_banner .banner_picture{
@@ -288,4 +289,161 @@ canvas{
 }
 .banner_txt li img{
     margin-right: 10px;
+}
+
+.seeExercise{
+    background-color: var(--clr-primary-bg);
+    height:120vh;
+    color:white;
+}
+.discover{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width:100%;
+    height:10vh;
+    padding:0 15%;
+    position:relative;
+    top:13%;
+}
+.discover h2{
+    font-size: 2.2rem;
+    font-weight: 600;
+}
+
+.discover .slide_arrow{
+    display:flex;
+    width:10%;
+    justify-content: space-around;
+}
+.back_arrow{
+    background-image: url(../assets/images/Ellipse\ 3.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.next_arrow{
+    background-image: url(../assets/images/active-eclipse.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.exercise-groups{
+    display:flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    position: relative;
+    top:20%;
+}
+
+
+.muscle_groups{
+    background-color: var(--clr-secondary-bg-light);
+    color:white;
+    width:18%;
+    min-width:260px;
+    border-radius: 8px;
+    padding:18px 25px;
+    margin-top:25px;
+}
+
+.muscle_img{
+    width:90%;
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 10%;
+}
+.muscle_img img{
+   width:30%;
+   height: auto;
+}
+
+.check-exo{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.see-next img{
+    width:35px;
+    height: 35px;
+}
+
+.content p{
+    font-size: 0.9rem;
+    font-weight: 300;
+}
+
+.content h2{
+    font-size: 1.6rem;
+    font-weight: 500;
+}
+
+/* the current card*/
+
+.curr_class{
+    background-image: var(--clr-gradient);
+}
+
+.recipes{
+    position:relative;
+    top:33%;
+    width:100%;
+    background-color: var(--clr-primary-bg);
+}
+.food_intro{
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+    width:100%;
+    min-width: 500px;
+}
+
+.food_intro button{
+    width:9%;
+    min-width:130px;
+    border: none;
+    height:40px;
+    border-radius: 6px;
+    background-color:var(--clr-primary-bg) ;
+    border:2px solid var(--clr-button-midtext);
+    color:var(--clr-button-midtext);
+    font-size: 1.1rem;
+}
+
+.food_intro div{
+    font-size: 1.7rem;
+    font-weight: var(--fw-bold);
+    width:35%;
+    min-width:350px;
+
+}
+
+.recipe_section{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: var(--clr-primary-bg);
+    padding:5% 10%;
+
+}
+
+.recipe{
+    min-height:200px;
+    width:26%;
+    height: 250px;
+    min-width: 250px;
+    background-color: white;
+    border-radius:10px;
+    margin-bottom: 5%;
+}
+
+footer{
+    display:flex;
+    justify-content: space-evenly;
+    height:40vh;
+    background-color: var(--clr-secondary-bg-light);
+    color:white;
+    border: 1px solid red;
+    z-index: 99;
 }
