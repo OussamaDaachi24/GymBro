@@ -11,7 +11,9 @@
 --clr-light-white:#F9F9F9;
 --clr-button-midtext: #1677FF;
 
---clr-gradient: linear-gradient(45deg, #002E6F, #1677FF);
+--clr-gradient: var(--Gradient-Blue, radial-gradient(111.19% 141.42% at 100% 0%, #1677FF 0%, #002E6F 100%));
+/*radial-gradient(111.19% 141.42% at 100% 0%, #1677FF 0%, #002E6F 100%);*/
+ /*linear-gradient(45deg, rgba(0,46,111,1) 45%,rgba(22,119,255,1) 110%);*/
    
 /*font family*/
 --ff-primary:  font-family: "Poppins", sans-serif;
@@ -24,4 +26,217 @@
 --fw-medium: 400;
 --fw-bold: 600;
 --fw-extra-bold:900;/**/
+}
+
+
+@import url('common.css');
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+@media (max-width: 768px) {
+    .Welcome-back-container {
+        flex-direction: column; /* Stack text vertically on smaller screens */
+        font-size: 18px; /* Adjust font size */
+        line-height: 40px; /* Adjust line height */
+    }
+
+    .login-container-khalil {
+        width: 70%; /* Reduce width of login container */
+        padding: 10px; /* Adjust padding */
+    }
+}
+
+@media (max-width: 590px) {
+    .Welcome-back-container {
+        flex-direction: column; /* Ensure the text stays stacked on small screens */
+        font-size: 14px; /* Reduce font size */
+        line-height: 20px;
+        text-align: center; /* Center the text */
+        max-width: 70%; /* Ensure it fits within the screen width */
+        white-space: normal; /* Allow text to wrap */
+    }
+    .Title-text-container {
+        width: 100%;
+    }
+    
+
+    /* .GymBro-text, .exclam-text {
+        display: inline-block; /* Ensure "GymBro!" stays visible 
+    } */
+
+    .login-container-khalil {
+        width: 80%;
+        padding: 8px;
+    }
+}
+
+.Welcome-back-container {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10; /* Ensure it's above the background image */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-family: Poppins;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 89.6px;
+    white-space: nowrap; /* Prevent text from wrapping */
+    max-width: 100vw; /* Ensure it fits within the viewport width */
+    overflow-x: hidden; /* Hide any overflow */
+    padding: 0 20px;
+}
+
+
+
+.background-container-khalil {
+    position: relative;
+    height: 100vh; /* Full viewport height */
+    background-color: black;
+     /* Background image */
+    background-size: cover; /* Make sure the image covers the entire div */
+    background-position: center; /* Center the image */
+}
+
+.background-picture-khalil {
+    background-image: url('your-image-url.jpg'); /* Replace with your image URL */
+    background-size: cover; /* Ensures the image covers the entire area */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevent the image from repeating */
+    background-attachment: fixed; /* Keeps the background fixed when scrolling */
+    
+    width: 100%; /* Make the input take full width */
+    height: 100vh; /* Make the input take the full viewport height */
+    border: none; /* Remove any border */
+    outline: none; /* Remove default outline */
+    padding: 0; /* Remove any padding */
+    margin: 0; /* Remove any margins */
+    box-sizing: border-box; /* Ensures proper sizing without overflow */
+}
+
+.Welcome-back-container {
+    position: absolute;
+    top: 0%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10; /* Ensure it's above the background image */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    color: white;
+    font-family: Poppins;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 89.6px;
+    white-space: nowrap;
+}
+span {
+    color: #1677FF;
+}
+
+.login-container-khalil {
+    width: 300px;
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center the text within the div */
+    color: white;
+    font-size: 2rem;
+    background:  var(--clr-gradient); /* Optional: semi-transparent background for the text */
+    padding: 20px;
+    border-radius: 34px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 44px;
+    padding-left: 42px;
+    padding-right: 42px;
+    padding-top: 31px;
+    padding-bottom: 31px;
+}
+.inputs-container-khalil {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 9px;
+}
+.email-container-khalil {
+    width: 100%; /* Ensure the container takes full width of its parent */
+    display: flex; /* To manage layout of children */
+    justify-content: center; /* Center align input if needed */
+}
+
+.email-input-khalil {
+    width: 100%; /* Make the input take the full width of the container */
+    border: none;
+    border-radius: 15px;
+    font-family: var(--ff-primary);
+    padding: 15px; /* Optional padding for spacing inside the input */
+    box-sizing: border-box; /* Ensure padding is included within width */
+    font-family: "Poppins", sans-serif;
+    font-weight: var(--fw-medium);
+}
+.email-input-khalil {
+    border: none;
+    box-shadow: none;
+    outline: none;
+}
+.password-container-khalil {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.password-input-khalil {
+    width: 100%;
+    border: none;
+    border-radius: 15px;
+    font-family: var(--ff-primary);
+    padding: 15px;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+    font-weight: var(--fw-medium);
+}
+.password-input-khalil:focus {
+    border: none;
+    box-shadow: none;
+    outline: none;
+}
+.login-button-container-khalil {
+
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.login-button-khalil {
+    color: white;
+    width: 100%;
+    border: none;
+    border-radius: 15px;
+    padding: 10px;
+    background: linear-gradient(to bottom,#09090A 50%,#868686 300%);
+    transition: background-position 0.15s ease, transform 0.15s ease, opacity 0.15s ease; 
+    font-family: Signika;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+.login-button-khalil:hover {
+    cursor: pointer;
+    background-position:0 100%;
+    opacity: 95%;
 }

@@ -12,7 +12,8 @@
 --clr-button-midtext: #1677FF;
 
 --clr-gradient: linear-gradient(45deg, #002E6F, #1677FF);
-   
+--clr-button-gradient: linear-gradient(to bottom,#09090A 50%,#868686 300%);
+ 
 /*font family*/
 --ff-primary:  font-family: "Poppins", sans-serif;
 
