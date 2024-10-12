@@ -17,7 +17,7 @@
 
 
 
-
+    
     <link rel="stylesheet" href="../css/create_diet.css" />
     <link rel="stylesheet" href="../css/common.css" />
   </head>
@@ -42,8 +42,23 @@
     </header>
 
   <div class="MainPlat">
-    <div class="MainCard">
-      <div class="BasicDetails" style="left: 62px; top: 7px; padding-bottom: 10px; padding-top: 5px; color: white; font-size: 40px; font-family: Poppins; font-weight: 600; word-wrap: break-word">Basic Details</div>
+    <!--
+    <div class="HeadingText">
+       Customize your <span class="highlight">Diet</span>!
+       </div>
+
+      <div class="step-indicator">
+       <div class="step ">1</div>
+       <div class="line"></div>
+       <div class="step completed">2</div>
+       <div class="line"></div>
+       <div class="step completed">3</div>
+       </div>
+       
+       
+       
+       <div class="MainCard">
+      <div  style="left: 62px; top: 7px; padding-bottom: 10px; padding-top: 5px; color: white; font-size: 40px; font-family: Poppins; font-weight: 600; word-wrap: break-word">Basic Details</div>
         
         <div class="InfoBox">
           <div class="upboxtext" >Height</div>
@@ -78,24 +93,140 @@
             <div  style=" color: white; font-size: 24px; font-family: Signika; font-weight: 600; word-wrap: break-word">Next</div> 
         </div>
       </div>
-           
-        
+    -->
+
+
+
+
+ <!--2-->
+       <div class="HeadingText">
+       Customize your <span class="highlight">Diet</span>!
+       </div>
+
+      <div class="step-indicator">
+       <div class="step completed">1</div>
+       <div class="line"></div>
+       <div class="step ">2</div>
+       <div class="line"></div>
+       <div class="step completed">3</div>
+       </div>
+
+      <div class="MainCard" style="height: 448px;">
+        <div style="left: 62px; top: 5px; padding-bottom: 55px; padding-top: 5px; color: white; font-size: 40px; font-family: Poppins; font-weight: 600; word-wrap: break-word">Nutrition</div>
+          <!--First input-->
+        <div class="InfoBox" style="padding-bottom: 20px;">
+          <div class="upboxtext">How many meals you eat a day?</div>
+          <div class="container">
+              <div class="input-box">
+                  <div class="button" onclick="decrease()">&#9664;</div>
+                  <div class="number-display" id="number-display">2</div>
+                  <div class="button" onclick="increase()">&#9654;</div>
+              </div>
+          </div>
+      </div> <!-- Jimmi -->
+      
+      <script>
+      document.addEventListener('DOMContentLoaded', function() {
+          let count = 2;
+          const min = 2;
+          const max = 6;
+          const numberDisplay = document.getElementById('number-display');
+      
+          function increase() {
+              if (count < max) {
+                  count++;
+                  numberDisplay.textContent = count;
+              }
+          }
+      
+          function decrease() {
+              if (count > min) {
+                  count--;
+                  numberDisplay.textContent = count;
+              }
+          }
+      
+          window.increase = increase;
+          window.decrease = decrease;
+      });
+      </script>
+           <!--Second input-->
+            
+          <div class="InfoBox" style="padding-bottom: 50px;">
+            <div class="upboxtext">Are you willing to take supplements?</div>
+            <div class="Row">
+                <div class="Container2">
+                    <div class="Ex2">Yes</div>
+                </div>
+                <div class="Container2">
+                    <div class="Ex2">No</div>
+                </div>
+            </div>
+        </div>
+             
+  <!--Submit button-->
+            <div class="InfoBox">
+             <div class="ButtonNext" >
+              <div  style=" color: white; font-size: 24px; font-family: Signika; font-weight: 600; word-wrap: break-word">Next</div> 
+          </div>
+
+          
+ 
+ <!--3-->
+<!--
+   <div class="HeadingText">
+       Customize your <span class="highlight">Diet</span>!
+       </div>
+
+      <div class="step-indicator">
+       <div class="step completed">1</div>
+       <div class="line"></div>
+       <div class="step completed">2</div>
+       <div class="line"></div>
+       <div class="step">3</div>
+       </div>
+ 
+      <div class="MainCard">
+        <div style="left: 62px; top: 7px; padding-bottom: 10px; padding-top: 5px; color: white; font-size: 40px; font-family: Poppins; font-weight: 600; word-wrap: break-word">Basic Details</div>
+          
+          <div class="InfoBox">
+            <div class="upboxtext" >Height</div>
+            <div class="Container">
+                <div class="Ex" style=" opacity: 0.70; color: #1F1F1F; font-size: 16px; font-family: Signika; font-weight: 300; word-wrap: break-word">Ex: 176</div>
+           </div>
+          </div>
+  
+              <div class="InfoBox">
+                <div class="upboxtext" >current Weight</div>
+           <div class="Container" >
+               <div class="Ex" style=" opacity: 0.70; color: #1F1F1F; font-size: 16px; font-family: Signika; font-weight: 300; word-wrap: break-word">Ex: 176kg</div>
+             </div>
+           </div>
+  
+             <div class="InfoBox">
+                   <div class="upboxtext" >Ideal Weight</div>
+                   <div class="Container" >
+                  <div class="Ex" style=" opacity: 0.70; color: #1F1F1F; font-size: 16px; font-family: Signika; font-weight: 300; word-wrap: break-word">Ex: 100kg</div>
+                </div>
+              </div>
+  
+                <div class="InfoBox">
+                  <div class="upboxtext" >Age</div>
+                 <div class="Container" >
+                <div class="Ex" style=" opacity: 0.70; color: #1F1F1F; font-size: 16px; font-family: Signika; font-weight: 300; word-wrap: break-word">Ex: 19</div>
+              </div>
+            </div>
+  
+            <div class="InfoBox">
+             <div class="ButtonNext" >
+              <div  style=" color: white; font-size: 24px; font-family: Signika; font-weight: 600; word-wrap: break-word">Next</div> 
+          </div>
+ -->  
+
+
+
       
     </div>
-
-
-
-  </Div>
-
-
-
-
-
-
+    </div>
   </body>
-
-
-
-
-
 </html>
