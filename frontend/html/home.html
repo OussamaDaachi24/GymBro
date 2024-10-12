@@ -15,6 +15,8 @@
     <link rel="stylesheet" href="../css/home.css" />
     <link rel="stylesheet" href="../css/common.css" />
   </head>
+  <!-- Link for chart.js library -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
   <!--  Body section-->
   <body>
@@ -36,5 +38,214 @@
         </a>
       </div>
     </header>
+    <div class="main_page">
+      <div class="quotes">
+        <div class="get_program">
+          Get your ultimate training <span>program</span> from +100 workouts
+        </div>
+        <div class="additional_txt">
+          <div class="for_you">
+            beginner and you don't know how to get you dream physic? You're on
+            the rigth place!!
+          </div>
+          <button class="explore_workout">Explore</button>
+          <div class="check_board">Check your dashboard down here !</div>
+          <div class="arrow">
+            <a href="#dashboard">&#x2193</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="dashboard_cls" id="dashboard">
+      <h1>Track Your Progress</h1>
+      <div class="container">
+        <div class="streak">
+          <p>Daily streak</p>
+          <div class="streak-block">
+            <div class="streak-img">
+              <div>
+                <img src="../assets/images/flame 1.png" class="flame" />
+              </div>
+            </div>
+            <h6>7 days !</h6>
+            <div class="days_streak">
+              <div>
+                <img src="../assets/images/Group 102.png" />
+                <p>Tue</p>
+              </div>
+              <div>
+                <img src="../assets/images/Group 102.png" />
+                <p>Wed</p>
+              </div>
+              <div>
+                <img src="../assets/images/Group 102.png" />
+                <p>Thu</p>
+              </div>
+              <div>
+                <img src="../assets/images/DaysProgress.png" />
+                <p>Fri</p>
+              </div>
+              <div>
+                <img src="../assets/images/DaysProgress.png" />
+                <p>Sat</p>
+              </div>
+              <div>
+                <img src="../assets/images/DaysProgress.png" />
+                <p>Sun</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="line-chart">
+          <p>Dashboard</p>
+          <canvas id="progressChart"></canvas>
+          <form class="input_weigth">
+            <input
+              type="number"
+              placeholder="Submit your weekly weight"
+              min="25"
+              max="200"
+            />
+            <button>Enter</button>
+          </form>
+        </div>
+      </div>
+    </section>
+    <section class="sport_banner">
+      <div class="banner_picture">
+        <img
+          src="../assets/images/Workout-Wallpaper-01-1600-x-843 1.png"
+          class="cable_fly"
+        />
+        <img src="../assets/images/pxfuel (3) 1.png" class="empty_gym" />
+        <img src="../assets/images/pxfuel (1) 1.png" class="pull_up" />
+      </div>
+      <div class="banner_txt">
+        <p>Gear-Up for the perfect Workout</p>
+        <ul>
+          <li>
+            <img src="../assets/images/iconoir_check-circle-solid.png" />Reach
+            your fitness potential with the right methods
+          </li>
+          <li>
+            <img src="../assets/images/iconoir_check-circle-solid.png" />Achieve
+            your nutritional goals
+          </li>
+          <li>
+            <img src="../assets/images/iconoir_check-circle-solid.png" />Find
+            the perfect exercises for every piece of equipment
+          </li>
+        </ul>
+      </div>
+    </section>
+    <section class="seeExercise">
+      <div class="discover">
+        <h2>Discover Exercises</h2>
+        <div class="slide_arrow">
+          <div class="back_arrow">
+            <img src="../assets/images/left_arrow.png">
+          </div>
+          <div class="next_arrow">
+            <img src="../assets/images/right_arrow.png">
+          </div>
+        </div>
+      </div>
+      <div class="exercise-groups">
+        <!-- card 1  -->
+        <div class="muscle_groups curr_class">
+          <div class="muscle_img"><img src="../assets/images/abdominals.png"></div>
+          <div class="check-exo">
+            <div class="content">
+              <p>Exercises for</p>
+              <h2>Abdominals</h2>
+            </div>
+            <div class="see-next"><img src="../assets/images/right-arrow-icon.png"></div>
+          </div>
+
+        </div>
+        <!-- card 2  -->
+        <div class="muscle_groups">
+          <div class="muscle_img"><img src="../assets/images/abdominals.png"></div>
+          <div class="check-exo">
+            <div class="content">
+              <p>Exercises for</p>
+              <h2>Abdominals</h2>
+            </div>
+            <div class="see-next"><img src="../assets/images/right-arrow-icon.png"></div>
+          </div>
+
+        </div>
+
+        <!-- card 3  -->
+        <div class="muscle_groups">
+          <div class="muscle_img"><img src="../assets/images/abdominals.png"></div>
+          <div class="check-exo">
+            <div class="content">
+              <p>Exercises for</p>
+              <h2>Abdominals</h2>
+            </div>
+            <div class="see-next"><img src="../assets/images/right-arrow-icon.png"></div>
+          </div>
+
+        </div>
+
+        <!-- card 1  -->
+        <div class="muscle_groups">
+          <div class="muscle_img"><img src="../assets/images/abdominals.png"></div>
+          <div class="check-exo">
+            <div class="content">
+              <p>Exercises for</p>
+              <h2>Abdominals</h2>
+            </div>
+            <div class="see-next"><img src="../assets/images/right-arrow-icon.png"></div>
+          </div>
+
+        </div>
+      </div>
+      
+      <div class="recipes">
+        <div class="food_intro">
+          <div>Every recipe with detailed calorie intake amount </div>
+          <button>See More</button>
+        </div>
+        <div class="recipe_section">
+          <div class="recipe">
+            <div class="recipe_img"><img></div>
+            <div class="recipe_content">
+              <div></div>
+              <div></div>
+            </div>
+
+          </div>
+
+          <div class="recipe">
+            <div class="recipe_img"><img></div>
+            <div class="recipe_content">
+              <div></div>
+              <div></div>
+            </div>
+
+          </div>
+
+          <div class="recipe">
+            <div class="recipe_img"><img></div>
+            <div class="recipe_content">
+              <div></div>
+              <div></div>
+            </div>
+
+          </div>
+
+        </div>
+
+
+      </div>
+    </section>
+
+    <footer>
+      
+    </footer>
+    <script src="../javaScript/home.js"></script>
   </body>
 </html>

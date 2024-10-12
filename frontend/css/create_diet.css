@@ -11,10 +11,11 @@
 --clr-light-white:#F9F9F9;
 --clr-button-midtext: #1677FF;
 
---clr-gradient: linear-gradient(45deg, #002E6F, #1677FF);
+--clr-gradient: radial-gradient(111.19% 141.42% at 100% 0%, #1677FF 0%, #002E6F 100%);
    
 /*font family*/
 --ff-primary:  font-family: "Poppins", sans-serif;
+--ff-secondary:  font-family: "Signika", sans-serif;
 
 --ff-body:var(var(--ff-primary));
 --ff-heading:var(var(--ff-primary));
@@ -24,4 +25,230 @@
 --fw-medium: 400;
 --fw-bold: 600;
 --fw-extra-bold:900;
+}
+.head_Bar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+    width:100%;
+    height:10vh;
+    background-color:var(--clr-secondary-bg-light);
+  }
+  
+  
+  .navSections{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width:40%;
+    /* font-family: var(--ff-primary); */
+    font-family: "Poppins";
+    font-size:1.3rem;
+    font-weight: var(--fw-medium);
+  }
+
+  .prof_img{
+    height:80%;
+    width:35px;
+  }
+  
+  .logo_img{
+    height:100%;
+    width:50px;
+  }
+  /* make the current section in blue color*/
+  .current{
+    color:var(--clr-button-midtext);
+  
+  }
+  
+
+ .MainPlat {
+    background-image: url("../assets/images/BgForms.png");
+    position: relative;
+    height: 90vh;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;  /* Centers the card horizontally */
+    align-items: center;      /* Centers the card vertically */
+    flex-direction: column;
+
+}
+
+.MainCard {
+    background: radial-gradient(111.19% 141.42% at 100% 0%, #1677FF 0%, #002E6F 100%);
+    border-radius: 15px;
+    width:  384px; 
+    height: 525px;
+    overflow: hidden; 
+    color: var(--clr-light-white); 
+    font-family: var(--ff-body); 
+    display: flex;              /* Corrected to 'flex' */
+    flex-direction: column;     /* Align children vertically */
+    justify-content: center;    /* Center children vertically inside the card */
+    align-items: center;        /* Center children horizontally inside the card */
+    
+}
+
+.InfoBox {
+    padding-bottom: 2px;
+    margin: 7px ;            /* Add spacing between InfoBox elements */
+    width: 300px;                /* Make it responsive */
+    display: flex;
+    flex-direction: column;
+}
+
+.Container {
+    text-align: left;
+    width: 300px;
+    height: 50px;
+    background: white;
+    border-radius: 15px;
+    padding-left:  18px;    
+    padding-top: 13px;
+}
+
+.Ex {
+    font-size: 16px;
+    color: #1F1F1F;
+    opacity: 0.70;
+    font-family: Signika;
+    font-weight: 300;
+}
+.Ex2 {
+  font-size: 16px;
+  color: #000000;
+  font-family: Signika;
+  font-weight: 500;
+}
+.upboxtext {
+    color: white;
+    font-size: 15px;
+    font-family: Poppins;
+    font-weight: 500;
+    margin-bottom: 4px;         /* Use margin for better control */
+}
+
+.ButtonNext {
+    text-align: center;
+    padding-top: 8px;
+    width: 300px;
+    height: 50px;
+    background: linear-gradient(#09090A 80%, #868686 300%);
+    border-radius: 15px;
+    margin-top: 0px;           /* Add space between elements */
+    cursor: pointer;            /* Make it look clickable */
+    color: white;
+    font-size: 18px;
+    font-family: Poppins;
+    font-weight: 600;
+}
+
+
+.Container2{
+  background-color: #F9F9F9;
+  border-radius: 15px;
+  display: flex;
+  width: 9.28rem;
+  height: 50px;
+  align-items: center;
+  padding-left: 60px; 
+  cursor: pointer;  
+  
+  
+}
+.Row {
+  display: flex;
+  justify-content: space-between; /* Distributes the two Container2 elements */
+  gap: 10px;  /* Adds space between the containers */
+}
+
+
+/* FOR BUTTON arrow thingy */
+.input-box {
+  background-color: #ffffff;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  width: 300px;
+}
+
+.button {
+  font-size: 20px;
+  color: #333;
+  cursor: pointer;
+}
+
+.number-display {
+  font-size: 24px;
+  color: #333;
+}
+
+
+
+.container {
+  text-align: center;
+}
+
+
+
+
+
+/* STEPSSS */
+.step-indicator {
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin-bottom: 23px; 
+}
+.step {
+  width: 40px; 
+  height: 40px; 
+  background: radial-gradient(111.19% 141.42% at 100% 0%, #1677FF 0%, #002E6F 150%); 
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5); /* Add shadow */
+  z-index: 1; /* Circles above lines */
+  margin: 0 10px; /* Space between circles */
+  font-family: var(--ff-secondary);
+  font-size: 24px;
+  font-weight: 500;
+}
+.line {
+  height: 2px; 
+  width: 150px;
+  background-color: white;
+  flex-grow: 1; 
+  
+  margin: 0; 
+}
+.step.completed {
+  background-color: #007bff; /* Lighter blue for completed steps */
+  opacity: 0.5;
+  font-family: var(--ff-secondary);
+  font-size: 24px;
+  font-weight: 500;
+}
+
+
+
+.HeadingText{
+ color: white;
+ font-size: 64px;
+ font-family: "Poppins";
+ font-weight: 700;
+ margin-bottom: 25px;
+ margin-top: -90px;
+
+}
+.highlight{
+  color: #007bff;
 }

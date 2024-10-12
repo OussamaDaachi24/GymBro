@@ -25,3 +25,425 @@
 --fw-bold: 600;
 --fw-extra-bold:900;
 }
+
+.main_page{
+    width:100%;
+    min-height:90vh;
+    background-image: url(../assets/images/background-image.png);
+    background-size:cover;
+    background-repeat: no-repeat;
+    background-color: black;
+    position: relative;
+    overflow: hidden;
+}
+.quotes{
+    position: absolute;
+    top:7vh;
+    padding-left: 5%;
+    color:white;
+
+}
+
+.get_program{
+    max-width:600px;
+    font-size:3.5rem;
+    font-weight:var(--fw-extra-bold);
+}
+.get_program span{
+    color:var(--clr-button-midtext);
+}
+.for_you{
+    font-size:1.3rem;
+    margin-top:15px;
+    width:40%;
+}
+
+.explore_workout{
+    width:13%;
+    height:50px;
+    color:var(--clr-light-white);
+    background-color: var(--clr-button-midtext);
+    border-radius: 8px;
+    border:none;
+    margin-top:30px;
+    font-size:1.2rem;
+    cursor:pointer;
+}
+.check_board{
+    margin-top:60px;
+    font-size:1.3rem;
+}
+.arrow{
+    width:40px;
+    height:40px;
+    background-color: var(--clr-button-midtext);
+    color:white;
+    border-radius:50%;
+    margin-top:25px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.8rem;
+    font-weight: 900;
+    cursor: pointer;
+}
+.arrow img{
+    color:white;
+    width:100%;
+    height: 100%;
+}
+
+/*Styling the dashboard section*/
+
+.dashboard_cls{
+    background-color: var(--clr-primary-bg);
+    width:100%;
+    min-height:85vh;
+    color:var(--clr-light-white);
+    display:flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    
+}
+
+.container{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap:10px;
+    padding:30px 50px;
+    background-color:var(--clr-secondary-bg);
+    flex-shrink: 1;
+    width:60%;
+    min-width:600px;
+    height:70%;
+    margin-bottom: 10vh;
+    border-radius:10px;
+    color:white;
+
+
+}
+.dashboard_cls h1{
+    text-align: center;
+    font-size: 3rem;
+    font-weight:var(--fw-bold) ;
+    top:15vh;
+    height:20%;
+}
+.streak{
+    /*border:1px solid black;*/
+    width:35%;
+    border-radius: 10px;
+    padding-top:15px;
+    /*background-color: var(--clr-secondary-bg-light);*/
+}
+.streak p{
+    text-align:center;
+    font-weight: 500;
+    
+}
+
+.streak-img{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    margin-top:15px;
+}
+.streak h6{
+    margin-top:15px;
+    font-weight: 500;
+    font-size: 1.2rem;
+    text-align: center;
+}
+.streak-block{
+    margin-top:7px;
+    background-color:var(--clr-secondary-bg-light);
+    padding-top:22px;
+    padding-bottom: 15px;
+    border-radius: 8px;
+
+}
+.days_streak{
+    display:flex;
+    justify-content: center;
+    margin-top:25px;
+    padding-left: 13px;
+    padding-right: 13px;
+    flex-wrap: wrap;
+}
+.days_streak div{
+    margin-right:2%;
+    margin-left: 2%;
+}
+.days_streak p{
+    font-size:0.8rem;
+    font-weight:300;
+}
+
+.line-chart{
+    /*background-color: var(--clr-secondary-bg-light);*/
+    width:62%;
+    border-radius: 10px;
+    padding-top:15px;
+}
+canvas{
+    background-color: var(--clr-secondary-bg-light);
+    margin-top: 7px;
+    width:100%;
+    min-height:60%;
+    height:60%;
+    border-radius:10px;
+}
+.line-chart p{
+    text-align:center;
+    font-weight: 500;
+}
+
+.input_weigth{
+    margin-top:15px;
+    display:flex;
+    justify-content: space-between;
+    min-height:50px;
+}
+.input_weigth input{
+    width:62%;
+    border-radius: 5px;
+    padding-left:4%;
+    border: none;
+}
+.input_weigth button{
+    width:35%;
+    border-radius: 5px;
+    border:none;
+    background-color: var(--clr-button-midtext);
+    color:var(--clr-light-white);
+    font-size: 1.3rem;
+    cursor:pointer;
+}
+
+/* Styling the banner of the sportif man */
+
+.sport_banner{
+    display:flex;
+    flex-direction: row;
+    width:100%;
+    height:90vh;
+    position:relative;
+    background-color: var(--clr-secondary-bg);
+}
+.sport_banner .banner_picture{
+    width:50%;
+    height:90vh;
+    min-width:300px;
+    overflow:hidden; /* to hide the images*/
+}
+
+.banner_picture .cable_fly{
+    position:relative;
+    top:70px;
+    left:150px;
+}
+
+.banner_picture img{
+    height:auto;
+}
+
+.banner_picture .empty_gym{
+    position:relative;
+    left:340px;
+    top:-30px;
+    z-index: 2;
+}
+
+.banner_picture .pull_up{
+    position:relative;
+    z-index:5;
+    left: 117px;
+    top:-315px;
+}
+
+.sport_banner .banner_txt{
+    width:50%;
+    color:white;
+    height: 90vh;
+    padding-top:80px;
+    text-align: center;
+}
+
+.banner_txt p {
+    font-size:3.2rem;
+    font-weight: var(--fw-bold);
+}
+
+.banner_txt ul{
+    margin-top:10%;
+    margin-left:17%;
+}
+
+.banner_txt li{
+    display:flex;
+    justify-content:flex-start;
+    align-items: center;
+    margin-top:20px;
+}
+.banner_txt li img{
+    margin-right: 10px;
+}
+
+.seeExercise{
+    background-color: var(--clr-primary-bg);
+    height:120vh;
+    color:white;
+}
+.discover{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width:100%;
+    height:10vh;
+    padding:0 15%;
+    position:relative;
+    top:13%;
+}
+.discover h2{
+    font-size: 2.2rem;
+    font-weight: 600;
+}
+
+.discover .slide_arrow{
+    display:flex;
+    width:10%;
+    justify-content: space-around;
+}
+.back_arrow{
+    background-image: url(../assets/images/Ellipse\ 3.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.next_arrow{
+    background-image: url(../assets/images/active-eclipse.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.exercise-groups{
+    display:flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    position: relative;
+    top:20%;
+}
+
+
+.muscle_groups{
+    background-color: var(--clr-secondary-bg-light);
+    color:white;
+    width:18%;
+    min-width:260px;
+    border-radius: 8px;
+    padding:18px 25px;
+    margin-top:25px;
+}
+
+.muscle_img{
+    width:90%;
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 10%;
+}
+.muscle_img img{
+   width:30%;
+   height: auto;
+}
+
+.check-exo{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.see-next img{
+    width:35px;
+    height: 35px;
+}
+
+.content p{
+    font-size: 0.9rem;
+    font-weight: 300;
+}
+
+.content h2{
+    font-size: 1.6rem;
+    font-weight: 500;
+}
+
+/* the current card*/
+
+.curr_class{
+    background-image: var(--clr-gradient);
+}
+
+.recipes{
+    position:relative;
+    top:33%;
+    width:100%;
+    background-color: var(--clr-primary-bg);
+}
+.food_intro{
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+    width:100%;
+    min-width: 500px;
+}
+
+.food_intro button{
+    width:9%;
+    min-width:130px;
+    border: none;
+    height:40px;
+    border-radius: 6px;
+    background-color:var(--clr-primary-bg) ;
+    border:2px solid var(--clr-button-midtext);
+    color:var(--clr-button-midtext);
+    font-size: 1.1rem;
+}
+
+.food_intro div{
+    font-size: 1.7rem;
+    font-weight: var(--fw-bold);
+    width:35%;
+    min-width:350px;
+
+}
+
+.recipe_section{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: var(--clr-primary-bg);
+    padding:5% 10%;
+
+}
+
+.recipe{
+    min-height:200px;
+    width:26%;
+    height: 250px;
+    min-width: 250px;
+    background-color: white;
+    border-radius:10px;
+    margin-bottom: 5%;
+}
+
+footer{
+    display:flex;
+    justify-content: space-evenly;
+    height:40vh;
+    background-color: var(--clr-secondary-bg-light);
+    color:white;
+    border: 1px solid red;
+    z-index: 99;
+}
