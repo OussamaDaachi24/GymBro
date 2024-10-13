@@ -31,9 +31,9 @@
     .Muscles {
         background-color: #0E0E0E;
         display: flex;
-        justify-content: center;  /* Centers the card horizontally */
+         justify-content: center;  /* Centers the card horizontally */
         align-items: center;      /* Centers the card vertically */
-
+            flex-direction: column;   /* as always the solution */
       }
        
     .Title{
@@ -46,29 +46,25 @@
         text-align: center;
         justify-content: center;  /* Centers the card horizontally */
         align-items: center;      /* Centers the card vertically */
+        margin: 50px;;
+
     }  
     
 
     .Muscles_Content{
-        flex:1;
-        display: flex;
+    display: flex;
+        ; /*this is the solution to center the cards vertically*/
         flex-direction: row;
+        align-items: center
     }
 
     .exercise_card{
-        width: 50%;
-        
+       flex: 0 0 auto;
+       /*float: left ;*/
+       max-width: 50%;    /* here you can adjust the width of the card as per your requirement */
+        margin-left: 25px;
     }
     .excercice_explanation{
-       /* height:612px;
-        width: 787px;
-        color: var(--clr-light-white);
-        font-family: var(--ff-primary);
-        font-size: 24px;
-        font-style: normal;
-        font-weight: 500px;
-        line-height: normal;
-        text-align:  right;*/
         width: 50%; 
         color: var(--clr-light-white);
         font-family: var(--ff-primary);
@@ -76,8 +72,9 @@
          font-weight: 500;
         line-height: 1.5; /* Adjust line height as needed */
         padding: 10px; /* Add padding for better readability */
-        margin-top: 100px;
-
+        margin-left: 100px;
+        margin-top: 20px;
+    
     }
 
 
