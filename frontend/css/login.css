@@ -50,15 +50,31 @@ body, html {
 }
 
 @media (max-width: 590px) {
+    
     .Welcome-back-container {
         flex-direction: column; /* Ensure the text stays stacked on small screens */
-        font-size: 12px; /* Reduce font size */
-        line-height: 15px;
+        
+        line-height: 0px;
         text-align: center; /* Center the text */
-        width: 85%; /* Ensure it fits within the screen width */
+        width: 100%; /* Ensure it fits within the screen width */
+        margin-top: 10%;
     }
     .Title-text-container {
         width: 100%;
+        font-size: 100%; /* Reduce font size */
+
+    }
+    .Title-text-container h1{
+        text-align: center;
+    }
+
+
+
+    .login-text-container{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height:100vh;
     }
     
 
@@ -69,6 +85,7 @@ body, html {
     .login-container-khalil {
         width: 80%;
         padding: 8px;
+        margin-top: 20%;
     }
 }
 
@@ -81,6 +98,12 @@ body {
     margin: 0; /* Removes default margin */
     padding: 0; /* Removes default padding */
     height: 100vh; /* Ensures the body takes up the full height of the viewport */
+}
+.login-text-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height:100vh;
 }
 
 /*
