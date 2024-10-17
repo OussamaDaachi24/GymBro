@@ -52,11 +52,10 @@ body, html {
 @media (max-width: 590px) {
     .Welcome-back-container {
         flex-direction: column; /* Ensure the text stays stacked on small screens */
-        font-size: 14px; /* Reduce font size */
-        line-height: 20px;
+        font-size: 12px; /* Reduce font size */
+        line-height: 15px;
         text-align: center; /* Center the text */
-        max-width: 70%; /* Ensure it fits within the screen width */
-        /*white-space: normal; /* Allow text to wrap */
+        width: 85%; /* Ensure it fits within the screen width */
     }
     .Title-text-container {
         width: 100%;
@@ -75,11 +74,13 @@ body, html {
 
 body {
     background-image: url('../assets/images/The_background_gym.png');
-    background-size: cover;     /* Makes sure the image covers the entire area */
-    background-position: center;/* Centers the image within the container */
+    background-size: cover; /* Ensures the image covers the entire viewport */
+    background-position: center center; /* Centers the background image */
     background-repeat: no-repeat; /* Prevents the image from repeating */
-    display: flex;
-    justify-content: center;
+    background-attachment: fixed; /* Makes the background stay in place when scrolling (optional) */
+    margin: 0; /* Removes default margin */
+    padding: 0; /* Removes default padding */
+    height: 100vh; /* Ensures the body takes up the full height of the viewport */
 }
 
 /*
@@ -109,7 +110,7 @@ body {
     font-style: normal;
     font-weight: 700;
     line-height: 89.6px;
-    white-space: nowrap;
+    text-align: center;
 }
 span {
     color: #1677FF;
