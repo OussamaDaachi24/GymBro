@@ -1,0 +1,191 @@
+/* CSS RESET */
+
+:root {
+    /*bgs*/
+--clr-primary-bg: #0E0E0E;
+--clr-secondary-bg: #282828;
+--clr-secondary-bg-light: #3C3C3C;
+
+
+   /*text button containers */
+--clr-light-white:#F9F9F9;
+--clr-button-midtext: #1677FF;
+
+--clr-gradient: linear-gradient(45deg, #002E6F, #1677FF);
+   
+/*font family*/
+--ff-primary:  font-family: "Poppins", sans-serif;
+
+--ff-body:var(var(--ff-primary));
+--ff-heading:var(var(--ff-primary));
+
+/*font weights*/
+--fw-light: 300;
+--fw-medium: 400;
+--fw-bold: 600;
+--fw-extra-bold:900;
+}
+
+.rest{
+    height: 110vh;
+    background-color:var(--clr-primary-bg) ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:100%;
+}
+
+.prof_container{
+    width:95%;
+    height: 90%;
+    background-color: var(--clr-secondary-bg);
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.second-layer{
+    width:95%;
+    height: 95%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.personal_data{
+    width:45%;
+    color:white;
+    background-color: var(--clr-secondary-bg-light);
+    border-radius: 12px;
+    padding: 0px 3%;
+}
+
+.personal_data h1{
+    margin-top: 3%;
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 5%;
+
+    
+}
+
+.user_identifier{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-width: 120px;
+
+}
+
+.user_identifier p{
+    margin-top:3%;
+    font-weight: 300;
+}
+
+.text_data{
+    width:45%;
+
+}
+
+.img_data{
+    width:30%;
+    min-width:150px;
+    height: 150px;
+    background-image: url(../assets/images/pancake.webp);
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 10px;
+}
+
+.streak_chart{
+    width:50%;
+    color:white;
+    display: flex;
+    flex-direction: column;
+    gap:8%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.line-chart{
+    /*background-color: var(--clr-secondary-bg-light);*/
+    width:80%;
+    border-radius: 10px;
+    padding-top:15px;
+}
+canvas{
+    background-color: var(--clr-secondary-bg-light);
+    margin-top: 7px;
+    width:100%;
+    min-height:60%;
+    height:60%;
+    border-radius:10px;
+}
+.line-chart p{
+    text-align:start;
+    font-weight: 500;
+}
+
+.input_weigth{
+    margin-top:15px;
+    display:flex;
+    justify-content: space-between;
+    min-height:50px;
+}
+.input_weigth input{
+    width:62%;
+    border-radius: 5px;
+    padding-left:4%;
+    border: none;
+}
+.input_weigth button{
+    width:35%;
+    border-radius: 5px;
+    border:none;
+    background-color: var(--clr-button-midtext);
+    color:var(--clr-light-white);
+    font-size: 1.3rem;
+    cursor:pointer;
+}
+
+.streak{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width:80%;
+    height: 40%;
+    overflow: hidden;
+    background-color: var(--clr-secondary-bg-light);
+    padding:2% 3%;
+    border-radius: 12px;
+}
+
+.streak .flame{
+    height: 100%;
+
+}
+
+.streak .flame img{
+    height:auto;
+    width: auto;
+    
+}
+
+.streak_days{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 0 10px;
+    gap:20px;
+}
+
+.streak_days div{
+    text-align: center;
+}
+
+
+.streak_days p{
+    font-weight: 300;
+    font-size: 0.8rem;
+}
