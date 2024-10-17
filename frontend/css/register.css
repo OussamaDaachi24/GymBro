@@ -1,0 +1,41 @@
+/* CSS RESET */
+
+:root {
+    /*bgs*/
+--clr-primary-bg: #0E0E0E;
+--clr-secondary-bg: #282828;
+--clr-secondary-bg-light: #3C3C3C;
+
+
+   /*text button containers */
+--clr-light-white:#F9F9F9;
+--clr-button-midtext: #1677FF;
+
+--clr-gradient: var(--Gradient-Blue, radial-gradient(111.19% 141.42% at 100% 0%, #1677FF 0%, #002E6F 100%));
+/*radial-gradient(111.19% 141.42% at 100% 0%, #1677FF 0%, #002E6F 100%);*/
+ /*linear-gradient(45deg, rgba(0,46,111,1) 45%,rgba(22,119,255,1) 110%);*/
+   
+/*font family*/
+--ff-primary:  font-family: "Poppins", sans-serif;
+
+--ff-body:var(var(--ff-primary));
+--ff-heading:var(var(--ff-primary));
+
+/*font weights*/
+--fw-light: 300;
+--fw-medium: 400;
+--fw-bold: 600;
+--fw-extra-bold:900;/**/
+}
+
+
+
+body {
+    background-image: url('../assets/images/The_background_gym.png');
+    background-size: cover;     /* Makes sure the image covers the entire area */
+    background-position: center;/* Centers the image within the container */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+}
