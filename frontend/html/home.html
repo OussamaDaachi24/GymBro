@@ -21,6 +21,7 @@
   <!--  Body section-->
   <body>
     <header class="head_Bar" id="#head">
+      <div class="menu_bar"><img src="../assets/images/menu.png"></div>
       <div class="logo">
         <a href="home.html">
           <img src="../assets/icons/logo.png" class="logo_img"
@@ -33,7 +34,7 @@
         <li><a href="see_diet.html">myMeals</a></li>
       </ul>
       <div class="profile">
-        <a href="#">
+        <a href="./profile.html">
           <img src="../assets/icons/profile-circle.png" class="prof_img" />
         </a>
       </div>
@@ -48,7 +49,7 @@
             beginner and you don't know how to get you dream physic? You're on
             the rigth place!!
           </div>
-          <button class="explore_workout">Explore</button>
+          <a href="./create_diet.html"><button class="explore_workout">Explore</button></a>
           <div class="check_board">Check your dashboard down here !</div>
           <div class="arrow">
             <a href="#dashboard">&#x2193</a>
@@ -58,60 +59,21 @@
     </div>
 
     <section class="dashboard_cls" id="dashboard">
-      <h1>Track Your Progress</h1>
       <div class="container">
-        <div class="streak">
-          <p>Daily streak</p>
-          <div class="streak-block">
-            <div class="streak-img">
-              <div>
-                <img src="../assets/images/flame 1.png" class="flame" />
-              </div>
-            </div>
-            <h6>7 days !</h6>
-            <div class="days_streak">
-              <div>
-                <img src="../assets/images/Group 102.png" />
-                <p>Tue</p>
-              </div>
-              <div>
-                <img src="../assets/images/Group 102.png" />
-                <p>Wed</p>
-              </div>
-              <div>
-                <img src="../assets/images/Group 102.png" />
-                <p>Thu</p>
-              </div>
-              <div>
-                <img src="../assets/images/DaysProgress.png" />
-                <p>Fri</p>
-              </div>
-              <div>
-                <img src="../assets/images/DaysProgress.png" />
-                <p>Sat</p>
-              </div>
-              <div>
-                <img src="../assets/images/DaysProgress.png" />
-                <p>Sun</p>
-              </div>
-            </div>
-          </div>
+        <div class="start_profile_container">
+          <h1>Reach your Weight goals and keep consistent </h1>
+          <div class="checkpoint"><img src="../assets/images/iconoir_check-circle-solid.png"><p>Reach your Weight goal with weekly graph </p></div>
+          <div class="checkpoint"><img src="../assets/images/iconoir_check-circle-solid.png"><p>Achieve your consistensy</p></div>
+          <div class="checkpoint"><img src="../assets/images/iconoir_check-circle-solid.png"><p>Find the perfect exercises for every piece of equipment</p></div>
+          <a href="./profile.html"><button class="start_profile">Get Started</button></a>
         </div>
-        <div class="line-chart">
-          <p>Dashboard</p>
-          <canvas id="progressChart"></canvas>
-          <form class="input_weigth">
-            <input
-              type="number"
-              placeholder="Submit your weekly weight"
-              min="25"
-              max="200"
-            />
-            <button>Enter</button>
-          </form>
+        <div class="img_side">
+          <img src="../assets/images/streak (2).png" class="chart_static">
+          <img src="../assets/images/streak (1).png" class="streak_static">
         </div>
       </div>
     </section>
+
     <section class="sport_banner">
       <div class="banner_picture">
         <img
@@ -151,7 +113,7 @@
           </div>
         </div>
       </div>
-      <div class="exercise-groups">
+      <div class="exercise-groups" id="abdo">
         <!-- card 1  -->
         <div class="muscle_groups curr_class">
           <div class="muscle_img"><img src="../assets/images/abdominals.png"></div>
@@ -165,40 +127,40 @@
 
         </div>
         <!-- card 2  -->
-        <div class="muscle_groups">
+        <div class="muscle_groups" id="chest">
           <div class="muscle_img"><img src="../assets/images/abdominals.png"></div>
           <div class="check-exo">
             <div class="content">
               <p>Exercises for</p>
               <h2>Abdominals</h2>
             </div>
-            <div class="see-next"><img src="../assets/images/right-arrow-icon.png"></div>
+            <div class="see-next"><img src="../assets/images/right_icon_blue.png"></div>
           </div>
 
         </div>
 
         <!-- card 3  -->
-        <div class="muscle_groups">
+        <div class="muscle_groups mob_hidden" id="back" >
           <div class="muscle_img"><img src="../assets/images/abdominals.png"></div>
           <div class="check-exo">
             <div class="content">
               <p>Exercises for</p>
               <h2>Abdominals</h2>
             </div>
-            <div class="see-next"><img src="../assets/images/right-arrow-icon.png"></div>
+            <div class="see-next"><img src="../assets/images/right_icon_blue.png"></div>
           </div>
 
         </div>
 
-        <!-- card 1  -->
-        <div class="muscle_groups">
+        <!-- card 4  -->
+        <div class="muscle_groups mob_hidden" id="leg">
           <div class="muscle_img"><img src="../assets/images/abdominals.png"></div>
           <div class="check-exo">
             <div class="content">
               <p>Exercises for</p>
               <h2>Abdominals</h2>
             </div>
-            <div class="see-next"><img src="../assets/images/right-arrow-icon.png"></div>
+            <div class="see-next"><img src="../assets/images/right_icon_blue.png"></div>
           </div>
 
         </div>
@@ -207,32 +169,32 @@
       <div class="recipes">
         <div class="food_intro">
           <div>Every recipe with detailed calorie intake amount </div>
-          <button>See More</button>
+          <a href="./static_food.html"><button>See More</button></a>
         </div>
         <div class="recipe_section">
-          <div class="recipe">
-            <div class="recipe_img"><img></div>
+         <div class="recipe">
+            <a href="./static_food.html"><div class="recipe_img" id="bghrir"></div></a>
             <div class="recipe_content">
-              <div></div>
-              <div></div>
+              <div class="recipe_name">Baghrir</div>
+              <div class="recipe_type">Bulk</div>
             </div>
 
           </div>
 
           <div class="recipe">
-            <div class="recipe_img"><img></div>
-            <div class="recipe_content">
-              <div></div>
-              <div></div>
+            <a href="./static_food.html"><div class="recipe_img" id="gtaif"></div></a>
+            <div class="recipe_content" >
+              <div class="recipe_name">Rezzat El Kadi</div>
+              <div class="recipe_type">Bulk</div>
             </div>
 
           </div>
 
           <div class="recipe">
-            <div class="recipe_img"><img></div>
+            <a href="./static_food.html"><div class="recipe_img" id="pancakes"></div></a>
             <div class="recipe_content">
-              <div></div>
-              <div></div>
+              <div class="recipe_name">Pancakes</div>
+              <div class="recipe_type">Cut</div>
             </div>
 
           </div>
@@ -242,10 +204,6 @@
 
       </div>
     </section>
-
-    <footer>
-      
-    </footer>
     <script src="../javaScript/home.js"></script>
   </body>
 </html>
