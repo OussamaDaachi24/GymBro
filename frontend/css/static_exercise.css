@@ -55,7 +55,7 @@
     display: flex;
         ; /*this is the solution to center the cards vertically*/
         flex-direction: row;
-        align-items: center
+        align-items: center;
     }
 
     .exercise_card{
@@ -74,14 +74,7 @@
         padding: 10px; /* Add padding for better readability */
         margin-left: 100px;
         margin-top: 20px;
+        
     
     }
 
-
-
-
-   .exercise_card .excercice_explanation{
-        width: 50%; /* Adjust width as needed */
-        height: 612px; /* Adjust height as needed */
-        border: 1px solid black;
-    }
