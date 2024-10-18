@@ -223,6 +223,8 @@ canvas{
         align-items: center;
         width:25%;
         padding: 5%;
+        border-radius: 10px;
+
     }
     .img_data img{
         width:75%;
