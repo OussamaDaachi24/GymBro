@@ -31,55 +31,49 @@
     .Muscles {
         background-color: #0E0E0E;
         display: flex;
-         justify-content: center;  /* Centers the card horizontally */
+        justify-content: center;  /* Centers the card horizontally */
         align-items: center;      /* Centers the card vertically */
-            flex-direction: column;   /* as always the solution */
+        flex-direction: column;   /* as always the solution */
       }
        
     .Title{
-        height: 60px;
-        width: 402px; 
+        height: 24%; 
         color: var(--clr-button-midtext);
         font-family: var(--ff-primary);
-        font-size: 24px;
+        font-size: 2rem;
         font-weight: var(--fw-bold);
         text-align: center;
-        justify-content: center;  /* Centers the card horizontally */
-        align-items: center;      /* Centers the card vertically */
-        margin: 50px;;
-
+        margin-top:5%;
+        margin-bottom: 5%;
+        border: 1px solid var(--clr-button-midtext);
+        padding:2% 5%;
+        border-radius: 15px;
     }  
-    
+
+    .Muscles_Content span{
+        color: var(--clr-button-midtext);
+    }
 
     .Muscles_Content{
-    display: flex;
-        ; /*this is the solution to center the cards vertically*/
+        display: flex;
         flex-direction: row;
         align-items: center;
-        margin-left:200px ;
-        margin-right: 40px;
-        margin-top: -30px;
-
+        padding-right: 5%;
+        padding-left: 5%;
+        gap:10%;
     }
 
     .exercise_card{
-       flex: 0 0 auto;
-       /*float: left ;*/
-       max-width: 50%;    /* here you can adjust the width of the card as per your requirement */
-        margin-left: 25px;
+       width: 40%;    /* here you can adjust the width of the card as per your requirement */
     }
     .excercice_explanation{
-        width: 50%; 
+        width: 55%; 
         color: var(--clr-light-white);
         font-family: var(--ff-primary);
-         font-size: 18px; /* Adjust font size as needed */
-         font-weight: 500;
+        font-size: 18px; /* Adjust font size as needed */
+        font-weight: 500;
         line-height: 1.5; /* Adjust line height as needed */
         padding: 10px; /* Add padding for better readability */
-        margin-left: 100px;
-        margin-top: 20px;
-
-        
     
     }
 

@@ -132,6 +132,9 @@ a{
   display: none;
 }
 
+.menu_bar{
+  cursor: pointer;
+}
 .navSections{
   display:flex;
   flex-direction: row;
@@ -175,6 +178,34 @@ footer{
   min-width: 100px;
 }
 
+/* the phone menu bar */
+.mobile_options{
+  z-index: 5;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  height:7vh;
+  width:100%;
+  margin-top: 1%;
+}
+.options{
+  display: none;
+}
+
+.showMenu{
+  display:block;
+  width: 90%;
+  display: flex;
+  justify-content: space-evenly;
+  font-size:1rem;
+  align-items: center;
+  border-radius: 15px;
+  background-color: var(--clr-secondary-bg-light);
+}
+
+#currMobile{
+  color:var(--clr-button-midtext)
+}
 
 /* Responsive design: mobile version*/
 
@@ -190,3 +221,13 @@ footer{
     display: inline;
   }
 }
+
+@media screen and (min-width:670px) and (max-width:950px){
+    .navSections{
+      font-size: 1rem;
+      font-weight: 300;
+    }
+
+
+}
+
