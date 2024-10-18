@@ -75,6 +75,8 @@
   
 
  .MainPlat {
+  overflow: hidden;
+
     background-image: url("../assets/images/BgForms.png");
     position: relative;
     height: 90vh;
@@ -88,6 +90,7 @@
 }
 
 .MainCard {
+  overflow: hidden;
     background: radial-gradient(111.19% 141.42% at 100% 0%, #1677FF 0%, #002E6F 100%);
     border-radius: 15px;
     width:  384px; 
