@@ -102,7 +102,7 @@
 
 
  <!--2-->
- <!--
+ 
        <div class="HeadingText">
        Customize your <span class="highlight">Diet</span>!
        </div>
@@ -122,37 +122,33 @@
           <div class="upboxtext">How many meals you eat a day?</div>
           <div class="container">
               <div class="input-box">
-                  <div class="button" onclick="decrease()">&#9664;</div>
+                  <div class="button" onclick="decrease()">&lt;</div>
                   <div class="number-display" id="number-display">2</div>
-                  <div class="button" onclick="increase()">&#9654;</div>
+                  <div class="button" onclick="increase()">&gt;</div>
               </div>
           </div>
       </div> 
       
       <script>
-      document.addEventListener('DOMContentLoaded', function() {
-          let count = 2;
-          const min = 2;
-          const max = 6;
-          const numberDisplay = document.getElementById('number-display');
-      
-          function increase() {
-              if (count < max) {
-                  count++;
-                  numberDisplay.textContent = count;
-              }
-          }
-      
-          function decrease() {
-              if (count > min) {
-                  count--;
-                  numberDisplay.textContent = count;
-              }
-          }
-      
-          window.increase = increase;
-          window.decrease = decrease;
-      });
+      let currentNumber = 2; // Starting number
+
+function updateDisplay() {
+    document.getElementById('number-display').innerText = currentNumber;
+}
+
+function increase() {
+    if (currentNumber < 6) { // Limit to 6
+        currentNumber++;
+    }
+    updateDisplay();
+}
+
+function decrease() {
+    if (currentNumber > 2) { // Limit to 2
+        currentNumber--;
+    }
+    updateDisplay();
+}
       </script>
            
             
@@ -176,7 +172,7 @@
 
         
  <!--3-->
-
+<!--
    <div class="HeadingText">
        Customize your <span class="highlight">Diet</span>!
        </div>
@@ -225,7 +221,7 @@
  </div> 
 
 
-
+-->
       
     </div>
     </div>

@@ -44,67 +44,73 @@
       </div>
     </header>
 
+    <!--1-->
+
   <div class="MainPlat">
-    <!--
-    <div class="HeadingText">
-       Customize your <span class="highlight">Diet</span>!
-       </div>
+  <!--  
+ <div class="HeadingText">
+  Customize your <span class="highlight">Diet</span>!
+  </div>
 
-      <div class="step-indicator">
-       <div class="step ">1</div>
-       <div class="line"></div>
-       <div class="step completed">2</div>
-       <div class="line"></div>
-       <div class="step completed">3</div>
-       </div>
+ <div class="step-indicator">
+  <div class="step ">1</div>
+  <div class="line"></div>
+  <div class="step completed">2</div>
+  <div class="line"></div>
+  <div class="step completed">3</div>
+  </div>
+
+ <div class="MainCard" style="height: 448px;">
+   <div style="left: 62px; top: 5px; padding-bottom: 55px; padding-top: 5px; color: white; font-size: 40px; font-family: Poppins; font-weight: 600; word-wrap: break-word">Workout split</div>
+     
+   <div class="InfoBox" style="padding-bottom: 20px;">
+     <div class="upboxtext">How many days you workout a week?</div>
+     <div class="container">
+         <div class="input-box">
+             <div class="button" onclick="decrease()">&lt;</div>
+             <div class="number-display" id="number-display">2</div>
+             <div class="button" onclick="increase()">&gt;</div>
+         </div>
+     </div>
+ </div> 
+ 
+ <script>
+ let currentNumber = 2; // Starting number
+
+function updateDisplay() {
+document.getElementById('number-display').innerText = currentNumber;
+}
+
+function increase() {
+if (currentNumber < 6) { // Limit to 6
+   currentNumber++;
+}
+updateDisplay();
+}
+
+function decrease() {
+if (currentNumber > 2) { // Limit to 2
+   currentNumber--;
+}
+updateDisplay();
+}
+ </script>
+      
        
-       
-       
-       <div class="MainCard">
-      <div  style="left: 62px; top: 7px; padding-bottom: 10px; padding-top: 5px; color: white; font-size: 40px; font-family: Poppins; font-weight: 600; word-wrap: break-word">Basic Details</div>
+
         
-        <div class="InfoBox">
-          <div class="upboxtext" >Height</div>
-          <div class="Container">
-              <div class="Ex" style=" opacity: 0.70; color: #1F1F1F; font-size: 16px; font-family: Signika; font-weight: 300; word-wrap: break-word">Ex: 176</div>
-         </div>
-        </div>
 
-            <div class="InfoBox">
-              <div class="upboxtext" >current Weight</div>
-         <div class="Container" >
-             <div class="Ex" style=" opacity: 0.70; color: #1F1F1F; font-size: 16px; font-family: Signika; font-weight: 300; word-wrap: break-word">Ex: 176kg</div>
-           </div>
-         </div>
+       <div class="InfoBox">
+        <div class="ButtonNext" >
+         <div  style=" color: white; font-size: 24px; font-family: Poppins; font-weight: 500; word-wrap: break-word">Next</div> 
+     </div>
 
-           <div class="InfoBox">
-                 <div class="upboxtext" >Ideal Weight</div>
-                 <div class="Container" >
-                <div class="Ex" style=" opacity: 0.70; color: #1F1F1F; font-size: 16px; font-family: Signika; font-weight: 300; word-wrap: break-word">Ex: 100kg</div>
-              </div>
-            </div>
-
-              <div class="InfoBox">
-                <div class="upboxtext" >Age</div>
-               <div class="Container" >
-              <div class="Ex" style=" opacity: 0.70; color: #1F1F1F; font-size: 16px; font-family: Signika; font-weight: 300; word-wrap: break-word">Ex: 19</div>
-            </div>
-          </div>
-
-          <div class="InfoBox">
-           <div class="ButtonNext" >
-            <div  style=" color: white; font-size: 24px; font-family: Poppins; font-weight: 500; word-wrap: break-word">Next</div> 
-        </div>
-      </div>
-    -->
-
-
-
-
- <!--2-->
- <!--
-       <div class="HeadingText">
-       Customize your <span class="highlight">Diet</span>!
+   -->
+    
+    <!--2-->
+<!--
+    <div class="HeadingText">
+       Customize your <span class="highlight">Workout</span>!
        </div>
 
       <div class="step-indicator">
@@ -114,71 +120,55 @@
        <div class="line"></div>
        <div class="step completed">3</div>
        </div>
-
-      <div class="MainCard" style="height: 448px;">
-        <div style="left: 62px; top: 5px; padding-bottom: 55px; padding-top: 5px; color: white; font-size: 40px; font-family: Poppins; font-weight: 600; word-wrap: break-word">Nutrition</div>
-          
-        <div class="InfoBox" style="padding-bottom: 20px;">
-          <div class="upboxtext">How many meals you eat a day?</div>
-          <div class="container">
-              <div class="input-box">
-                  <div class="button" onclick="decrease()">&#9664;</div>
-                  <div class="number-display" id="number-display">2</div>
-                  <div class="button" onclick="increase()">&#9654;</div>
-              </div>
-          </div>
-      </div> 
-      
-      <script>
-      document.addEventListener('DOMContentLoaded', function() {
-          let count = 2;
-          const min = 2;
-          const max = 6;
-          const numberDisplay = document.getElementById('number-display');
-      
-          function increase() {
-              if (count < max) {
-                  count++;
-                  numberDisplay.textContent = count;
-              }
-          }
-      
-          function decrease() {
-              if (count > min) {
-                  count--;
-                  numberDisplay.textContent = count;
-              }
-          }
-      
-          window.increase = increase;
-          window.decrease = decrease;
-      });
-      </script>
-           
-            
-          <div class="InfoBox" style="padding-bottom: 50px;">
-            <div class="upboxtext">Are you willing to take supplements?</div>
-            <div class="Row">
-                <div class="Container2">
-                    <div class="Ex2">Yes</div>
-                </div>
-                <div class="Container2">
-                    <div class="Ex2">No</div>
-                </div>
-            </div>
-        </div>
-             
-  
+       
+       
+ 
+      <div class="MainCard">
+        <div class="cardtitle" style="left: 62px; top: 7px; padding-bottom: 10px; padding-top: 5px; color: white; font-size: 40px; font-family: Poppins; font-weight: 600; word-wrap: break-word">Intensity</div>
+       
+       
+        <div class="layoutinside"> 
+          <div class="upboxtext" >Choose your workout intensity</div>
             <div class="InfoBox">
-             <div class="ButtonNext" >
-              <div  style=" color: white; font-size: 24px; font-family: Poppins; font-weight: 500; word-wrap: break-word">Next</div> 
+            
+            <div class="Container3">
+                <div class="Ex" style=" opacity: 0.990; color: #1F1F1F; font-size: 16px; font-family: Signika; font-weight: 00; word-wrap: break-word">Low</div>
+           </div>
           </div>
+  
+              <div class="InfoBox">
+                
+           <div class="Container3" >
+               <div class="Ex" style=" opacity: 0.990; color: #1F1F1F; font-size: 16px; font-family: Signika; font-weight: 300; word-wrap: break-word">Medium</div>
+             </div>
+           </div>
+  
+             <div class="InfoBox">
+                   
+                   <div class="Container3" >
+                  <div class="Ex" style=" opacity: 0.99; color: #1F1F1F; font-size: 16px; font-family: Signika; font-weight: 300; word-wrap: break-word">High</div>
+                </div>
+              </div>
+  
+              
+  
+            <div class="InfoBox" style="margin-top: 2.6rem;">
+             <div class="ButtonNext" >
+              <div  style=" color: white; font-size: 22px; font-family: Poppins; font-weight: 400; word-wrap: break-word">Next</div> 
+          </div>
+ </div> 
 
+
+
+
+-->
+ 
+ 
         
  <!--3-->
 
    <div class="HeadingText">
-       Customize your <span class="highlight">Diet</span>!
+       Customize your <span class="highlight">Workout</span>!
        </div>
 
       <div class="step-indicator">
@@ -190,29 +180,29 @@
        </div>
  
       <div class="MainCard">
-        <div class="cardtitle" style="left: 62px; top: 7px; padding-bottom: 10px; padding-top: 5px; color: white; font-size: 40px; font-family: Poppins; font-weight: 600; word-wrap: break-word">Fitness Goal</div>
+        <div class="cardtitle" style="left: 62px; top: 7px; padding-bottom: 10px; padding-top: 5px; color: white; font-size: 40px; font-family: Poppins; font-weight: 600; word-wrap: break-word">Fitness Objective</div>
        
        
         <div class="layoutinside"> 
-          <div class="upboxtext" >Choose your goal</div>
+          <div class="upboxtext" >Choose your gaining objective</div>
             <div class="InfoBox">
             
             <div class="Container3">
-                <div class="Ex" style=" opacity: 0.70; color: #1F1F1F; font-size: 16px; font-family: Signika; font-weight: 300; word-wrap: break-word">Bulk</div>
+                <div class="Ex" style=" opacity: 0.70; color: #1F1F1F; font-size: 16px; font-family: Signika; font-weight: 300; word-wrap: break-word">Power</div>
            </div>
           </div>
   
               <div class="InfoBox">
                 
            <div class="Container3" >
-               <div class="Ex" style=" opacity: 0.70; color: #1F1F1F; font-size: 16px; font-family: Signika; font-weight: 300; word-wrap: break-word">Cut</div>
+               <div class="Ex" style=" opacity: 0.70; color: #1F1F1F; font-size: 16px; font-family: Signika; font-weight: 300; word-wrap: break-word">Muscle</div>
              </div>
            </div>
   
              <div class="InfoBox">
                    
                    <div class="Container3" >
-                  <div class="Ex" style=" opacity: 0.70; color: #1F1F1F; font-size: 16px; font-family: Signika; font-weight: 300; word-wrap: break-word">Stay Healthy</div>
+                  <div class="Ex" style=" opacity: 0.70; color: #1F1F1F; font-size: 16px; font-family: Signika; font-weight: 300; word-wrap: break-word">Endurance</div>
                 </div>
               </div>
   
@@ -220,13 +210,13 @@
   
             <div class="InfoBox" style="margin-top: 2.5rem;">
              <div class="ButtonNext" >
-              <div  style=" color: white; font-size: 24px; font-family: Poppins; font-weight: 500; word-wrap: break-word">Submit</div> 
+              <div  style=" color: white; font-size: 22px; font-family: Poppins; font-weight: 400; word-wrap: break-word">Submit</div> 
           </div>
  </div> 
 
 
 
-      
+ 
     </div>
     </div>
           <!--Ai chat bot-->
