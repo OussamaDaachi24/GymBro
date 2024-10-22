@@ -25,3 +25,135 @@
 --fw-bold: 600;
 --fw-extra-bold:900;
 }
+   
+
+    body{
+        background-color: var(--clr-primary-bg);
+        margin: 0;
+        padding: 0;
+    }
+
+    .main_content{
+        background-color: var(--clr-primary-bg);
+        margin-top: 0px;;
+        width: 100%;
+        height: 100vh;
+    }
+
+
+    .title{
+        font-size: 4rem;
+        background-color: #0E0E0E;
+        height: 20%;
+        width: 60%;
+        padding-top: 5%;
+        margin: auto;
+        text-align: center;
+    }
+
+    .discover{
+        color: #F9F9F9;
+        font-weight: bold;
+    }
+
+    
+
+    .everyday{
+        color: #F9F9F9;
+        font-weight: bold;
+    }
+
+    .bulk{
+        color: #F64A4A;
+        font-weight: bolder;
+    }
+
+    .meals{
+        color: #1677FF;
+        font-weight: bolder;
+    }
+
+
+    .btn{
+        height: 40%;
+        width: 40%;
+        text-align: center;
+
+    }
+
+    .btn_back{
+        background-color:#0E0E0E;
+        border: none;
+        color: #F9F9F9;
+        font-weight: bold;
+        font-size: 1.5rem;
+        margin-top: 36%;
+        margin-left: 2%;
+        height: 20%;
+        width: 30%;
+        cursor: pointer ;
+    }
+
+    
+    .food_card{
+        width: 90%;
+        margin-left: 20px;
+        margin-right: 20px;
+        height: 70%;
+        margin: auto;
+        flex-shrink: 0;
+        border-radius: 15px;
+        border: 1px solid #282828;
+        background: #212121;
+        box-shadow: 4px 4px 10px 6px rgba(17, 17, 17, 0.25);
+        display: flex;
+        flex-direction: row;
+        
+    }
+
+
+
+    .food_img{
+        width: 40%;
+        height: 84%;
+        margin-top: 3%;
+        margin-left:3% ;
+        flex-shrink: 0;
+        border-radius: 15px;
+        background: #3B3B3B;
+        box-shadow: 0px 4px 7px 0px rgba(0, 0, 0, 0.25);
+
+
+    }
+
+
+    .food_description{
+        color: #F9F9F9;
+       
+    }
+
+    .food_ingredients{
+       
+        color: #F9F9F9;
+        
+    }
+    
+
+    .food_steps{
+        color: #F9F9F9;
+    }
+
+
+    .food_details{
+        width: 60%;
+        margin-top: 3.5%;
+        margin-left: 4%;
+    }
+
+
+    .recipe_title{
+        font-size: 1.5rem;
+        color: #F9F9F9;
+        font-weight: bold;
+      
+    }
