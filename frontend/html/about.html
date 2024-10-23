@@ -45,6 +45,91 @@
         <a href="./see_workout.html">My Workout </a>
       </div>
     </section>
+
+
+
+
+      <!-- Hero Section -->
+      <div class="hero-section">
+        <div class="Heading">
+            <div class="Headingtxt">WE ARE <span class="blue-text">GymBro</span></h1>
+            <p class="tagline">More than just your average fitness website.</p>
+        </div>
+    </nav>
+</div>
+  
+      <!-- Our Story Section -->
+      <div class="our-story">
+          <div class="story-container">
+              <div class="storytitle">Our Story</div>
+              <p class="story-text">
+                  At GymBro, we believe everyone deserves to achieve their fitness goals. Our free 
+                  workout and nutrition plans provide the foundation for anyone to start their 
+                  bodybuilding journey. By joining our community, you'll not just get expert 
+                  guidance but also the motivation and support to become your best self. 
+                  Together, we'll elevate your fitness to new heights. Let's get started!
+              </p>
+          </div>
+          <script>
+            document.addEventListener('DOMContentLoaded', function() {
+              const headingText = document.querySelector('.Headingtxt');
+          
+              
+              const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                  if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                  }
+                });
+              });
+          
+              
+              observer.observe(headingText);
+            });
+          </script>
+          
+      </div>
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          const storyText = document.querySelector('.story-text');
+      
+          
+          const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+              }
+            });
+          });
+      
+          
+          observer.observe(storyText);
+        });
+      </script>
+      
+      <!-- Our People Section -->
+      <div class="our-people">
+        <div class="card-section">
+          <div class="card card-1">
+              <img src="..\assets\images\card.png" alt="Description 1">
+          </div>
+          <div class="card card-2">
+              <img src="..\assets\images\card.png" alt="Description 2">
+          </div>
+          <div class="card card-3">
+              <img src="..\assets\images\card.png" alt="Description 3">
+          </div>
+          <div class="card card-4">
+              <img src="..\assets\images\card.png" alt="Description 4">
+          </div>
+      </div>
+        </div>
+  
+     
+  
+        
+      </style>
+  </body>
   </body>
   <script src="../javaScript/common.js"></script>
 </html>
