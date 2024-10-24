@@ -1,0 +1,271 @@
+@font-face {
+    font-family: 'CustomFont'; /* Give your font a name */
+     src: url('../assets/fonts/AlteHaasGroteskBold.ttf') format('woff2');   
+     font-weight: normal;
+     font-style: normal;
+     font-size: 1.875rem;
+ }
+:root {
+    /*bgs*/
+--clr-primary-bg: #0E0E0E;
+--clr-secondary-bg: #282828;
+--clr-secondary-bg-light: #3C3C3C;
+
+
+   /*text button containers */
+--clr-light-white:#F9F9F9;
+--clr-button-midtext: #1677FF;
+
+--clr-gradient: linear-gradient(45deg, #002E6F, #1677FF);
+--clr-button-gradient: linear-gradient(to bottom,#09090A 50%,#868686 300%);
+ 
+/*font family*/
+--ff-primary:  font-family: "Poppins", sans-serif;
+--ff-secondary:  font-family: "Signika", sans-serif;
+
+--ff-body:var(var(--ff-primary));
+--ff-heading:var(var(--ff-primary));
+
+/*font weights*/
+--fw-light: 300;
+--fw-medium: 400;
+--fw-bold: 600;
+--fw-bold-logo: 700;
+--fw-extra-bold:900;
+}
+
+
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+ 
+*{
+    margin: 0;
+    padding: 0;
+    font: inherit;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+html{
+  scroll-behavior: smooth;
+}
+
+/*the font*/
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+html,body{
+    height: 100%;   /*help avoid doule sidebar problem help the layout a bit (instead of (min-height: 100vh;))*/
+    font-family: "Poppins";
+}
+/* Set core body defaults */
+body {
+/*  min-height: 100vh;  */
+color: #ffffff;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+
+img,
+picture,svg {
+  max-width: 100%;
+  display: block;
+}
+
+
+
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+   scroll-behavior: auto;
+  }
+  
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+/* remove the list style*/
+ul{
+  list-style: none;
+}
+/*remove the anchor tag style*/
+a{
+  text-decoration: none;
+  color:var(--clr-light-white);
+}
+
+body {
+    background-color: var(--clr-primary-bg);
+    
+    font-family: var(--ff-primary);
+    
+}
+
+
+
+.Heading{
+ margin-top: 56px;
+ margin-bottom: 200px;
+}
+
+
+.Headingtxt
+{
+    font-size: 60px;
+    font-weight: 900;
+
+}
+
+.blue-text {
+    color:var(--clr-button-midtext);
+    font-family:'CustomFont' ;
+}
+
+.tagline{
+    font-size: 40px;
+    font-weight: 800;
+
+}
+
+
+@media screen and (max-width: 1000px) {
+    .Headingtxt {
+      font-size: 38px;
+    
+    }
+    .tagline{
+        font-size:22px;
+        font-weight: 800;
+    
+    }
+    .Heading{
+        margin-top: 67px;
+        margin-bottom: 86px;
+    }
+
+
+  }
+
+.hero-section {
+   
+    text-align: center;
+}
+.storytitle{
+font-size: 36px;
+font-weight: 600;
+margin-bottom: 42px;
+
+
+}
+.story-text{
+    font-size: 24px;
+    font-weight: 500;
+margin-right: 10%;
+margin-left: 10%;
+}
+
+
+
+
+.our-story {
+    height: 528px;
+    width: 100vw; 
+    background-image: url('../assets/images/heroabout.png');
+    
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 528px; 
+    margin: 0 auto; 
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white; /* Style for the text */
+  }
+  
+  @media screen and (max-width: 1000px) {
+    .our-story {
+      height: 450px; /* Slightly reduced height for smaller screens */
+    }
+  }
+  
+  @media screen and (max-width: 768px) {
+    .our-story {
+      height: 400px; /* Adjust the height for tablet screens */
+    }
+  }
+  
+  @media screen and (max-width: 459px) {
+    .our-story {
+    
+      height: 383px; /* Set height for mobile devices */
+      background-size: cover; /* Ensures the image adjusts */
+    }
+    .storytitle{
+        font-size: 24px;
+        margin-top: 10px;
+
+    }
+    .story-text{
+        font-size: 14px;
+    }
+
+
+
+  }
+.story-text {
+  opacity: 0; 
+  transform: translateY(20px); 
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out; 
+}
+
+.story-text.visible {
+  opacity: 1; 
+  transform: translateY(0); 
+}
+
+
+
+.Headingtxt {
+    opacity: 0; 
+    transform: scale(0.5) rotate(-10deg); 
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out; 
+  }
+  
+  .Headingtxt.visible {
+    opacity: 1;
+    transform: scale(1) rotate(0); 
+  }
+  
+  
+
