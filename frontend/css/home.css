@@ -390,6 +390,10 @@
     font-size: 1.1rem;
     cursor:pointer;
 }
+.food_intro button:hover{
+    color: white;
+    border-color: white;
+}
 
 .food_intro div{
     font-size: 1.7rem;

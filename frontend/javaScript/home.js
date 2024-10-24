@@ -45,6 +45,9 @@ back_arrow.addEventListener('click',()=>{
 
 
 
+//handling redirections: 
+
+
 
 
 
