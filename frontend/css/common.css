@@ -127,6 +127,10 @@ a{
   background-color:var(--clr-secondary-bg-light);
   overflow: hidden;
 }
+/*the hover effect*/
+.navSections a:hover{
+  color:var(--clr-button-midtext);
+}
 
 .menu_bar{
   display: none;
@@ -147,6 +151,9 @@ a{
 .prof_img{
   height:80%;
   width:35px;
+}
+.hide{
+  display: none;
 }
 
 .logo_img{
