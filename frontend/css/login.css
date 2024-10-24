@@ -103,6 +103,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    align-items: center;
     height:100vh;
 }
 
@@ -134,6 +135,7 @@ body {
     font-weight: 700;
     line-height: 89.6px;
     text-align: center;
+    margin-top: 9vh;
 }
 span {
     color: #1677FF;
@@ -146,7 +148,7 @@ span {
     left: 50%;
     transform: translate(-50%, -50%); /* Center the text within the div */
     color: white;
-    font-size: 2rem;
+    font-size: 1rem;
     background:  var(--clr-gradient); /* Optional: semi-transparent background for the text */
     padding: 20px;
     border-radius: 34px;
@@ -168,11 +170,13 @@ span {
     justify-content: space-between;
     align-items: center;
     gap: 9px;
+
 }
 .email-container-khalil {
     width: 100%; /* Ensure the container takes full width of its parent */
     display: flex; /* To manage layout of children */
     justify-content: center; /* Center align input if needed */
+
 }
 
 .email-input-khalil {
