@@ -12,6 +12,36 @@
 --clr-button-midtext: #1677FF;
 
 --clr-gradient: linear-gradient(45deg, #002E6F, #1677FF);
+   
+/*font family*/
+--ff-primary:  font-family: "Poppins", sans-serif;
+
+--ff-body:var(var(--ff-primary));
+--ff-heading:var(var(--ff-primary));
+
+/*font weights*/
+--fw-light: 300;
+--fw-medium: 400;
+--fw-bold: 600;
+--fw-extra-bold:900;
+}
+   
+
+    
+/* CSS RESET */
+
+:root {
+    /*bgs*/
+--clr-primary-bg: #0E0E0E;
+--clr-secondary-bg: #282828;
+--clr-secondary-bg-light: #3C3C3C;
+
+
+   /*text button containers */
+--clr-light-white:#F9F9F9;
+--clr-button-midtext: #1677FF;
+
+--clr-gradient: linear-gradient(45deg, #002E6F, #1677FF);
     
 /*font family*/
 --ff-primary:  font-family: "Poppins", sans-serif;
@@ -24,4 +54,53 @@
 --fw-medium: 400;
 --fw-bold: 600;
 --fw-extra-bold:900;
+}
+
+body, h1, h2, h3, h4, h5, h6, p {
+    margin: 0;
+    padding: 0;
+  }
+
+.meals{
+    width:100%;
+    min-height:90vh;
+    background-color: var(--clr-primary-bg);
+    color: white;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.meals_title{
+    width:45%;
+    min-width:600px;
+    text-align: center;
+    margin-top: 2%;
+    font-size: 3rem;
+    font-weight: 700;
+}
+.meals_title span{
+    font-size: 4rem;
+    line-height: 2%;
+    color:var(--clr-button-midtext);
+}
+
+.meal_types{
+    width:80%;
+    height:55vh;
+    background-color: var(--clr-secondary-bg);
+    border-radius: 15px;
+    margin-top: 3%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 2%;
+}
+.type{
+    background-color: #fff;
+    height:98%;
+    flex-shrink: 1;
+    width:29%;
+    color:#0E0E0E;
+    border-radius: 10px;
 }
