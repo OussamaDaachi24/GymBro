@@ -32,10 +32,204 @@
 
 body {
     background-image: url('../assets/images/The_background_gym.png');
+    background-color: #3C3C3C;
     background-size: cover;     /* Makes sure the image covers the entire area */
     background-position: center;/* Centers the image within the container */
     background-repeat: no-repeat; /* Prevents the image from repeating */
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
+    gap: 20px;
     height: 100vh;
+    padding-bottom: 5%;
+}
+
+.head_Bar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%; }
+/*Start of The blue container and its responsiveness*/
+.login-text-container {
+    height: 65vh; 
+    width: 45%;
+    border-radius: 34px;
+    margin-top: 3vh;
+    background:  var(--clr-gradient);
+    transition: all 0.15s;
+    display: flex;
+    flex-direction: column;
+    justify-content:space-between;
+}
+@media (max-width : 1100px){
+    .login-text-container {
+        width: 50%;
+    }}   
+    
+@media (max-width : 865px){
+    .login-text-container {
+        width: 70%;
+    }}
+@media (max-width : 560px){
+    .login-text-container{
+        width: 100%;
+    }}
+
+/*Start of the "Welcome GymBro"*/
+
+.Welcome-text-container {
+    height: 15vh;
+    width: 45%; 
+    border-radius: 34px;
+    margin-top: 10vh;
+    transition:all 0.15s;
+    color: white;
+    font-family: Poppins;
+    font-size: 7vh;
+    font-style: normal;
+    font-weight: 700;
+    overflow: hidden; /* Prevents text from overflowing */
+    display: flex; /* Flexbox to align content */
+    align-items: center; /* Center text vertically */
+    justify-content: center; /* Center text horizontally */
+}
+span {
+    color: #1677FF;
+}
+@media (max-width : 1100px){
+    .Welcome-text-container{
+        width: 50%;
+    }}
+@media (max-width : 865px){
+    .Welcome-text-container {
+        width: 70%;
+    }}
+@media (max-width : 560px){
+        .Welcome-text-container {
+            width: 100%;
+            font-size: 5vh;
+}}
+
+.Welcome-text {
+    width: 100%;
+    text-align: center; /* Optional: Center align the text */
+    font-size: 100%; /* Ensure font size adjusts properly */
+    white-space: normal;
+}
+
+.Basic-details-inputs-image-contaier{
+    border-radius: 34px;
+    height: 80%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.Basic-details-inputs-container {
+    padding-top: 5%;    
+    padding-left: 5%;
+    padding-right: 5%;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content:space-evenly;
+}
+.Basic-details-text-container {
+    color: white;
+    font-family: Poppins;
+    font-size: 4vh;
+    font-style: normal;
+    font-weight: 600;
+    overflow: hidden;
+}
+ 
+.input-container {
+    width: 100%; /* Ensure the container takes full width of its parent */
+    display: flex; /* To manage layout of children */
+    justify-content: center; /* Center align input if needed */
+}
+
+input {
+    width: 100%; /* Make the input take the full width of the container */
+    border: none;
+    border-radius: 15px;
+    font-family: var(--ff-primary);
+    padding-top: 9px; /* Optional padding for spacing inside the input */
+    padding-bottom: 9px; /* Optional padding for spacing inside the input */
+    box-sizing: border-box; /* Ensure padding is included within width */
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+    border: none;
+    box-shadow: none;
+    outline: none;
+    padding-left: 5%;
+}
+
+.Image-container {
+    display: flex;
+    flex-direction: column;
+    justify-content:space-between;
+    gap: 5%;
+    width: 50%;
+    height: 100%;
+    padding-top: 8%;    
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-bottom: 0%;
+}
+.Image-text-container {
+    color: white;
+    font-family: Poppins;
+    font-size: 4vh;
+    font-style: normal;
+    font-weight: 600;
+    overflow: hidden;
+}
+.Image-input-container {
+    width:90%;
+    height: 80%;
+    border-radius: 34px;
+    margin-top: 3%;
+    padding:0%;
+}
+.Image-input {
+    width: 100%;
+    height: 100%;
+    border-radius: 34px;
+    margin-left: -5%;
+    object-fit: cover;
+}
+
+
+.Submit-button-container{
+    border-radius: 34px;
+    height: 20%;
+    width: 100%;  
+    display: flex;
+    justify-content: center;
+    padding-top: 2%;
+    padding-bottom: 8%;
+}   
+.Submit-button {
+    color: white;
+    width: 50%;
+    border: none;
+    border-radius: 15px;
+    padding: 10px;
+    background: linear-gradient(to bottom,#09090A 50%,#868686 300%);
+    transition: background-position 0.15s ease, transform 0.15s ease, opacity 0.15s ease; 
+    font-family: "Poppins";
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    padding-bottom: 8%;
+}
+.Submit-button:hover {
+    cursor: pointer;
+    background-position:0 100%;
+    opacity: 95%;
 }

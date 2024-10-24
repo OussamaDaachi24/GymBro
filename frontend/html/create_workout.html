@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="" />
+    <meta name="viewport" content="width=device-width" />
+    <title>GymBro</title>
+    <!--fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet"/>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Signika:wght@300..700&display=swap" rel="stylesheet">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    
+    <link rel="stylesheet" href="../css/create_diet.css" />
+    <link rel="stylesheet" href="../css/common.css" />
+  </head>
+  <body>
+    <header class="head_Bar" id="#head">
+      <div class="logo">
+        <a href="home.html">
+          <img src="../assets/icons/logo.png" class="logo_img"
+        /></a>
+      <div class="logotxt">GymBro </div>
+      </div>
+      <ul class="navSections">
+        <li><a href="home.html">Home</a></li>
+        <li><a href="about.html" class="current">About</a></li>
+        <li><a href="see_workout.html">myWorkouts</a></li>
+        <li><a href="see_diet.html">myMeals</a></li>
+      </ul>
+      <div class="profile">
+        <a href="./profile.html">
+          <img src="../assets/icons/profile-circle.png" class="prof_img" />
+        </a>
+      </div>
+    </header>
+
+    <!--1-->
+
+  <div class="MainPlat">
+  <!--  
+ <div class="HeadingText">
+  Customize your <span class="highlight">Diet</span>!
+  </div>
+
+ <div class="step-indicator">
+  <div class="step ">1</div>
+  <div class="line"></div>
+  <div class="step completed">2</div>
+  <div class="line"></div>
+  <div class="step completed">3</div>
+  </div>
+
+ <div class="MainCard" style="height: 448px;">
+   <div style="left: 62px; top: 5px; padding-bottom: 55px; padding-top: 5px; color: white; font-size: 40px; font-family: Poppins; font-weight: 600; word-wrap: break-word">Workout split</div>
+     
+   <div class="InfoBox" style="padding-bottom: 20px;">
+     <div class="upboxtext">How many days you workout a week?</div>
+     <div class="container">
+         <div class="input-box">
+             <div class="button" onclick="decrease()">&lt;</div>
+             <div class="number-display" id="number-display">2</div>
+             <div class="button" onclick="increase()">&gt;</div>
+         </div>
+     </div>
+ </div> 
+ 
+ <script>
+ let currentNumber = 2; // Starting number
+
+function updateDisplay() {
+document.getElementById('number-display').innerText = currentNumber;
+}
+
+function increase() {
+if (currentNumber < 6) { // Limit to 6
+   currentNumber++;
+}
+updateDisplay();
+}
+
+function decrease() {
+if (currentNumber > 2) { // Limit to 2
+   currentNumber--;
+}
+updateDisplay();
+}
+ </script>
+      
+       
+
+        
+
+       <div class="InfoBox">
+        <div class="ButtonNext" >
+         <div  style=" color: white; font-size: 24px; font-family: Poppins; font-weight: 500; word-wrap: break-word">Next</div> 
+     </div>
+
+   -->
+    
+    <!--2-->
+<!--
+    <div class="HeadingText">
+       Customize your <span class="highlight">Workout</span>!
+       </div>
+
+      <div class="step-indicator">
+       <div class="step completed">1</div>
+       <div class="line"></div>
+       <div class="step ">2</div>
+       <div class="line"></div>
+       <div class="step completed">3</div>
+       </div>
+       
+       
+ 
+      <div class="MainCard">
+        <div class="cardtitle" style="left: 62px; top: 7px; padding-bottom: 10px; padding-top: 5px; color: white; font-size: 40px; font-family: Poppins; font-weight: 600; word-wrap: break-word">Intensity</div>
+       
+       
+        <div class="layoutinside"> 
+          <div class="upboxtext" >Choose your workout intensity</div>
+            <div class="InfoBox">
+            
+            <div class="Container3">
+                <div class="Ex" style=" opacity: 0.990; color: #1F1F1F; font-size: 16px; font-family: Signika; font-weight: 00; word-wrap: break-word">Low</div>
+           </div>
+          </div>
+  
+              <div class="InfoBox">
+                
+           <div class="Container3" >
+               <div class="Ex" style=" opacity: 0.990; color: #1F1F1F; font-size: 16px; font-family: Signika; font-weight: 300; word-wrap: break-word">Medium</div>
+             </div>
+           </div>
+  
+             <div class="InfoBox">
+                   
+                   <div class="Container3" >
+                  <div class="Ex" style=" opacity: 0.99; color: #1F1F1F; font-size: 16px; font-family: Signika; font-weight: 300; word-wrap: break-word">High</div>
+                </div>
+              </div>
+  
+              
+  
+            <div class="InfoBox" style="margin-top: 2.6rem;">
+             <div class="ButtonNext" >
+              <div  style=" color: white; font-size: 22px; font-family: Poppins; font-weight: 400; word-wrap: break-word">Next</div> 
+          </div>
+ </div> 
+
+
+
+
+-->
+ 
+ 
+        
+ <!--3-->
+
+   <div class="HeadingText">
+       Customize your <span class="highlight">Workout</span>!
+       </div>
+
+      <div class="step-indicator">
+       <div class="step completed">1</div>
+       <div class="line"></div>
+       <div class="step completed">2</div>
+       <div class="line"></div>
+       <div class="step">3</div>
+       </div>
+ 
+      <div class="MainCard">
+        <div class="cardtitle" style="left: 62px; top: 7px; padding-bottom: 10px; padding-top: 5px; color: white; font-size: 40px; font-family: Poppins; font-weight: 600; word-wrap: break-word">Fitness Objective</div>
+       
+       
+        <div class="layoutinside"> 
+          <div class="upboxtext" >Choose your gaining objective</div>
+            <div class="InfoBox">
+            
+            <div class="Container3">
+                <div class="Ex" style=" opacity: 0.70; color: #1F1F1F; font-size: 16px; font-family: Signika; font-weight: 300; word-wrap: break-word">Power</div>
+           </div>
+          </div>
+  
+              <div class="InfoBox">
+                
+           <div class="Container3" >
+               <div class="Ex" style=" opacity: 0.70; color: #1F1F1F; font-size: 16px; font-family: Signika; font-weight: 300; word-wrap: break-word">Muscle</div>
+             </div>
+           </div>
+  
+             <div class="InfoBox">
+                   
+                   <div class="Container3" >
+                  <div class="Ex" style=" opacity: 0.70; color: #1F1F1F; font-size: 16px; font-family: Signika; font-weight: 300; word-wrap: break-word">Endurance</div>
+                </div>
+              </div>
+  
+              
+  
+            <div class="InfoBox" style="margin-top: 2.5rem;">
+             <div class="ButtonNext" >
+              <div  style=" color: white; font-size: 22px; font-family: Poppins; font-weight: 400; word-wrap: break-word">Submit</div> 
+          </div>
+ </div> 
+
+
+
+ 
+    </div>
+    </div>
+          <!--Ai chat bot-->
+          <script> window.chtlConfig = { chatbotId: "9142794298" } </script>
+          <script async data-id="9142794298" id="chatling-embed-script" type="text/javascript" src="https://chatling.ai/js/embed.js"></script>
+  </body>
+  
+</html>
