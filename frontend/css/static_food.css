@@ -12,36 +12,6 @@
 --clr-button-midtext: #1677FF;
 
 --clr-gradient: linear-gradient(45deg, #002E6F, #1677FF);
-   
-/*font family*/
---ff-primary:  font-family: "Poppins", sans-serif;
-
---ff-body:var(var(--ff-primary));
---ff-heading:var(var(--ff-primary));
-
-/*font weights*/
---fw-light: 300;
---fw-medium: 400;
---fw-bold: 600;
---fw-extra-bold:900;
-}
-   
-
-    
-/* CSS RESET */
-
-:root {
-    /*bgs*/
---clr-primary-bg: #0E0E0E;
---clr-secondary-bg: #282828;
---clr-secondary-bg-light: #3C3C3C;
-
-
-   /*text button containers */
---clr-light-white:#F9F9F9;
---clr-button-midtext: #1677FF;
-
---clr-gradient: linear-gradient(45deg, #002E6F, #1677FF);
     
 /*font family*/
 --ff-primary:  font-family: "Poppins", sans-serif;
@@ -64,17 +34,16 @@ body, h1, h2, h3, h4, h5, h6, p {
 .meals{
     width:100%;
     min-height:90vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
     background-color: var(--clr-primary-bg);
     color: white;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
 
 .meals_title{
-    width:100%;
-    max-width:600px;
+    width:45%;
+    min-width:600px;
     text-align: center;
     margin-top: 2%;
     font-size: 3rem;
@@ -87,72 +56,21 @@ body, h1, h2, h3, h4, h5, h6, p {
 }
 
 .meal_types{
-    width:60%;
-    min-height: 300px;
+    width:80%;
+    height:55vh;
     background-color: var(--clr-secondary-bg);
     border-radius: 15px;
     margin-top: 3%;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    flex-wrap: wrap;
-    gap:2%;
     padding: 2%;
 }
 .type{
     background-color: #fff;
     height:98%;
-    min-height:290px;
     flex-shrink: 1;
-    width:20%;
-    min-width:200px;
-    border-radius: 2px;
-    margin-bottom: 2%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-shrink: 1;
-    font-size: 2.1rem;
-    font-weight: 700;
-    cursor: pointer;
-    transition: 0.5s ease;
-    overflow: hidden;
-}
-.type:hover{
-    transform: scale(1.08);
-} 
-
-
-#split1{
-    background-image: url(../assets/images/splitOne.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    color:#FF3333;
-}
-
-#split2{
-    background-image: url(../assets/images/splitTwo.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    color:blue;
-}
-
-#split3{
-    background-image: url(../assets/images/splitThree.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    color:green;
-}
-
-@media screen and (max-width:680px){
-    .meals_title{
-        width:90%;
-        margin-top: 2%;
-        font-size: 2rem;
-        font-weight: 600;
-    }
-    body{
-        width:100%;
-        overflow: hidden;
-    }
+    width:29%;
+    color:#0E0E0E;
+    border-radius: 10px;
 }
