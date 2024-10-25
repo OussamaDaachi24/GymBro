@@ -98,6 +98,21 @@
     height: 100%;
     
 }
+.visit_page{
+    display:flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top:30%;
+}
+.visit_page button{
+    background-color: var(--clr-button-midtext);
+    color:white;
+    width:35%;
+    height:3rem;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 8px;
+}
 
 .streak_chart{
     width:50%;
