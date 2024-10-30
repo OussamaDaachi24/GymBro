@@ -296,38 +296,60 @@ margin-left: 10%;
   height: 450px;
   border-radius: 34px;
   overflow: hidden;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  
-  
+  text-align: center;
+}
+
+.Blue {
+  position: absolute;
+  top: 275px;
+  width: 384px;
+  height: 205px;
+  background: radial-gradient(37.41% 47.58% at 39.66% 14.85%, #1677FF 0%, #002E6F 100%);
+  border-radius: 34px;
+  overflow: hidden;
+  text-align: center;
+   /* Optional if needed */
+}
+
+.name {
+  font-size: 24px;
+  font-family: Poppins, sans-serif;
+  font-weight: 600;
+  color: white;
+  position: absolute;
+  left: 16px;
+  top: 90px;
+  word-wrap: break-word;
+}
+
+.Quote {
+  font-size: 15px;
+  font-family: Poppins, sans-serif;
+  font-weight: 500;
+  color: white;
+  position: absolute;
+  left: 70px;
+  top: 140px;
+  word-wrap: break-word;
+}
+
+.Shade {
+  width: 315px;
+  height: 15px;
+  left: 30px;
+  top: 345px;
+  position: absolute;
+  background: radial-gradient(111.19% 141.42% at 100% 0%, #1677FF 20%, #002E6F 100%);
+  border-radius: 150px;
+  filter: blur(5.5px);
+   /* Ensure this is behind other elements */
 }
 
 .card img.photo {
   width: 100%;
-  height: 205px;
+  height: 373px;
   object-fit: cover;
-  border-radius: 34px 34px 0 0;
-}
-
-.Frame46 {
+  top: -20px;
   position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 205px;
-  background: radial-gradient(37.41% 47.58% at 39.66% 14.85%, #1677FF 0%, #002E6F 100%);
-  border-radius: 0 0 34px 34px;
-  padding: 20px;
-  color: white;
-}
-
-.YoucefChebaani {
-  font-size: 24px;
-  font-family: Poppins, sans-serif;
-  font-weight: 600;
-}
-
-.NeverHurtADesignerSFeeling {
-  margin-top: 10px;
-  font-size: 15px;
-  font-family: Poppins, sans-serif;
-  font-weight: 500;
+  border-radius: 34px 34px 0 0;
 }
