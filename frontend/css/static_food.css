@@ -86,7 +86,7 @@ body, h1, h2, h3, h4, h5, h6, p {
     font-size: 2.1rem;
     font-weight: 700;
     cursor: pointer;
-    transition: 0.5s ease;
+    transition: 0.15s ease;
     overflow: hidden;
 }
 .type:hover{
@@ -106,9 +106,9 @@ body, h1, h2, h3, h4, h5, h6, p {
     background-image: url(../assets/images/splitTwo.jpg);
     background-size: cover;
     background-repeat: no-repeat;
-    color:blue;
+    color:var(--clr-button-midtext);
 }
-#split2 a{color:blue}
+#split2 a{color:var(--clr-button-midtext)}
 
 #split3{
     background-image: url(../assets/images/splitThree.jpg);

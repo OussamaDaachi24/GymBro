@@ -107,11 +107,13 @@
 .visit_page button{
     background-color: var(--clr-button-midtext);
     color:white;
-    width:35%;
+    width:120%;
+    min-width:80px;
     height:3rem;
-    font-size: 1.2rem;
+    font-size: 120%;
     border: none;
     border-radius: 8px;
+    cursor: pointer;
 }
 
 .streak_chart{
