@@ -153,11 +153,13 @@ span {
         align-items: center;
     }
     .Title{
+        text-align: center;
         width: 80%;
-        font-size: 170%;
+        font-size: 300%;
         margin-left:10%;
         margin-top: 3vh;
-        margin-bottom: 8vh;
+        margin-bottom: 15vh;
+        white-space: normal;
     }
     .main-card-text-container{
         height: 1700px;
@@ -173,5 +175,10 @@ span {
         gap: 0%;
         padding-top: 10%;
         padding-bottom: 10%;
+    }
+}
+@media (max-width: 400px){
+    .Title{
+        font-size: 155%;
     }
 }
