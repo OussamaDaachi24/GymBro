@@ -275,6 +275,7 @@ margin-left: 10%;
 .our-people {
   text-align: center;
   margin-bottom: 50px;
+
 }
 
 .card-section {
@@ -288,6 +289,7 @@ margin-left: 10%;
   gap: 20px;
   position: relative;
   padding: 20px;
+  
 }
 
 .card {
@@ -297,6 +299,8 @@ margin-left: 10%;
   border-radius: 34px;
   overflow: hidden;
   text-align: center;
+  flex-basis: 50px; /* 50% of the row, minus the gap */
+
 }
 
 .Blue {

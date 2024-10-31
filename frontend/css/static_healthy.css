@@ -162,3 +162,130 @@
         font-weight: bold;
       
     }
+
+
+
+    @media ( min-width: 300px) and (max-width: 554px) {
+        .food_card {
+            flex-direction: column;
+            
+            height: 100%;
+            margin-top: -40%;
+            margin-bottom: 45%;
+          
+
+
+        }
+        .food_details {
+            width: 50%;
+            height:auto;
+            margin: auto;
+            font-size: 11px;
+            margin-top: -5%;
+        }
+       .food_img {  
+        width: 60%;
+        height: 30%;
+        margin: auto;
+    }
+
+    .btn_back{
+        width: 70%;
+        margin-top: 30%;
+        margin-left: 20%;
+        position: relative;
+    }
+
+    .title{
+        height: 10%;
+        margin-top: 15%;
+        width: 70%;
+        font-size: 20px;
+    }
+
+}
+
+
+
+
+    @media ( min-width: 555px) and (max-width: 759px) {
+        .food_card {
+            flex-direction: column;
+            
+            height: 100%;
+            margin-top: -40%;
+            margin-bottom: 45%;
+          
+
+
+        }
+        .food_details {
+            width: 50%;
+            height: auto;
+            margin: auto;
+            font-size: 10px;
+            margin-top: -5%;
+        }
+       .food_img {  
+        width: 60%;
+        height: 30%;
+        margin: auto;
+    }
+
+    .btn_back{
+        width: 80%;
+        margin-top: 20%;
+        margin-left: 10%;
+    }
+
+    .title{
+        height: 10%;
+        margin-top: 5%;
+        width: 70%;
+        font-size: 40px;
+    }
+
+}
+
+
+
+
+
+
+@media ( min-width: 760px) and (max-width: 940px) {
+    .food_card {
+      height: 100%;
+      flex-direction: column;
+      margin-top: -20%;
+      margin-bottom: 23%;
+    }
+    .food_details {
+        width: 50%;
+        height: auto;
+        margin: auto;
+        font-size: 15px;
+        margin-top: -5%;
+        
+    }
+   .food_img {  
+    height: 35%;
+    width: 50%;
+    margin: auto;
+
+   
+}
+
+.btn_back{
+    width: 80%;
+    margin-top: 30%;
+    margin-left: 10%;
+}
+
+.title{
+    height: 10%;
+    margin-top: 5%;
+    width: 70%;
+    font-size: 40px;
+}
+
+}
