@@ -179,6 +179,6 @@ span {
 }
 @media (max-width: 400px){
     .Title{
-        font-size: 155%;
+        font-size: 2.375rem;
     }
 }
