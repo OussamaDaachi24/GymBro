@@ -286,21 +286,21 @@ margin-left: 10%;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  gap: 20px;
+  gap: 5%;
   position: relative;
-  padding: 20px;
   
 }
 
-.card {
-  position: relative;
-  width: 384px;
+.card-full {
+  /*position: relative;*/
+  width: 25%;
   height: 450px;
   border-radius: 34px;
   overflow: hidden;
   text-align: center;
-  flex-basis: 50px; /* 50% of the row, minus the gap */
-
+  border: 1px solid red;
+  /* 50% of the row, minus the gap */
+  
 }
 
 .Blue {

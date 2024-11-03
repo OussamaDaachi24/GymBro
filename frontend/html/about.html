@@ -1,146 +1,178 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" href="" />
-    <meta name="viewport" content="width=device-width" />
-    <title>GymBro</title>
-    <!--fonts-->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="../css/about.css" />
-    <link rel="stylesheet" href="../css/common.css" />
-  </head>
 
-  <!--  Body section-->
-  <body>
-    <header class="head_Bar" id="#head">
-      <div class="menu_bar"><img src="../assets/images/menu.png" /></div>
-      <div class="logo"> 
-        <a href="home.html">
-          <img src="../assets/icons/logo.png" class="logo_img"
-        /></a>
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/png" href="" />
+  <meta name="viewport" content="width=device-width" />
+  <title>GymBro</title>
+  <!--fonts-->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="../css/about.css" />
+  <link rel="stylesheet" href="../css/common.css" />
+</head>
+
+<!--  Body section-->
+
+<body>
+  <header class="head_Bar" id="#head">
+    <div class="menu_bar"><img src="../assets/images/menu.png" /></div>
+    <div class="logo">
+      <a href="home.html">
+        <img src="../assets/icons/logo.png" class="logo_img" /></a>
+    </div>
+    <ul class="navSections">
+      <li><a href="home.html">Home</a></li>
+      <li><a href="about.html" class="current">About</a></li>
+      <li><a href="see_workout.html">myWorkouts</a></li>
+      <li><a href="see_diet.html">myMeals</a></li>
+    </ul>
+    <div class="profile">
+      <a href="./profile.html">
+        <img src="../assets/icons/profile-circle.png" class="prof_img" />
+      </a>
+    </div>
+  </header>
+  <section class="mobile_options">
+    <div class="options">
+      <a href="./home.html">Home</a>
+      <a href="./about.html">About</a>
+      <a href="./see_diet.html">My Meals</a>
+      <a href="./see_workout.html">My Workout </a>
+    </div>
+  </section>
+
+
+
+
+  <!-- Hero Section -->
+  <div class="hero-section">
+    <div class="Heading">
+      <div class="Headingtxt">WE ARE <span class="blue-text">GymBro</span></h1>
+        <p class="tagline">More than just your average fitness website.</p>
       </div>
-      <ul class="navSections">
-        <li><a href="home.html">Home</a></li>
-        <li><a href="about.html" class="current">About</a></li>
-        <li><a href="see_workout.html">myWorkouts</a></li>
-        <li><a href="see_diet.html">myMeals</a></li>
-      </ul>
-      <div class="profile">
-        <a href="./profile.html">
-          <img src="../assets/icons/profile-circle.png" class="prof_img" />
-        </a>
+      </nav>
+    </div>
+
+    <!-- Our Story Section -->
+    <div class="our-story">
+      <div class="story-container">
+        <div class="storytitle">Our Story</div>
+        <p class="story-text">
+          At GymBro, we believe everyone deserves to achieve their fitness goals. Our free
+          workout and nutrition plans provide the foundation for anyone to start their
+          bodybuilding journey. By joining our community, you'll not just get expert
+          guidance but also the motivation and support to become your best self.
+          Together, we'll elevate your fitness to new heights. Let's get started!
+        </p>
       </div>
-    </header>
-    <section class="mobile_options">
-      <div class="options">
-        <a href="./home.html">Home</a>
-        <a href="./about.html">About</a>
-        <a href="./see_diet.html">My Meals</a>
-        <a href="./see_workout.html">My Workout </a>
-      </div>
-    </section>
 
 
+    </div>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const storyText = document.querySelector('.story-text');
 
 
-      <!-- Hero Section -->
-      <div class="hero-section">
-        <div class="Heading">
-            <div class="Headingtxt">WE ARE <span class="blue-text">GymBro</span></h1>
-            <p class="tagline">More than just your average fitness website.</p>
-        </div>
-    </nav>
-</div>
-  
-      <!-- Our Story Section -->
-      <div class="our-story">
-          <div class="story-container">
-              <div class="storytitle">Our Story</div>
-              <p class="story-text">
-                  At GymBro, we believe everyone deserves to achieve their fitness goals. Our free 
-                  workout and nutrition plans provide the foundation for anyone to start their 
-                  bodybuilding journey. By joining our community, you'll not just get expert 
-                  guidance but also the motivation and support to become your best self. 
-                  Together, we'll elevate your fitness to new heights. Let's get started!
-              </p>
-          </div>
-         
-          
-      </div>
-      <script>
-        document.addEventListener('DOMContentLoaded', function() {
-          const storyText = document.querySelector('.story-text');
-      
-          
-          const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-              if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-              }
-            });
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+            }
           });
-          observer.observe(storyText);
         });
-      </script>
-      
-      <!-- Our People Section -->
-      <div class="our-people">
-        <div class="titleppl"> Our People </div>
-        <div class="card-section">
-          <div class="card">
-              
-            <div class="Blue" style="width: 384px; height: 205px;  top: 275px; position: absolute; background: radial-gradient(111.19% 141.42% at 100% 0%, #1677FF 0%, #002E6F 100%); border-radius: 34px; overflow: hidden">
-              <div class="name" style="left: 16px; top: 90px; position: absolute; color: white; font-size: 40px; font-family: Poppins; font-weight: 600; word-wrap: break-word">Youcef Chebaani</div>
-              <div class="Quote" style="left: 70px; top: 140px; position: absolute; color: white; font-size: 15px; font-family: Poppins; font-weight: 500; word-wrap: break-word">“ never hurt a designer’s feeling ”</div>
+        observer.observe(storyText);
+      });
+    </script>
+
+    <!-- Our People Section -->
+    <div class="our-people">
+      <div class="titleppl"> Our People </div>
+      <div class="card-section">
+        <div class="upper-sec">
+          <div class="card-full">
+
+            <div class="Blue">
+              <div class="name">Youcef Chebaani</div>
+              <div class="Quote">“ never hurt a designer’s feeling ”</div>
+            </div>
+            <img class="photo" src="..\assets\images\jimmi.png" />
+            <div class="Shade"></div>
+
           </div>
-          <img class="photo" style="width: 384px; height: 373px;  top:-20px; position: absolute" src="..\assets\images\jimmi.png" />
-          <div class="Shade" style="width: 315px; height: 15px; left: 30px; top: 345px; position: absolute; background: radial-gradient(111.19% 141.42% at 100% 0%, #1677FF 20%, #002E6F 100%); border-radius: 150px; filter: blur(5.5px)"></div>
-      
+
+
+
+          <div class="card-full">
+
+            <div class="Blue"
+              style="width: 384px; height: 205px;  top: 275px; position: absolute; background: radial-gradient(111.19% 141.42% at 100% 0%, #1677FF 0%, #002E6F 100%); border-radius: 34px; overflow: hidden">
+              <div class="name"
+                style="left: 35px; top: 90px; position: absolute; color: white; font-size: 40px; font-family: Poppins; font-weight: 600; word-wrap: break-word">
+                Khalil Kessoum</div>
+              <div class="Quote"
+                style="left: 70px; top: 140px; position: absolute; color: white; font-size: 15px; font-family: Poppins; font-weight: 500; word-wrap: break-word">
+                “ Never backdown never what!! ”</div>
+            </div>
+            <img class="photo" style="width: 384px; height: 373px; top:-20px; position: absolute"
+              src="..\assets\images\Kessoum.png" />
+            <div class="Shade"
+              style="width: 315px; height: 15px; left: 30px; top: 345px; position: absolute; background: radial-gradient(111.19% 141.42% at 100% 0%, #1677FF 20%, #002E6F 100%); border-radius: 150px; filter: blur(5.5px)">
+            </div>
+
           </div>
-          <div class="card">
-              
-            <div class="Blue" style="width: 384px; height: 205px;  top: 275px; position: absolute; background: radial-gradient(111.19% 141.42% at 100% 0%, #1677FF 0%, #002E6F 100%); border-radius: 34px; overflow: hidden">
-              <div class="name" style="left: 35px; top: 90px; position: absolute; color: white; font-size: 40px; font-family: Poppins; font-weight: 600; word-wrap: break-word">Khalil Kessoum</div>
-              <div class="Quote" style="left: 70px; top: 140px; position: absolute; color: white; font-size: 15px; font-family: Poppins; font-weight: 500; word-wrap: break-word">“ Never backdown never what!! ”</div>
-          </div>
-          <img class="photo" style="width: 384px; height: 373px; top:-20px; position: absolute" src="..\assets\images\Kessoum.png" />
-          <div class="Shade" style="width: 315px; height: 15px; left: 30px; top: 345px; position: absolute; background: radial-gradient(111.19% 141.42% at 100% 0%, #1677FF 20%, #002E6F 100%); border-radius: 150px; filter: blur(5.5px)"></div>
-      
-          </div>
-          <div class="card">
-              
-            <div class="Blue" style="width: 384px; height: 205px;  top: 275px; position: absolute; background: radial-gradient(111.19% 141.42% at 100% 0%, #1677FF 0%, #002E6F 100%); border-radius: 34px; overflow: hidden">
-              <div class="name" style="left: 37px; top: 90px; position: absolute; color: white; font-size: 40px; font-family: Poppins; font-weight: 600; word-wrap: break-word">Gasmi Yassine</div>
-              <div class="Quote" style="left: 130px; top: 140px; position: absolute; color: white; font-size: 15px; font-family: Poppins; font-weight: 500; word-wrap: break-word">“ Light Weight! ”</div>
-          </div>
-          <img class="photo" style="width: 369px; height: 340px; left: 7px; top:12px; position: absolute" src="..\assets\images\Yassine.png" />
-          <div class="Shade" style="width: 315px; height: 15px; left: 30px; top: 345px; position: absolute; background: radial-gradient(111.19% 141.42% at 100% 0%, #1677FF 20%, #002E6F 100%); border-radius: 150px; filter: blur(5.5px)"></div>
-      
-          </div>
-          <div class="card">
-              
-            <div class="Blue" style="width: 384px; height: 205px;  top: 275px; position: absolute; background: radial-gradient(111.19% 141.42% at 100% 0%, #1677FF 0%, #002E6F 100%); border-radius: 34px; overflow: hidden">
-              <div class="name" style="left: 16px; top: 90px; position: absolute; color: white; font-size: 40px; font-family: Poppins; font-weight: 600; word-wrap: break-word">Daachi Oussama</div>
-              <div class="Quote" style="left: 45px; top: 140px; position: absolute; color: white; font-size: 15px; font-family: Poppins; font-weight: 500; word-wrap: break-word">“ Never push after me! (conflict alert) ”</div>
-          </div>
-          <img class="photo" style="width: 384px; height: 373px; left: 7px; top:-20px; position: absolute" src="..\assets\images\jimmi.png" />
-          <div class="Shade" style="width: 315px; height: 15px; left: 30px; top: 345px; position: absolute; background: radial-gradient(111.19% 141.42% at 100% 0%, #1677FF 20%, #002E6F 100%); border-radius: 150px; filter: blur(5.5px)"></div>
-      
-          </div>
-      </div>
         </div>
-  
-     
-  
-        
-      </style>
-  </body>
-  </body>
-  <script src="../javaScript/common.js"></script>
+        <div class="lower-sec">
+          <div class="card-full">
+
+            <div class="Blue">
+           
+              <div class="name">
+                
+                Gasmi Yassine</div>
+              <div class="Quote"></div>
+               
+                “ Light Weight! ”</div>
+            </div>
+            <img class="photo" style="width: 369px; height: 340px; left: 7px; top:12px; position: absolute"
+              src="..\assets\images\Yassine.png" />
+            <div class="Shade"
+              style="width: 315px; height: 15px; left: 30px; top: 345px; position: absolute; background: radial-gradient(111.19% 141.42% at 100% 0%, #1677FF 20%, #002E6F 100%); border-radius: 150px; filter: blur(5.5px)">
+            </div>
+
+          </div>
+          <div class="card-full">
+
+            <div class="Blue"
+              style="width: 384px; height: 205px;  top: 275px; position: absolute; background: radial-gradient(111.19% 141.42% at 100% 0%, #1677FF 0%, #002E6F 100%); border-radius: 34px; overflow: hidden">
+              <div class="name"
+                style="left: 16px; top: 90px; position: absolute; color: white; font-size: 40px; font-family: Poppins; font-weight: 600; word-wrap: break-word">
+                Daachi Oussama</div>
+              <div class="Quote"
+                style="left: 45px; top: 140px; position: absolute; color: white; font-size: 15px; font-family: Poppins; font-weight: 500; word-wrap: break-word">
+                “ Never push after me! (conflict alert) ”</div>
+            </div>
+            <img class="photo" style="width: 384px; height: 373px; left: 7px; top:-20px; position: absolute"
+              src="..\assets\images\jimmi.png" />
+            <div class="Shade"
+              style="width: 315px; height: 15px; left: 30px; top: 345px; position: absolute; background: radial-gradient(111.19% 141.42% at 100% 0%, #1677FF 20%, #002E6F 100%); border-radius: 150px; filter: blur(5.5px)">
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+
+
+    </style>
+</body>
+</body>
+<script src="../javaScript/common.js"></script>
+
 </html>
