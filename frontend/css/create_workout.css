@@ -25,3 +25,35 @@
 --fw-bold: 600;
 --fw-extra-bold:900;
 }
+
+
+.MainCard2{
+    overflow: hidden;
+    position: relative;
+    background: radial-gradient(111.19% 141.42% at 100% 0%, #1677FF 0%, #002E6F 100%);
+    border-radius: 15px;
+    width: 24rem;
+    height: 25.75rem;
+    color: var(--clr-light-white);
+    font-family: var(--ff-body);
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center content vertically within each card */
+    align-items: center;     /* Center content horizontally within each card */
+
+
+}
+
+.Titlecard2{
+    
+        margin-bottom: 10px;
+        margin-top: 5px;
+        color: white;
+        font-size: 40px;
+        font-family: Poppins;
+        font-weight: 600;
+        width: 350px;
+        
+        
+    
+}

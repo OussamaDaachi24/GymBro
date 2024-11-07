@@ -82,7 +82,7 @@
   overflow: hidden;
   background-image: url("../assets/images/BgForms.png");
   position: relative;
-  height: 90vh;
+  height: 93vh;
   background-size: cover;
   background-position: center;
   display: flex;
@@ -136,17 +136,16 @@
 }
 
 .Titlecard {
-text-align: center;
-  left: 62px;
-  top: 7px;
-  padding-bottom: 10px;
-  padding-top: 5px;
+  text-align: center;
+  margin-bottom: 10px;
+  margin-top: 5px;
   color: white;
   font-size: 40px;
   font-family: Poppins;
   font-weight: 600;
-  word-wrap: break-word;
-}
+  width: 300px;
+  
+}   
 
 .InfoBox {
   padding-bottom: 2px;
@@ -266,6 +265,7 @@ text-align: center;
 
 /* STEPSSS */
 .step-indicator {
+  transition: 0.5s;
   position: relative;
   display: flex;
   align-items: center;
@@ -273,6 +273,7 @@ text-align: center;
 }
 
 .step {
+  transition: 0.5s;
   width: 40px;
   height: 40px;
   background: radial-gradient(111.19% 141.42% at 100% 0%, #1677FF 0%, #002E6F 150%);
@@ -299,6 +300,7 @@ text-align: center;
   background-color: white;
   flex-grow: 1;
   margin: 0;
+  border-radius: 50px;
 }
 
 
@@ -317,14 +319,13 @@ text-align: center;
 .HeadingText {
   margin-bottom: 50px;
   color: white;
-  font-size: 4em;
+  font-size: 4rem;
   font-family: "Poppins";
   font-weight: 700;
   text-align: center;
-  margin-bottom: 25px;
-  margin-left: 30%;
-  margin-right: 30%;
-  width: 40%;
+  
+  height: 10vh;
+  width: 75%;
   position: relative;
 
 
@@ -378,4 +379,8 @@ left: 450px;
 
 .form-container{
   transition: 0.5s;
+}
+
+.body{
+  height: 100%;
 }
