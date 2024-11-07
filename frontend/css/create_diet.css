@@ -82,7 +82,7 @@
   overflow: hidden;
   background-image: url("../assets/images/BgForms.png");
   position: relative;
-  height: 90vh;
+  min-height: 90vh;
   background-size: cover;
   background-position: center;
   display: flex;
@@ -121,12 +121,13 @@
 
 
 .MainCard {
+  margin-bottom: 5%;
   overflow: hidden;
   position: relative;
   background: radial-gradient(111.19% 141.42% at 100% 0%, #1677FF 0%, #002E6F 100%);
   border-radius: 15px;
   width: 24rem;
-  height: 30.75rem;
+  min-height: 30.75rem;
   color: var(--clr-light-white);
   font-family: var(--ff-body);
   display: flex;
@@ -135,6 +136,11 @@
   align-items: center;     /* Center content horizontally within each card */
 }
 
+@media screen and(max-width:650px){
+  .MainCard{
+    width:590px;
+  }
+}
 .Titlecard {
 text-align: center;
   left: 62px;
@@ -379,3 +385,4 @@ left: 450px;
 .form-container{
   transition: 0.5s;
 }
+

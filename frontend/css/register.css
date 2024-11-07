@@ -235,6 +235,13 @@ input {
     margin-bottom: 1.5vh;
     padding:0%;
 }
+.Image-input img{
+    cursor:pointer;
+    transition:0.1s;
+}
+.Image-input img:hover{
+    transform:scale(1.008);
+}
 @media (max-width: 560px){
     .Image-input-container{
         width: 60%;
