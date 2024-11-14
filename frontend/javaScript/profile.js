@@ -1,13 +1,14 @@
 //1- making the line chart using chart.js library
 
 ctx=document.getElementById('progressChart').getContext('2d');
-
+//array to store the weights (last 6)
+let weights=[30,50,60,55,60,65];
 //2-costume data for the chart
 const data={
-    labels:['day1','day2','day3','day4','day5'], // x axis
+    labels:['week1','week2','week3','week4','week5'], // x axis
     datasets:[{
         label:'Your Progress',
-        data:[30,40,50,60,70],
+        data:weights,
         borderColor:'white',
         backgroundColor:'#3C3C3C',
         borderColor: '#1677FF',
