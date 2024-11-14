@@ -28,9 +28,23 @@ function inputvalid() {
 
         // Track if there are any errors
         let hasError = false;
-
+        if(password.value ===""){
+            password.placeholder="Please Enter a Password"
+            password.classList.add("pwd-error")
+            hasError= true;
+        }
+        if(email.value ==""){
+            email.placeholder="Please Enter an Email"
+            email.classList.add("email-error")
+            hasError= true;
+        }
+        if(confirm.value == "" && password.value != ""){
+            confirm.placeholder= "Please Confirm Your Password"
+            confirm.classList.add("error-placeholder")
+            hasError=true
+        }
         // Validate confirm password
-        if (password.value !== confirm.value) {
+        if (password.value !== confirm.value && confirm.value != "") {
             confirm.value = "";
             confirm.placeholder = "The password is not the same";
             confirm.classList.add("error-placeholder");
@@ -39,7 +53,7 @@ function inputvalid() {
         }
 
         // Validate email
-        if (!emailRegex.test(email.value)) {
+        if (!emailRegex.test(email.value) && email.value != "") {
             email.value = "";
             email.placeholder = "This is not a valid email";
             email.classList.add("email-error");
@@ -50,14 +64,14 @@ function inputvalid() {
         // Validate name
         if (name.value === "") {
             name.value = "";
-            name.placeholder = "You must insert a name";
+            name.placeholder = "Please Enter a name";
             name.classList.add("pwd-error");
             hasError = true;
             console.log("no name");
         }
 
         // Validate password strength
-        if (password.value.length < 8 || !isAlphaNum(password.value)) {
+        if ((password.value.length < 8 || !isAlphaNum(password.value)) && password.value != "") {
             password.value = "";
             password.placeholder = "This password is weak!";
             password.classList.add("pwd-error");
