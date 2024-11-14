@@ -301,3 +301,13 @@ input {
     background-position:0 100%;
     opacity: 95%;
 }
+.error-placeholder::placeholder {
+    color: red;  /* Change to your desired color */
+    font-size: small;
+}
+.email-error::placeholder {
+    color: red;  /* Change to your desired color */
+}
+.pwd-error::placeholder {
+    color: red;  /* Change to your desired color */
+}
