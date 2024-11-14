@@ -31,6 +31,12 @@ next_arrow.addEventListener('click',()=>{
     //b- accessing the 5th & 6th slides
     else if(curr_slide>=3 && curr_slide<5){
     }
+    //2- changing the color of the arrow
+    const next_img=document.getElementsByClassName('left')[0];
+    const prv_img=document.getElementsByClassName('right')[0];
+    //1- making the next blue and the previous gray
+    next_img.style.color="blue";
+    prv_img.style.color="gray";
 
 })
 
@@ -40,6 +46,11 @@ back_arrow.addEventListener('click',()=>{
         slides[curr_slide-1].classList.add('curr_class');
         slides[curr_slide].classList.remove('curr_class');
         curr_slide--;
+        const next_img=document.getElementsByClassName('left')[0];
+        const prv_img=document.getElementsByClassName('right')[0];
+        //1- making the next blue and the previous gray
+        next_img.color=blue;
+        prv_img.color=gray;
     }
 })
 

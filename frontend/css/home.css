@@ -290,7 +290,7 @@
 
 .discover .slide_arrow{
     display:flex;
-    width:10%;
+    width:13%;
     justify-content: space-around;
 }
 .back_arrow{
@@ -298,6 +298,7 @@
     background-size: contain;
     background-repeat: no-repeat;
     cursor: pointer;
+    color:var(--clr-button-midtext);
 }
 
 .next_arrow{
