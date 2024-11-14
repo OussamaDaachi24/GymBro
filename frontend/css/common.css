@@ -1,6 +1,16 @@
 /* CSS RESET */
+ @font-face {
+  font-family: 'CustomFont';
+  /* Give your font a name */
+  src: url('../assets/fonts/AlteHaasGroteskBold.ttf') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-size: 1.875rem;
+}
 
 :root {
+  
+ 
     /*bgs*/
 --clr-primary-bg: #0E0E0E;
 --clr-secondary-bg: #282828;
@@ -88,7 +98,11 @@ picture,svg {
   display: block;
 }
 
-
+.logo {
+  display: flex;
+  align-items: center;
+  font-family: 'CustomFont';
+}
 
 
 /* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
@@ -237,5 +251,12 @@ footer{
     }
 
 
+}
+
+.logotxt {
+  margin-left: 6px;
+  color: white;
+  font-size: 1.875rem;
+  font-weight: 600;
 }
 
