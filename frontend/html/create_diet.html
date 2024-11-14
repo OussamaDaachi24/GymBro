@@ -66,11 +66,11 @@
     </div>
 
     <div class="step-indicator"><!--STEPS FOR FORM-->
-      <div id="step1c" class="step ">1</div>
+      <div id="1num" class="step ">1</div>
       <div class="line"></div>
-      <div id="step2c" class="step completed">2</div>
+      <div id="2num" class="step completed">2</div>
       <div class="line"></div>
-      <div id="step3c" class="step completed">3</div>
+      <div id="3num" class="step completed">3</div>
     </div>
 
     <div class="MainCard"> <!--container for form-->
@@ -204,15 +204,6 @@
       <!--form 3-->
       <div id="step3"class="form-container">
 
-        <!--
-      <div class="step-indicator">
-       <div class="step completed">1</div>
-       <div class="line"></div>
-       <div class="step completed">2</div>
-       <div class="line"></div>
-       <div class="step">3</div>
-       </div>
- -->
 
         <div class="Titlecard">Fitness Goal</div>
 
@@ -262,6 +253,11 @@ var Form2 = document.getElementById("step2");
 var Form3 = document.getElementById("step3");
 var Next1 = document.getElementById("Next1");
 var Next2 = document.getElementById("Next2");
+var num1 = document.getElementById("1num");
+var num2 = document.getElementById("2num");
+var num3 = document.getElementById("3num");
+
+
 
 Next1.onclick = function () {
   // Hide Form1 by moving it off-screen and reducing opacity
@@ -271,6 +267,9 @@ Next1.onclick = function () {
   // Bring Form2 to the center
   Form2.style.left = "50%";
   Form2.style.opacity = "1";
+
+  num1.style.opacity= 0.5;
+  num2.style.opacity= 1;
 };
 
 Next2.onclick = function () {
@@ -281,6 +280,9 @@ Next2.onclick = function () {
   // Bring Form3 to the center
   Form3.style.left = "50%";
   Form3.style.opacity = "1";
+
+  num2.style.opacity= 0.5;
+  num3.style.opacity= 1;
 };
 
 
