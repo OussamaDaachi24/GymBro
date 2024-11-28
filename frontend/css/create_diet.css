@@ -165,6 +165,11 @@
   flex-direction: column;
 }
 
+
+button {
+  outline: none;
+}
+
 .Container {
   text-align: left;
   width: 300px;
@@ -173,6 +178,7 @@
   border-radius: 15px;
   padding-left: 18px;
   padding-top: 13px;
+  
 }
 
 .Ex {
@@ -227,6 +233,12 @@
   cursor: pointer;
 
 
+}
+
+.Container2.active {
+  /* Style when button is selected */
+  background-color: black;
+  color: white;
 }
 
 .Row {
@@ -355,6 +367,12 @@
   border-radius: 15px;
 
   padding-top: 13px;
+}
+.Container3.active {
+  
+  background-color: black;
+  color: white;
+  opacity: 1;
 }
 
 .logo {

@@ -478,18 +478,19 @@ margin-left: 10%;
 /* Responsive adjustments */
 @media screen and (max-width: 1200px) {
   .cards-grid {
-    
+    flex-direction: column;
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width:1000px ) {
   .cards-grid {
-    grid-template-columns: 1fr;
+    
     max-width: 400px;
   }
   
   .card {
     height: 450px;
+    margin-bottom: 100px;
   }
   
   .card-image {
