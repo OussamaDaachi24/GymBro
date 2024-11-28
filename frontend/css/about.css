@@ -477,9 +477,7 @@ margin-left: 10%;
 }
 /* Responsive adjustments */
 @media screen and (max-width: 1200px) {
-  .cards-grid {
-    
-  }
+  
 }
 
 @media screen and (max-width: 768px) {
@@ -490,6 +488,7 @@ margin-left: 10%;
   
   .card {
     height: 450px;
+    width:200px;
   }
   
   .card-image {

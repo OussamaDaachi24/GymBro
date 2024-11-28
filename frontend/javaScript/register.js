@@ -4,6 +4,30 @@ function isAlphaNum(str) {
     return alphaNumRegex.test(str);
 }
 
+// Add this to your register.js file
+document.addEventListener('DOMContentLoaded', () => {
+    const fileInput = document.querySelector('.img_input');
+    const imagePreview = document.querySelector('.Image-input img');
+
+    fileInput.addEventListener('change', function(event) {
+        console.log(event);
+        console.log("starts exec");
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+
+            reader.onload = function(e) {
+                // Replace the plus icon with the selected image
+                imagePreview.src = e.target.result;
+                imagePreview.alt = 'Uploaded Image';
+            }
+
+            // Read the image file
+            reader.readAsDataURL(file);
+        }
+    });
+});
+
 function inputvalid() {
     console.log("we start");
     let btn = document.querySelector(".Submit-button");
