@@ -480,16 +480,15 @@ margin-left: 10%;
   .cards-grid {
     flex-direction: column;
   }
+  
 }
 
 @media screen and (max-width:1000px ) {
-  .cards-grid {
-    
-    max-width: 400px;
-  }
+
   
   .card {
     height: 450px;
+   
     margin-bottom: 100px;
   }
   
