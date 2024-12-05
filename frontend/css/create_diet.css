@@ -13,6 +13,7 @@
   --clr-primary-bg: #0E0E0E;
   --clr-secondary-bg: #282828;
   --clr-secondary-bg-light: #3C3C3C;
+  --clr-buttons:linear-gradient(#09090A 80%, #868686 300%);
 
 
   /*text button containers */
@@ -129,7 +130,7 @@
   background: radial-gradient(111.19% 141.42% at 100% 0%, #1677FF 0%, #002E6F 100%);
   border-radius: 15px;
   width: 24rem;
-  min-height: 30.75rem;
+  height: 30.75rem;
   color: var(--clr-light-white);
   font-family: var(--ff-body);
   display: flex;
@@ -138,11 +139,7 @@
   align-items: center;     /* Center content horizontally within each card */
 }
 
-@media screen and(max-width:650px){
-  .MainCard{
-    width:590px;
-  }
-}
+
 .Titlecard {
   text-align: center;
   margin-bottom: 10px;
@@ -166,8 +163,19 @@
 }
 
 
-button {
+  button {
+    outline: none;
+    border: none;
+    appearance: none;
+    -webkit-appearance: none;
+
+}
+input{
   outline: none;
+  border: none;
+  appearance: none;
+  -webkit-appearance: none;
+
 }
 
 .Container {
@@ -237,7 +245,7 @@ button {
 
 .Container2.active {
   /* Style when button is selected */
-  background-color: black;
+  background-color:black;
   color: white;
 }
 
@@ -365,12 +373,13 @@ button {
   height: 50px;
   background: white;
   border-radius: 15px;
-
+  margin-bottom: 7px;
   padding-top: 13px;
+  outline: none;
 }
 .Container3.active {
   
-  background-color: black;
+  background-color:black;
   color: white;
   opacity: 1;
 }
@@ -412,3 +421,92 @@ left: 450px;
 }
 
 
+
+
+
+
+
+@media screen and (max-width: 770px) {
+  .MainPlat {
+    height: auto;
+    min-height: 100vh;
+    padding: 20px 0;
+  }
+
+  .MainCard {
+    width: 90%; /* Use percentage width */
+    max-width: 370px; /* Limit maximum width */
+    height: auto;
+    min-height: 500px;
+    margin: 0 auto; /* Center the card */
+  }
+
+  #step1, #step2, #step3 {
+    position: static; /* Remove absolute positioning */
+    transform: none;
+    width: 100%;
+    opacity: 1;
+    left: 0;
+  }
+
+  .step-indicator {
+    justify-content: center;
+  }
+
+  .line {
+    width: 50px; /* Adjust line width */
+  }
+
+  .Titlecard {
+    font-size: 2.5rem; /* Use rem for better scaling */
+    margin-bottom: 15px;
+  }
+
+  .Container, .Container2, .Container3, .InfoBox {
+    width: 100%; /* Full width containers */
+    max-width: 300px; /* Limit maximum width */
+    margin: 10px auto; /* Center and add spacing */
+  }
+
+  .input-box {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .ButtonNext {
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
+
+
+
+
+
+
+/*
+@media screen and (max-width:770px) {
+  /*.Container, .Container2 , .Container3, .InfoBox{
+    height: 45px;
+    width: 270px;
+  }
+  #step1, #step2, #step3 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    
+  }
+  
+  .MainCard{
+ height: 500px;
+ width: 370px;
+  }
+.line{
+  width: 100px;
+}
+.Titlecard{
+  margin-bottom: 10px;
+  font-size: 38px;
+}
+*/

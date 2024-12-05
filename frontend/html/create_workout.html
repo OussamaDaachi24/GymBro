@@ -165,33 +165,27 @@
 
         <div class="layoutinside">
           <div class="upboxtext">Choose your workout intensity</div>
-          <div class="InfoBox">
-
-            <div class="Container3">
-              <div class="Ex"
-                style=" opacity: 0.990; color: #1F1F1F; font-size: 16px; font-family: Signika; font-weight: 00; word-wrap: break-word">
-                Low</div>
-            </div>
+          <div class="intensity-container">
+              <button class="Container3" onclick="toggleButton(this)">Low</button>
+              <button class="Container3" onclick="toggleButton(this)">Medium</button>
+              <button class="Container3" onclick="toggleButton(this)">High</button>
           </div>
+      </div>
+    
+      <script>
+        function toggleButton(clickedButton) {
+         
+          const buttons = clickedButton.parentElement.querySelectorAll('.Container3');
 
-          <div class="InfoBox">
+        
+          buttons.forEach(btn => {
+            btn.classList.remove('active');
+          });
 
-            <div class="Container3">
-              <div class="Ex"
-                style=" opacity: 0.990; color: #1F1F1F; font-size: 16px; font-family: Signika; font-weight: 300; word-wrap: break-word">
-                Medium</div>
-            </div>
-          </div>
-
-          <div class="InfoBox">
-
-            <div class="Container3">
-              <div class="Ex"
-                style=" opacity: 0.99; color: #1F1F1F; font-size: 16px; font-family: Signika; font-weight: 300; word-wrap: break-word">
-                High</div>
-            </div>
-          </div>
-
+          
+          clickedButton.classList.add('active');
+        }
+      </script>
 
 
           <div class="InfoBox">
@@ -255,6 +249,7 @@
 
 
       <script>
+   document.addEventListener('DOMContentLoaded', function () {
         var Form1 = document.getElementById("step1");
         var Form2 = document.getElementById("step2");
         var Form3 = document.getElementById("step3");
@@ -264,34 +259,45 @@
         var num2 = document.getElementById("2num");
         var num3 = document.getElementById("3num");
 
+        // Ensure initial state
+        Form1.style.opacity = "1";
+        Form1.style.left = "50%";
+        Form2.style.opacity = "0";
+        Form2.style.left = "150%";
+        Form3.style.opacity = "0";
+        Form3.style.left = "110%";
+        Form3.style.top = "62%";
 
-
-        Next1.onclick = function () {
-          // Hide Form1 by moving it off-screen and reducing opacity
+        // First Next button
+        Next1.addEventListener('click', function () {
+          // Move Form1 out of view
           Form1.style.left = "-150%";
           Form1.style.opacity = "0";
 
-          // Bring Form2 to the center
+          // Bring Form2 to center
           Form2.style.left = "50%";
           Form2.style.opacity = "1";
 
+          // Update step indicators
           num1.style.opacity = 0.5;
           num2.style.opacity = 1;
-        };
+        });
 
-        Next2.onclick = function () {
-          // Hide Form2 by moving it off-screen and reducing opacity
+        // Second Next button
+        Next2.addEventListener('click', function () {
+          // Move Form2 out of view
           Form2.style.left = "-150%";
           Form2.style.opacity = "0";
 
-          // Bring Form3 to the center
-          Form3.style.left = "50%";
+          // Bring Form3 to center
+          Form3.style.left = "80.8%";
           Form3.style.opacity = "1";
 
+          // Update step indicators
           num2.style.opacity = 0.5;
           num3.style.opacity = 1;
-        };
-
+        });
+      });
 
 
       </script>

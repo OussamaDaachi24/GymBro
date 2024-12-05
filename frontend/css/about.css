@@ -362,7 +362,7 @@ margin-left: 10%;
 /* updated code*/
 .card-section {
   background-image: url(../assets/images/ourppl.png);
-  height: 1400px;
+  min-height: 1400px;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -512,4 +512,49 @@ margin-left: 10%;
   color: white;
   font-size: 1.875rem;
   font-weight: 600;
+}
+
+.footer {
+  background-color: #1F1F1F;
+  color: white;
+  padding: 20px 0;
+  width: 100%;
+  bottom: 0;
+}
+
+.footer-content {
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 0 50px;
+  
+}
+
+.footer-links {
+  display: flex;
+  gap: 20px;
+}
+
+.footer-links a {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: #888;
+}
+
+@media (max-width: 768px) {
+  .footer-content {
+      flex-direction: column;
+      text-align: center;
+  }
+
+  .footer-links {
+      margin-top: 15px;
+      justify-content: center;
+  }
 }
