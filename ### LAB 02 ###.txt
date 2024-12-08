@@ -1,7 +1,0 @@
-### LAB 02 ###
-
-- confidentiality: Don't have the right to see the data
-- integrity: Can't modify the data -> DBMS allows this through : profiles , access rights 
-- back-up : you can recover the data base through 
-- data independency : the data base is independent from the systems and apps
-- Several users : like the OS , DBMS has measures to handle users simultaneously

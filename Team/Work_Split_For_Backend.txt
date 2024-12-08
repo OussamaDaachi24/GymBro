@@ -1,0 +1,35 @@
+Work Split: 
+
+Oussama : 
+ # re-structuring the project folder
+ # making the header.php (for reusabiliy)
+ # initialize the database (phpMyAdmin) and export the SQL script
+ # data base connection
+ # handle Home_controller : 1-display the home page when entering the website.
+		            2- display the home page with some modifications for logged users
+ # handle the profile controller: 1-display_user_info( ) 
+				  2-update_user_weight( )
+ 				  
+ # create the user model (part of it)
+
+Khalil : 
+ # take the SQL script and run it (to obtain the current database)
+ # complete the other part of the user model (working together with Oussama)
+ # handle authentification controller: 1-validate_registration_data( ) (with all the sub-functions)
+ 				       2-validate_login_data( ) 
+				       3-start_sessions( ) 
+				       4- manage_cookies( ) // not yet , for later
+
+Youcef:
+ # execute the SQL script
+ # design the workout plans
+ # handle the diet controller : 1-create_diet( ) --> logic + store in DB
+ 				2-fetch_diet( ) 
+ # create the diet model (functions for insert and select)
+
+Yacine:
+ # execute the script.
+ # create the workout model (functions to: 1-insert workout to DB  2-select it from DB )
+ # handles the workout controller : 1- create workout (decision_tree + store in DB)
+				    2- fetch workout for user	
+ 	

@@ -1,0 +1,262 @@
+/* CSS RESET */
+ @font-face {
+  font-family: 'CustomFont';
+  /* Give your font a name */
+  src: url('../assets/fonts/AlteHaasGroteskBold.ttf') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-size: 1.875rem;
+}
+
+:root {
+  
+ 
+    /*bgs*/
+--clr-primary-bg: #0E0E0E;
+--clr-secondary-bg: #282828;
+--clr-secondary-bg-light: #3C3C3C;
+
+
+   /*text button containers */
+--clr-light-white:#F9F9F9;
+--clr-button-midtext: #1677FF;
+
+--clr-gradient: linear-gradient(45deg, #002E6F, #1677FF);
+--clr-button-gradient: linear-gradient(to bottom,#09090A 50%,#868686 300%);
+ 
+/*font family*/
+--ff-primary:  font-family: "Poppins", sans-serif;
+--ff-secondary:  font-family: "Signika", sans-serif;
+
+--ff-body:var(var(--ff-primary));
+--ff-heading:var(var(--ff-primary));
+
+/*font weights*/
+--fw-light: 300;
+--fw-medium: 400;
+--fw-bold: 600;
+--fw-bold-logo: 700;
+--fw-extra-bold:900;
+}
+
+
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+ 
+*{
+    margin: 0;
+    padding: 0;
+    font: inherit;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+html{
+  scroll-behavior: smooth;
+}
+
+/*the font*/
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+html,body{
+    height: 100%;   /*help avoid doule sidebar problem help the layout a bit (instead of (min-height: 100vh;))*/
+    font-family: "Poppins";
+}
+/* Set core body defaults */
+body {
+/*  min-height: 100vh;  */
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+
+img,
+picture,svg {
+  max-width: 100%;
+  display: block;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  font-family: 'CustomFont';
+}
+
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+   scroll-behavior: auto;
+  }
+  
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+/* remove the list style*/
+ul{
+  list-style: none;
+}
+/*remove the anchor tag style*/
+a{
+  text-decoration: none;
+  color:var(--clr-light-white);
+}
+
+/* start the styling for the navbar*/
+.head_Bar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: row;
+  width:100%;
+  height:8vh;
+  background-color:var(--clr-secondary-bg-light);
+  overflow: hidden;
+}
+/*the hover effect*/
+.navSections a:hover{
+  color:var(--clr-button-midtext);
+}
+
+.menu_bar{
+  display: none;
+}
+
+.menu_bar{
+  cursor: pointer;
+}
+.navSections{
+  display:flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width:40%;
+  font-size:1.3rem;
+  font-weight: var(--fw-medium);
+}
+
+.prof_img{
+  height:80%;
+  width:35px;
+}
+.hide{
+  display: none;
+}
+
+.logo_img{
+  height:100%;
+  width:50px;
+}
+/* make the current section in blue color*/
+.current{
+  color:var(--clr-button-midtext);
+
+}
+
+/* Styling the footer */
+
+footer{
+  background-color:var(--clr-secondary-bg-light) ;
+  display:flex;
+  justify-content: space-evenly;
+  width:100%;
+  color:white;
+
+}
+
+.accounts{
+  display:flex;
+  flex-wrap: nowrap;
+}
+.accounts div{
+  width:50%;
+  min-width: 100px;
+}
+
+/* the phone menu bar */
+.mobile_options{
+  z-index: 5;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  height:7vh;
+  width:100%;
+  margin-top: 1%;
+}
+.options{
+  display: none;
+}
+
+.showMenu{
+  display:block;
+  width: 90%;
+  display: flex;
+  justify-content: space-evenly;
+  font-size:1rem;
+  align-items: center;
+  border-radius: 15px;
+  background-color: var(--clr-secondary-bg-light);
+}
+
+#currMobile{
+  color:var(--clr-button-midtext)
+}
+
+/* Responsive design: mobile version*/
+
+@media screen and (max-width:760px){
+  html{
+    font-size:13px;
+  }
+  .navSections{
+    display: none;
+
+  }
+  .menu_bar{
+    display: inline;
+  }
+}
+
+@media screen and (min-width:670px) and (max-width:950px){
+    .navSections{
+      font-size: 1rem;
+      font-weight: 300;
+    }
+
+
+}
+
+.logotxt {
+  margin-left: 6px;
+  color: white;
+  font-size: 1.875rem;
+  font-weight: 600;
+}
+

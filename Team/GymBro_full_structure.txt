@@ -1,0 +1,52 @@
+/GymBro
+    /app
+        /controllers
+            HomeController.php
+            ProfileController.php
+            DietController.php
+            WorkoutController.php
+            AuthController.php
+        /models
+            User.php
+            Diet.php
+            Workout.php
+        /views
+            /home
+                home.php
+		home_logged.php
+            /profile
+                profile.php
+            /diet
+                create_diet.php
+                myMeals.php
+            /workout
+                create_workout.php
+                see_workout.php
+            /auth
+                login.php
+                register.php
+            /static
+                about.php
+                static_food.php
+		static_exercise.php
+		static_bulk.php
+		static_cut.php
+		static_healthy.php
+	   /includes
+		header.php
+		
+		
+    /public
+        /css
+            ## keep it like it is
+            
+        /js
+            ##keep it like it is
+            
+        /images
+            ##keep it like it is
+    /config
+	db_connection.php
+
+    index.php
+    router.php
