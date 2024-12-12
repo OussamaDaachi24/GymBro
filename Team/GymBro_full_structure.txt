@@ -28,12 +28,12 @@
             /static
                 about.php
                 static_food.php
-		static_exercise.php
-		static_bulk.php
-		static_cut.php
-		static_healthy.php
+                static_exercise.php
+		        static_bulk.php
+		        static_cut.php
+		        static_healthy.php
 	   /includes
-		header.php
+		    header.php
 		
 		
     /public
@@ -46,7 +46,9 @@
         /images
             ##keep it like it is
     /config
-	db_connection.php
+	    db_connection.php
+        config.php
 
     index.php
     router.php
+    .htaccess

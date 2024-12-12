@@ -23,18 +23,18 @@
     <header class="head_Bar" id="#head">
       <div class="menu_bar"><img src="http://localhost/GymBro/public/assets/images/menu.png"></div>
       <div class="logo">
-        <a href="home.html">
+        <a href="/GymBro/home">
           <img src="http://localhost/GymBro/public/assets/icons/logo.png" class="logo_img"
         /></a>
       </div>
       <ul class="navSections">
-        <li><a href="home.html" class="current">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="./static_exercise.html">myWorkouts</a></li>
-        <li><a href="./static_food.html">myMeals</a></li>
+        <li><a href="/GymBro/home" class="current">Home</a></li>
+        <li><a href="/GymBro/about">About</a></li>
+        <li><a href="/GymBro/static_workout">myWorkouts</a></li>
+        <li><a href="/GymBro/static_meals">myMeals</a></li>
       </ul>
       <div class="profile">
-        <a href="/GymBro/app/views/profile/">
+        <a href="profile/">
           <img src="http://localhost/GymBro/public/assets/icons/profile-circle.png" class="prof_img" />
         </a>
       </div>
@@ -59,7 +59,7 @@
             beginner and you don't know how to get you dream physic? You're on
             the rigth place!!
           </div>
-          <a href="./register.html"><button class="explore_workout">Explore</button></a>
+          <a href="/GymBro/profile/view"><button class="explore_workout">Explore</button></a>
           <div class="check_board">Check your dashboard down here !</div>
           <div class="arrow">
             <a href="#dashboard">&#x2193</a>
@@ -75,7 +75,7 @@
           <div class="checkpoint"><img src="http://localhost/GymBro/public/assets/images/iconoir_check-circle-solid.png"><p>Reach your Weight goal with weekly graph </p></div>
           <div class="checkpoint"><img src="http://localhost/GymBro/public/assets/images/iconoir_check-circle-solid.png"><p>Achieve your consistensy</p></div>
           <div class="checkpoint"><img src="http://localhost/GymBro/public/assets/images/iconoir_check-circle-solid.png"><p>Find the perfect exercises for every piece of equipment</p></div>
-          <a href="./profile.html"><button class="start_profile">Get Started</button></a>
+          <a href="/GymBro/login"><button class="start_profile">Get Started</button></a>
         </div>
         <div class="img_side">
           <img src="http://localhost/GymBro/public/assets/images/streak (2).png" class="chart_static">
