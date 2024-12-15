@@ -51,7 +51,7 @@
       <div class="meals_title">
         <h1>Discover everyday's <span>Meals</span></h1>
       </div>
-      <a href="./static_bulk.html">
+      <a href="/GymBro/static_bulk">
       <div class="meal_types">
         <div class="type" id="split1">
            Bulk

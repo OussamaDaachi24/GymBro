@@ -18,3 +18,4 @@ function connect_db(){
     return $conn;
 
 }
+connect_db();

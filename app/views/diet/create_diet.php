@@ -1,296 +1,339 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8" />
-  <link rel="icon" type="image/png" href="" />
-  <meta name="viewport" content="width=device-width" />
-  <title>GymBro</title>
-  <!--fonts-->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-    rel="stylesheet" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GymBro - Customize Diet</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <style>
+        /* CSS Variables for Easy Theming */
+        :root {
+            --clr-primary-bg: #0E0E0E;
+            --clr-secondary-bg: #282828;
+            --clr-secondary-bg-light: #3C3C3C;
+            --clr-light-white: #F9F9F9;
+            --clr-blue-primary: #1677FF;
+            --clr-blue-dark: #002E6F;
+            --ff-primary: 'Poppins', sans-serif;
+            --gradient-bg: radial-gradient(111.19% 141.42% at 100% 0%, #1677FF 0%, #002E6F 100%);
+        }
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Signika:wght@300700&display=swap" rel="stylesheet">
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100900;1,100900&display=swap"
-    rel="stylesheet">
+        body {
+            font-family: var(--ff-primary);
+            background-color: var(--clr-primary-bg);
+            color: var(--clr-light-white);
+            line-height: 1.6;
+            background-image: url("../assets/images/BgForms.png");
+        }
 
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
 
-  <link rel="stylesheet" href="http://localhost/GymBro/public/css/create_diet.css" />
-  <link rel="stylesheet" href="http://localhost/GymBro/public/css/common.css" />
+        .form-wrapper {
+            background: var(--gradient-bg);
+            border-radius: 15px;
+            padding: 30px;
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .step-indicator {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .step {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(22, 119, 255, 0.5);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 10px;
+            font-weight: bold;
+        }
+
+        .step.active {
+            background-color: var(--clr-blue-primary);
+        }
+
+        .line {
+            width: 50px;
+            height: 2px;
+            background-color: white;
+        }
+
+        .form-section {
+            display: none;
+        }
+
+        .form-section.active {
+            display: block;
+            animation: slideIn 0.5s ease;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 10px;
+            color: var(--clr-light-white);
+        }
+
+        .input-control {
+            width: 100%;
+            padding: 12px;
+            border-radius: 10px;
+            border: none;
+            background-color: white;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 12px;
+            border-radius: 10px;
+            background-color: var(--clr-secondary-bg);
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn.active {
+            background-color: var(--clr-blue-primary);
+        }
+
+        .btn-next {
+            background: linear-gradient(#09090A 80%, #868686 300%);
+            color: white;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .meal-counter {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: white;
+            border-radius: 10px;
+            padding: 10px;
+        }
+
+        .counter-btn {
+            background: none;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 10px;
+            }
+
+            .form-wrapper {
+                padding: 20px;
+            }
+
+            .step {
+                width: 30px;
+                height: 30px;
+                margin: 0 5px;
+            }
+
+            .line {
+                width: 30px;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
-
 <body>
-  <header class="head_Bar" id="#head">
-    <div class="menu_bar"><img src="http://localhost/GymBro/public/assets/images/menu.png" /></div>
-    <div class="logo">
-      <a href="home.html">
-        <img src="http://localhost/GymBro/public/assets/icons/logo.png" class="logo_img" /></a>
-      <div class="logotxt">GymBro </div>
-    </div>
-    <ul class="navSections">
-      <li><a href="home.html">Home</a></li>
-      <li><a href="about.html" class="current">About</a></li>
-      <li><a href="static_workout.html">myWorkouts</a></li>
-      <li><a href="./static_food.html">myMeals</a></li>
-    </ul>
-    <div class="profile">
-      <a href="./profile.html">
-        <img src="http://localhost/GymBro/public/assets/icons/profile-circle.png" class="prof_img" />
-      </a>
-    </div>
-  </header>
-  <section class="mobile_options">
-    <div class="options">
-      <a href="./home.html">Home</a>
-      <a href="./about.html">About</a>
-      <a href="./static_food.html">My Meals</a>
-      <a href="./static_exercise.html">My Workout </a>
-    </div>
-  </section>
-
-
-
-
-  <div class="MainPlat">
-
-    <div class="HeadingText">
-      Customize your <span class="highlight">Diet</span>!
-    </div>
-
-    <div class="step-indicator"><!--STEPS FOR FORM-->
-      <div id="1num" class="step ">1</div>
-      <div class="line"></div>
-      <div id="2num" class="step completed">2</div>
-      <div class="line"></div>
-      <div id="3num" class="step completed">3</div>
-    </div>
-
-    <div class="MainCard"> <!--container for form-->
-
-
-
-      <div id="step1" class="form-container"><!--Form 1-->
-        <div class="Titlecard">Basic Details</div>
-        <div class="InfoBox">
-          <div class="upboxtext">Height</div>
-          <input type="text" class="Container" placeholder="Ex: 176">
-        </div>
-        <div class="InfoBox">
-          <div class="upboxtext">current Weight</div>
-          <input type="text" class="Container" placeholder="Ex: 176kg">
-        </div>
-        <div class="InfoBox">
-          <div class="upboxtext">Ideal Weight</div>
-          <input type="text" class="Container" placeholder="Ex: 100kg">
-        </div>
-        <div class="InfoBox">
-          <div class="upboxtext">Age</div>
-          <input type="text" class="Container" placeholder="Ex: 19">
-        </div>
-
-        <div class="InfoBox">
-          <button id="Next1" class="ButtonNext">Next</button>
-        </div>
-      </div>
-
-
-
-
-
-
-
-      <!--form 2-->
-
-      <div id="step2" class="form-container">
-        <!--
-      <div class="step-indicator">
-       <div class="step completed">1</div>
-       <div class="line"></div>
-       <div class="step ">2</div>
-       <div class="line"></div>
-       <div class="step completed">3</div>
-       </div>
--->
-        <div class="Titlecard">Nutrition</div>
-
-        <div class="InfoBox" style="padding-bottom: 20px;">
-          <div class="upboxtext">How many meals do you eat a day?</div>
-          <div class="container">
-            <div class="input-box">
-              <div class="button" onclick="decrease()">&lt;</div>
-              <div class="number-display" id="number-display">2</div>
-              <div class="button" onclick="increase()">&gt;</div>
+    <div class="container">
+        <div class="form-wrapper">
+            <div class="step-indicator">
+                <div class="step active">1</div>
+                <div class="line"></div>
+                <div class="step">2</div>
+                <div class="line"></div>
+                <div class="step">3</div>
             </div>
-          </div>
+
+            <!-- Step 1: Basic Details -->
+            <div id="step1" class="form-section active">
+                <h2 class="form-title">Basic Details</h2>
+                <div class="input-group">
+                    <label>Height (cm)</label>
+                    <input type="number" class="input-control" placeholder="Enter your height">
+                </div>
+                <div class="input-group">
+                    <label>Current Weight (kg)</label>
+                    <input type="number" class="input-control" placeholder="Enter current weight">
+                </div>
+                <div class="input-group">
+                    <label>Ideal Weight (kg)</label>
+                    <input type="number" class="input-control" placeholder="Enter ideal weight">
+                </div>
+                <div class="input-group">
+                    <label>Age</label>
+                    <input type="number" class="input-control" placeholder="Enter your age">
+                </div>
+                <button class="btn-next" onclick="nextStep()">Next</button>
+            </div>
+
+            <!-- Step 2: Nutrition -->
+            <div id="step2" class="form-section">
+                <h2 class="form-title">Nutrition</h2>
+                <div class="input-group">
+                    <label>Meals per Day</label>
+                    <div class="meal-counter">
+                        <button class="counter-btn" onclick="changeMealCount(-1)">-</button>
+                        <span id="meal-count">2</span>
+                        <button class="counter-btn" onclick="changeMealCount(1)">+</button>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label>Willing to Take Supplements</label>
+                    <div class="button-group">
+                        <button class="btn" onclick="selectSupplements(true)">Yes</button>
+                        <button class="btn" onclick="selectSupplements(false)">No</button>
+                    </div>
+                </div>
+                <button class="btn-next" onclick="nextStep()">Next</button>
+            </div>
+
+            <!-- Step 3: Fitness Goal -->
+            <div id="step3" class="form-section">
+                <h2 class="form-title">Fitness Goal</h2>
+                <div class="input-group">
+                    <label>Choose Your Goal</label>
+                    <div class="button-group">
+                        <button class="btn" onclick="selectGoal('bulk')">Bulk</button>
+                        <button class="btn" onclick="selectGoal('cut')">Cut</button>
+                        <button class="btn" onclick="selectGoal('healthy')">Stay Healthy</button>
+                    </div>
+                </div>
+                <button class="btn-next" onclick="submitForm()">Submit</button>
+            </div>
         </div>
-
-        <script>
-          // Initialize the starting number
-          let currentNumber = 2;
-
-          // Function to update the displayed number
-          function updateDisplay() {
-            document.getElementById('number-display').innerText = currentNumber;
-          }
-
-          // Function to increase the number (limit to 6)
-          function increase() {
-            if (currentNumber < 6) {
-              currentNumber++;
-              updateDisplay();
-            }
-          }
-
-          // Function to decrease the number (limit to 2)
-          function decrease() {
-            if (currentNumber > 2) {
-              currentNumber--;
-              updateDisplay();
-            }
-          }
-
-        </script>
-
-
-
-
-
-
-        <div class="InfoBox" style="padding-bottom: 50px;">
-          <div class="upboxtext">Are you willing to take supplements?</div>
-          <div class="Row">
-            <button class="Container2" onclick="toggleButton(this)">Yes</button>
-            <button class="Container2" onclick="toggleButton(this)">No</button>
-          </div>
-        </div>
-
-        <script>
-          function toggleButton(clickedButton) {
-            // Get all buttons in the row
-            const buttons = clickedButton.parentElement.querySelectorAll('.Container2');
-
-            // Remove active state from all buttons
-            buttons.forEach(btn => {
-              btn.classList.remove('active');
-            });
-
-            // Add active state to the clicked button
-            clickedButton.classList.add('active');
-          }
-        </script>
-
-        <div class="InfoBox">
-          <button id="Next2" class="ButtonNext">Next</button>
-
-        </div>
-      </div>
-
-
-      <!--form 3-->
-      <div id="step3" class="form-container">
-
-
-        <div class="Titlecard">Fitness Goal</div>
-
-        <div class="layoutinside">
-          <div class="upboxtext">Choose your goal</div>
-          <div class="InfoBox">
-            <button class="Container3" onclick="toggleButton(this)">Bulk</button>
-            <button class="Container3" onclick="toggleButton(this)">Cut</button>
-            <button class="Container3" onclick="toggleButton(this)">Stay Healthy</button>
-          </div>
-        </div>
-
-        <script>
-          function toggleButton(clickedButton) {
-
-            const buttons = clickedButton.parentElement.querySelectorAll('.Container3');
-
-
-            buttons.forEach(btn => {
-              btn.classList.remove('active');
-            });
-
-
-            clickedButton.classList.add('active');
-          }
-        </script>
-
-
-        <div class="InfoBox" style="margin-top: 2.5rem;">
-          <button class="ButtonNext" type="submit">Submit</button>
-
-        </div>
-      </div>
     </div>
-
 
     <script>
-      document.addEventListener('DOMContentLoaded', function () {
-        var Form1 = document.getElementById("step1");
-        var Form2 = document.getElementById("step2");
-        var Form3 = document.getElementById("step3");
-        var Next1 = document.getElementById("Next1");
-        var Next2 = document.getElementById("Next2");
-        var num1 = document.getElementById("1num");
-        var num2 = document.getElementById("2num");
-        var num3 = document.getElementById("3num");
+        let currentStep = 1;
+        let mealCount = 2;
+        let supplements = null;
+        let fitnessGoal = null;
 
-        // Ensure initial state
-        Form1.style.opacity = "1";
-        Form1.style.left = "50%";
-        Form2.style.opacity = "0";
-        Form2.style.left = "150%";
-        Form3.style.opacity = "0";
-        Form3.style.left = "150%";
+        function nextStep() {
+            if (currentStep < 3) {
+                document.getElementById(`step${currentStep}`).classList.remove('active');
+                currentStep++;
+                document.getElementById(`step${currentStep}`).classList.add('active');
+                updateStepIndicator();
+            }
+        }
 
-        // First Next button
-        Next1.addEventListener('click', function () {
-          // Move Form1 out of view
-          Form1.style.left = "-150%";
-          Form1.style.opacity = "0";
+        function updateStepIndicator() {
+            const steps = document.querySelectorAll('.step');
+            steps.forEach((step, index) => {
+                if (index < currentStep) {
+                    step.classList.add('active');
+                } else {
+                    step.classList.remove('active');
+                }
+            });
+        }
 
-          // Bring Form2 to center
-          Form2.style.left = "50%";
-          Form2.style.opacity = "1";
+        function changeMealCount(change) {
+            mealCount = Math.max(2, Math.min(6, mealCount + change));
+            document.getElementById('meal-count').textContent = mealCount;
+        }
 
-          // Update step indicators
-          num1.style.opacity = 0.5;
-          num2.style.opacity = 1;
-        });
+        function selectSupplements(choice) {
+            supplements = choice;
+            const buttons = document.querySelectorAll('#step2 .button-group .btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+        }
 
-        // Second Next button
-        Next2.addEventListener('click', function () {
-          // Move Form2 out of view
-          Form2.style.left = "-150%";
-          Form2.style.opacity = "0";
+        function selectGoal(goal) {
+            fitnessGoal = goal;
+            const buttons = document.querySelectorAll('#step3 .button-group .btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+        }
 
-          // Bring Form3 to center
-          Form3.style.left = "50%";
-          Form3.style.opacity = "1";
+        function submitForm() {
+            // Collect form data
+            const formData = {
+                height: document.querySelector('#step1 input[type="number"]:nth-child(1)').value,
+                currentWeight: document.querySelector('#step1 input[type="number"]:nth-child(2)').value,
+                idealWeight: document.querySelector('#step1 input[type="number"]:nth-child(3)').value,
+                age: document.querySelector('#step1 input[type="number"]:nth-child(4)').value,
+                mealsPerDay: mealCount,
+                supplements: supplements,
+                fitnessGoal: fitnessGoal
+            };
 
-          // Update step indicators
-          num2.style.opacity = 0.5;
-          num.style.opacity = 1;
-        });
-      });
+            // Validate form
+            if (validateForm(formData)) {
+                console.log('Form submitted:', formData);
+                alert('Form submitted successfully!');
+            }
+        }
+
+        function validateForm(data) {
+            const requiredFields = ['height', 'currentWeight', 'idealWeight', 'age'];
+            for (let field of requiredFields) {
+                if (!data[field] || isNaN(data[field])) {
+                    alert(`Please fill in ${field.replace(/([A-Z])/g, ' $1').toLowerCase()}`);
+                    return false;
+                }
+            }
+
+            if (supplements === null) {
+                alert('Please select supplement preference');
+                return false;
+            }
+
+            if (!fitnessGoal) {
+                alert('Please select a fitness goal');
+                return false;
+            }
+
+            return true;
+        }
     </script>
-
-  </div>
-
-  <!--Ai chat bot-->
-  <script> window.chtlConfig = { chatbotId: "9142794298" } </script>
-  <script async data-id="9142794298" id="chatling-embed-script" type="text/javascript"
-    src="https://chatling.ai/js/embed.js"></script>
 </body>
-<script src="http://localhost/GymBro/public/javaScript/common.js"></script>
-
 </html>

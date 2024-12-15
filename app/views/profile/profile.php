@@ -76,14 +76,16 @@
             <div class="line-chart">
               <p>Dashboard</p>
               <canvas id="progressChart"></canvas>
-              <form class="input_weigth">
+              <form class="input_weigth" method="POST" action="/GymBro/profile/update">
                 <input
                   type="number"
                   placeholder="Submit your weekly weight"
                   min="25"
                   max="200"
+                  name="weight"
+                  required
                 />
-                <button>Enter</button>
+                <button type="submit">Enter</button>
               </form>
             </div>
             <div class="streak">
