@@ -17,7 +17,9 @@
   </head>
   <!-- Link for chart.js library -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
+  <script>
+    const weightData = <?php echo json_encode($user_data['weights']); ?>;
+  </script>
   <!--  Body section-->
   <body>
     <header class="head_Bar" id="#head">
@@ -54,9 +56,9 @@
             <h1>My Profile</h1>
             <div class="user_identifier">
               <div class="text_data">
-                <p>Name: Oussama</p>
-                <p>Age: 19 yo</p>
-                <p>Email: oussama1932@gmail.com</p>
+                <p><?php echo "name : " . htmlspecialchars($user_data['information']['name']) ?></p>
+                <p><?php echo "age : " . htmlspecialchars($user_data['information']['age']) ?></p>
+                <p><?php echo "email : " . htmlspecialchars($user_data['information']['email']) ?></p>
               </div>
               <div class="img_data">
                 <img src="http://localhost/GymBro/public/assets/images/pancake.webp" />

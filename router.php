@@ -21,10 +21,10 @@ function route($url_path){
         case 'about':
             include_once __DIR__ . "/app/views/static/about.php";
             break;
-        case 'static-food':
+        case 'static_meals':
             include_once __DIR__ . "/app/views/static/static_food.php";
             break;
-        case 'static-workout':
+        case 'static_workout':
             include_once __DIR__ . "/app/views/static/static_exercise.php";
             break;
         case 'bulk':
@@ -59,6 +59,7 @@ function route($url_path){
         // D) Diet 
         case 'diet/create':
             //create_diet() --> create & store the diet
+            create_diet();
             break;
         case 'diet/view':
             // display_user_diet() --> fetch & display user diet

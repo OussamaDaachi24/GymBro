@@ -34,7 +34,7 @@
         <li><a href="/GymBro/static_meals">myMeals</a></li>
       </ul>
       <div class="profile">
-        <a href="profile/">
+        <a href="profile/view">
           <img src="http://localhost/GymBro/public/assets/icons/profile-circle.png" class="prof_img" />
         </a>
       </div>

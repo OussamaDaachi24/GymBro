@@ -1,59 +1,260 @@
-/* CSS RESET */
-
 :root {
-    /*bgs*/
---clr-primary-bg: #0E0E0E;
---clr-secondary-bg: #282828;
---clr-secondary-bg-light: #3C3C3C;
+    /* Colors */
+    --clr-primary-bg: #0E0E0E;
+    --clr-secondary-bg: #282828;
+    --clr-secondary-bg-light: #3C3C3C;
+    --clr-light-white: #F9F9F9;
+    --clr-button-midtext: #1677FF;
+    --clr-gradient: linear-gradient(45deg, #002E6F, #1677FF);
 
+    /* Fonts */
+    --ff-primary: 'Poppins', sans-serif;
+    --ff-secondary: 'Signika', sans-serif;
 
-   /*text button containers */
---clr-light-white:#F9F9F9;
---clr-button-midtext: #1677FF;
-
---clr-gradient: linear-gradient(45deg, #002E6F, #1677FF);
-   
-/*font family*/
---ff-primary:  font-family: "Poppins", sans-serif;
-
---ff-body:var(var(--ff-primary));
---ff-heading:var(var(--ff-primary));
-
-/*font weights*/
---fw-light: 300;
---fw-medium: 400;
---fw-bold: 600;
---fw-extra-bold:900;
+    /* Font Weights */
+    --fw-light: 300;
+    --fw-medium: 400;
+    --fw-bold: 600;
+    --fw-extra-bold: 900;
 }
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-.MainCard2{
-    overflow: hidden;
-    position: relative;
-    background: radial-gradient(111.19% 141.42% at 100% 0%, #1677FF 0%, #002E6F 100%);
-    border-radius: 15px;
-    width: 24rem;
-    height: 25.75rem;
+body {
+    font-family: var(--ff-primary);
+    background-color: var(--clr-primary-bg);
     color: var(--clr-light-white);
-    font-family: var(--ff-body);
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* Center content vertically within each card */
-    align-items: center;     /* Center content horizontally within each card */
-
-
+    line-height: 1.6;
+    background-image: url(../assets/images/BgForms.png);
 }
 
-.Titlecard2{
-    
-        margin-bottom: 10px;
-        margin-top: 5px;
-        color: white;
-        font-size: 40px;
-        font-family: Poppins;
-        font-weight: 600;
-        width: 350px;
-        
-        
-    
+/* Header Styles */
+.header {
+    background-color: var(--clr-secondary-bg);
+    padding: 1rem;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo-img {
+    max-height: 50px;
+    margin-right: 10px;
+}
+
+.nav-menu {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 1rem;
+}
+
+.nav-menu a {
+    color: var(--clr-light-white);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+/* Main Content */
+.main-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 80px);
+    padding: 2rem;
+}
+
+.workout-creator {
+    background: var(--clr-gradient);
+    border-radius: 15px;
+    width: 100%;
+    max-width: 400px;
+    padding: 2rem;
+    text-align: center;
+}
+
+.page-title {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.highlight {
+    color: var(--clr-button-midtext);
+}
+
+/* Progress Indicator */
+.progress-indicator {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.step {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: var(--fw-bold);
+}
+
+.step.completed {
+    background-color: rgba(255, 255, 255, 0.8);
+    color: #002E6F;
+}
+
+.step-line {
+    width: 50px;
+    height: 2px;
+    background-color: rgba(255, 255, 255, 0.3);
+    margin: 0 10px;
+}
+
+/* Form Steps */
+.form-step {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-step.active {
+    display: flex;
+}
+
+.step-title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.step-description {
+    margin-bottom: 1.5rem;
+    opacity: 0.8;
+}
+
+/* Number Selector */
+.number-selector {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.selector-btn {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: var(--clr-light-white);
+    padding: 0.5rem 1rem;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.selected-number {
+    margin: 0 1rem;
+    font-size: 1.5rem;
+}
+
+/* Intensity and Objective Selectors */
+.intensity-selector,
+.objective-selector {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.intensity-btn,
+.objective-btn {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: var(--clr-light-white);
+    padding: 0.75rem 1.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.intensity-btn.active,
+.objective-btn.active {
+    background-color: rgba(255, 255, 255, 0.8);
+    color: #002E6F;
+}
+
+/* Buttons */
+.btn-next,
+.btn-submit {
+    background-color: var(--clr-button-midtext);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-next:hover,
+.btn-submit:hover {
+    background-color: #1155CC;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .nav-menu {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        flex-direction: column;
+        background-color: var(--clr-secondary-bg);
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+        padding: 2rem 0;
+    }
+
+    .nav-menu.active {
+        left: 0;
+    }
+
+    .menu-toggle {
+        display: block;
+        z-index: 1000;
+    }
+
+    .workout-creator {
+        width: 95%;
+        max-width: 100%;
+        padding: 1rem;
+    }
+
+    .intensity-selector,
+    .objective-selector {
+        flex-direction: column;
+    }
+
+    .intensity-btn,
+    .objective-btn {
+        width: 100%;
+    }
 }

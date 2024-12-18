@@ -23,6 +23,8 @@ function select_user_info($id){
     $row=mysqli_fetch_assoc($result); // -> $row contains name,age,email,...
     return $row;
 }
+
+
 // function to fetch user weights
 function select_user_weights($id){
     global $conn;
@@ -44,11 +46,13 @@ function select_user_weights($id){
         die("error when executing the query : " . mysqli_error($conn));
     }
     //5- get the result set
-    $result=mysql_stmt_get_result($stmt);
+    $result=mysqli_stmt_get_result($stmt);
     //6- fetch the result
     $user_weights=mysqli_fetch_all($result,MYSQLI_ASSOC);
     return $user_weights;
 }
+
+
 // function to fetch user streak
 function select_user_streak($id){
     global $conn;
@@ -72,20 +76,29 @@ function select_user_streak($id){
     $result=mysqli_stmt_get_result($stmt);
     //fetch all the data
     $streak=mysqli_fetch_assoc($result);
-    return $streak;
+    //find the number of days
+    $start_date = new DateTime($streak['start_date']);
+    $today = new DateTime();
+    $days = $start_date->diff($today)->days;
+
+    return $days;
 } 
+
 
 // main function : select all user data to display in the profile
 function select_user_data($id){
     $info=select_user_info($id); //1- the user info
     $weights=select_user_weights($id); //2- the user weights
     $streak=select_user_streak($id);
-    return user_data [
+    return array(
         'information' => $info,
         'weights' => $weights,
         'streak' => $streak
-    ];
+    );
+
+    
 }
+
 
 //function to update the user weight
 function update_weight($id,$weight,$date){
@@ -99,9 +112,9 @@ function update_weight($id,$weight,$date){
         die("error when preparing the statement : " . mysqli_error($conn));
     }
     //3- bind the parameters
-    mysqli_stmt_bind_param($stmt,'iid',$id,$weight,$date);
+    mysqli_stmt_bind_param($stmt,'iis',$id,$weight,$date);
     //4-execute the query
-    $result=mysqli_stmt_execute();
+    $result=mysqli_stmt_execute($stmt);
     return $result;
 }
 
