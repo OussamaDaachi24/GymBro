@@ -57,21 +57,21 @@
     <!--The container of everythiung except the button-->
     <div class="Basic-details-inputs-image-contaier">
       <!--Left side container-->
-      <form class="Basic-details-inputs-container">
+      <form class="Basic-details-inputs-container" action="inedx.php" method="POST" enctype="multipart/form-data">
         <div class="Basic-details-text-container">
           <h1>Basic Details</h1>
         </div>
         <div class="input-container">
-          <input class="inp-name" placeholder="Enter name">
+          <input class="inp-name" placeholder="Enter name" name="name" required>
         </div>
         <div class="input-container">
-          <input class="inp-email" placeholder="Enter email">
+          <input class="inp-email" placeholder="Enter email" type="email" name="email" required>
         </div>
         <div class="input-container">
-          <input type="password" class="pswd" placeholder="Enter Password">
+          <input type="password" class="pswd" placeholder="Enter Password" name="password" required>
         </div>
         <div class="input-container">
-          <input type="password" class="confirm-pswd" placeholder="Confirm Password">
+          <input type="password" class="confirm-pswd" placeholder="Confirm Password" name="confirm_password" required>
         </div>
       </form>
       <!--Right side container-->
@@ -80,9 +80,8 @@
           <h1>Image</h1>
         </div>
         <div class="Image-input-container">
-          <!--  <input class="Image-input" type="image" src="http://localhost/GymBro/public/assets/images/PlusImage.png" alt="Submit">-->
           <label class="Image-input">
-            <input type="file" accept="image/*" style="display: none;" >
+            <input type="file" accept="image/*" name="image" style="display: none;" required>
             <img src="http://localhost/GymBro/public/assets/images/PlusImage.png" alt="Upload Image" class="img_input">
           </label>
 
@@ -91,7 +90,7 @@
     </div>
 
     <div class="Submit-button-container">
-      <button class="Submit-button">Submit</button>
+      <button class="Submit-button" type="submit">Submit</button>
     </div>
   </div>
   </div>
@@ -99,4 +98,4 @@
 <script src="http://localhost/GymBro/public/javaScript/common.js"></script>
 <script src="http://localhost/GymBro/public/javaScript/register.js"></script>
 
-</html> 
+</html>

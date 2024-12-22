@@ -6,7 +6,9 @@ require_once __DIR__ . "/app/controllers/diet_controller.php"; //diet
 require_once __DIR__ . "/app/controllers/home_controller.php"; // home-page
 require_once __DIR__ . "/app/controllers/profile_controller.php"; //profile
 require_once __DIR__ . "/app/controllers/workout_controller.php"; //workout
-
+require_once __DIR__ . '/config/db_connect.php';//db connection
+$conn = connect_db();
+$authController = new AuthController($conn);
 //routing function
 
 
@@ -45,10 +47,50 @@ function route($url_path){
             break;
         // C) Authentication
         case 'login':
-            // display_login() --> show login page
+            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                // Get email and password from the POST request
+                $email = $_POST['email'] ?? '';
+                $password = $_POST['password'] ?? '';
+
+                // Attempt to log in
+                if ($authController->login($email, $password)) {
+                    // Redirect to home or another page on success
+                    header("Location: /GymBro/home");
+                    exit;
+                } else {
+                    // Show error message
+                    echo $authController->getError();
+                }
+            } else {
+                // Show the login page
+                include_once __DIR__ . "/app/views/auth/login.php";
+            }
             break;
         case 'register':
             // display_register() --> show register page
+            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                // Collect registration data
+                $userData = [
+                    'name' => $_POST['name'] ?? '',
+                    'email' => $_POST['email'] ?? '',
+                    'password' => $_POST['password'] ?? '',
+                    'confirm_password' => $_POST['confirm_password'] ?? '',
+                    'age' => $_POST['age'] ?? ''
+                ];
+
+                // Attempt to register
+                if ($authController->register($userData)) {
+                    // Redirect to login or home page on success
+                    header("Location: /GymBro/login");
+                    exit;
+                } else {
+                    // Show error message
+                    echo $authController->getError();
+                }
+            } else {
+                // Show the registration page
+                include_once __DIR__ . "/app/views/auth/register.php";
+            }
             break;
         case 'user/create':
             //create_user() --> create a user
