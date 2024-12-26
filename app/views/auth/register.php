@@ -57,7 +57,7 @@
     <!--The container of everythiung except the button-->
     <div class="Basic-details-inputs-image-contaier">
       <!--Left side container-->
-      <form id="registration-form" class="Basic-details-inputs-container" action="index.php" method="POST" enctype="multipart/form-data">
+      <form id="registration-form" class="Basic-details-inputs-container" action="/GymBro/register" method="POST" enctype="multipart/form-data">
         <div class="Basic-details-text-container">
           <h1>Basic Details</h1>
         </div>
@@ -81,7 +81,7 @@
         </div>
         <div class="Image-input-container">
           <label class="Image-input">
-            <input type="file" accept="image/*" name="image" style="display: none;" required>
+            <input type="file" accept="image/*" name="image" style="display: none;" >
             <img src="http://localhost/GymBro/public/assets/images/PlusImage.png" alt="Upload Image" class="img_input">
           </label>
 

@@ -1,3 +1,15 @@
+<?php
+// Check if diet data is available
+if (!isset($diet_data) || empty($diet_data)) {
+  include_once __DIR__ . "/../static/not_found.php";
+  exit;
+}
+
+// Extract meal and snack numbers
+$meal_num = $diet_info['meal_num'];
+$snack_num = $diet_info['snack_num'];
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -48,10 +60,10 @@
     <div class="Title">
       <h1>Explore Your Custom <span>Meals</span>!</h1>
     </div>
-
+    <?php for ($i = 1; $i <= $meal_num; $i++): ?>
     <div class="main-card-text-container">
       <div class="text-container">
-        <h1>Breakfast</h1>
+        <h1>meal <?= htmlspecialchars($i) ?></h1>
       </div>
       <div class="main-card-container">
         <div class="carbs-container cpf">
@@ -81,7 +93,7 @@
             </svg>
           </div>
           <div class="description">
-            <h1>For your *PLAN* you will need *999* calories</h1>
+            <h1>This meal contains <?= htmlspecialchars($meal_info['carb']) ?> calories of carbs</h1>
           </div>
           <div class="source">
             <div class="you-gif">
@@ -98,7 +110,7 @@
                 >
                   <circle cx="6" cy="6.5" r="6" fill="#1677FF" />
                 </svg>
-                <h1>ffzfzf</h1>
+                <h1><?= htmlspecialchars($meal_info['carb']/350) ?>White rice (raw)</h1>
               </div>
               <div class="source-2 Asource">
                 <svg
@@ -110,7 +122,7 @@
                 >
                   <circle cx="6" cy="6.5" r="6" fill="#1677FF" />
                 </svg>
-                <h1>zdadad</h1>
+                <h1><?= htmlspecialchars($meal_info['carb']/370) ?>Oatmeal</h1>
               </div>
               <div class="source-3 Asource">
                 <svg
@@ -122,7 +134,7 @@
                 >
                   <circle cx="6" cy="6.5" r="6" fill="#1677FF" />
                 </svg>
-                <h1>zdada</h1>
+                <h1><?= htmlspecialchars($meal_info['carb']/86) ?> Sweet Potato</h1>
               </div>
               <div class="source-4 Asource">
                 <svg
@@ -134,7 +146,7 @@
                 >
                   <circle cx="6" cy="6.5" r="6" fill="#1677FF" />
                 </svg>
-                <h1>dzddd</h1>
+                <h1><?= htmlspecialchars($meal_info['carb']/370) ?> Pasta (Spaguetti) </h1>
               </div>
             </div>
           </div>
@@ -173,7 +185,7 @@
             </svg>
           </div>
           <div class="description">
-            <h1>For your *PLAN* you will need *999* calories</h1>
+            <h1>This meal contains <?= htmlspecialchars($meal_info['protein']) ?> of protein</h1>
           </div>
           <div class="source">
             <div class="you-gif">
@@ -190,7 +202,7 @@
                 >
                   <circle cx="6" cy="6.5" r="6" fill="#1677FF" />
                 </svg>
-                <h1>ffzfzf</h1>
+                <h1><?= htmlspecialchars($meal_info['protein']/112) ?> Chicken Breasts</h1>
               </div>
               <div class="source-2 Asource">
                 <svg
@@ -202,7 +214,7 @@
                 >
                   <circle cx="6" cy="6.5" r="6" fill="#1677FF" />
                 </svg>
-                <h1>zdadad</h1>
+                <h1><?= htmlspecialchars($meal_info['protein']/112*100) ?> Steak</h1>
               </div>
               <div class="source-3 Asource">
                 <svg
@@ -214,7 +226,7 @@
                 >
                   <circle cx="6" cy="6.5" r="6" fill="#1677FF" />
                 </svg>
-                <h1>zdada</h1>
+                <h1><?= htmlspecialchars($meal_info['protein']/80) ?> Eggs</h1>
               </div>
               <div class="source-4 Asource">
                 <svg
@@ -226,7 +238,7 @@
                 >
                   <circle cx="6" cy="6.5" r="6" fill="#1677FF" />
                 </svg>
-                <h1>dzddd</h1>
+                <h1><?= htmlspecialchars($meal_info['protein']/100) ?> Fish</h1>
               </div>
             </div>
           </div>
@@ -275,7 +287,7 @@
                 >
                   <circle cx="6" cy="6.5" r="6" fill="#1677FF" />
                 </svg>
-                <h1>ffzfzf</h1>
+                <h1>Penaut Butter</h1>
               </div>
               <div class="source-2 Asource">
                 <svg
@@ -287,7 +299,7 @@
                 >
                   <circle cx="6" cy="6.5" r="6" fill="#1677FF" />
                 </svg>
-                <h1>zdadad</h1>
+                <h1>Olive oil</h1>
               </div>
               <div class="source-3 Asource">
                 <svg
@@ -299,7 +311,7 @@
                 >
                   <circle cx="6" cy="6.5" r="6" fill="#1677FF" />
                 </svg>
-                <h1>zdada</h1>
+                <h1>Butter</h1>
               </div>
               <div class="source-4 Asource">
                 <svg
@@ -311,14 +323,16 @@
                 >
                   <circle cx="6" cy="6.5" r="6" fill="#1677FF" />
                 </svg>
-                <h1>dzddd</h1>
+                <h1>Nuts</h1>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+    <?php endfor; ?>
 
+  <!--
     <div class="main-card-text-container">
       <div class="text-container">
         <h1>Lunch</h1>
@@ -587,8 +601,20 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
 
+
+
+
+
+
+
+
+
+
+
+
+   <!-- 
     <div class="main-card-text-container">
       <div class="text-container">
         <h1>Dinner</h1>
@@ -858,7 +884,8 @@
         </div>
       </div>
     </div>
-
+    -->
+  <?php for ($i = 1; $i <= $snack_num; $i++): ?>
     <div class="main-card-text-container">
       <div class="text-container">
         <h1>Snack</h1>
@@ -1128,6 +1155,8 @@
         </div>
       </div>
     </div>
+  <?php endfor; ?>
+
   </body>
   <script src="http://localhost/GymBro/public/javaScript/common.js"></script>
 </html>

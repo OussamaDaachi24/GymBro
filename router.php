@@ -7,8 +7,7 @@ require_once __DIR__ . "/app/controllers/home_controller.php"; // home-page
 require_once __DIR__ . "/app/controllers/profile_controller.php"; //profile
 require_once __DIR__ . "/app/controllers/workout_controller.php"; //workout
 require_once __DIR__ . '/config/db_connect.php';//db connection
-$conn = connect_db();
-$authController = new AuthController($conn);
+
 //routing function
 
 
@@ -67,6 +66,8 @@ function route($url_path){
             }
             break;
         case 'register':
+            $conn = connect_db();
+            $authController = new AuthController($conn);
             // display_register() --> show register page
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 // Collect registration data

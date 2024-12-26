@@ -6,23 +6,19 @@ function isAlphaNum(str) {
 
 // Add this to your register.js file
 document.addEventListener('DOMContentLoaded', () => {
-    const fileInput = document.querySelector('.img_input');
-    const imagePreview = document.querySelector('.Image-input img');
+    const fileInput = document.querySelector('input[type="file"]'); // Select the actual file input
+    const imagePreview = document.querySelector('.img_input'); // Select the preview image
 
     fileInput.addEventListener('change', function(event) {
-        console.log(event);
-        console.log("starts exec");
         const file = event.target.files[0];
         if (file) {
             const reader = new FileReader();
 
             reader.onload = function(e) {
-                // Replace the plus icon with the selected image
                 imagePreview.src = e.target.result;
                 imagePreview.alt = 'Uploaded Image';
             }
 
-            // Read the image file
             reader.readAsDataURL(file);
         }
     });
@@ -39,9 +35,8 @@ function inputvalid() {
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
     form.addEventListener('submit', (event) => {
-        console.log("event listened");
-        event.preventDefault(); //prevent the default submission
-
+        event.preventDefault();
+        
         // Reset previous error states
         confirm.placeholder = "Confirm Password";
         confirm.classList.remove("error-placeholder");
@@ -54,6 +49,7 @@ function inputvalid() {
 
         // Track if there are any errors
         let hasError = false;
+        
         if(password.value.trim() ===""){
             password.placeholder="Please Enter a Password"
             password.classList.add("pwd-error")
@@ -105,7 +101,7 @@ function inputvalid() {
             console.log("password is weak");
         }
 
-        // If there are no errors, clear the form values and redirect
+        // If validation passes, let the form submit naturally
         if (!hasError) {
             console.log("Form data being submitted:", {
                 name: name.value,
@@ -113,14 +109,7 @@ function inputvalid() {
                 password: password.value,
                 confirm: confirm.value
             });
-            //form.submit();
-            // Reset the values and redirect to the new page
-            name.value = "";
-            email.value = "";
-            password.value = "";
-            confirm.value = "";
-            
-
+            form.submit();
         }
     });
 }
