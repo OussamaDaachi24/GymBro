@@ -93,7 +93,7 @@ function inputvalid() {
         }
 
         // Validate password strength
-        if ((password.value.length < 8 || !isAlphaNum(password.value)) && password.value != "") {
+        if ((password.value.length < 8 || isAlphaNum(password.value)) && password.value != "") {
             password.value = "";
             password.placeholder = "This password is weak!";
             password.classList.add("pwd-error");

@@ -75,8 +75,7 @@ function route($url_path){
                     'name' => $_POST['name'] ?? '',
                     'email' => $_POST['email'] ?? '',
                     'password' => $_POST['password'] ?? '',
-                    'confirm_password' => $_POST['confirm_password'] ?? '',
-                    'age' => $_POST['age'] ?? ''
+                    'confirm_password' => $_POST['confirm_password'] ?? ''
                 ];
 
                 // Attempt to register

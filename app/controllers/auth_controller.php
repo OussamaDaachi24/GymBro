@@ -88,15 +88,14 @@ class AuthController {
         $hashedPassword = password_hash($sanitizedData['password'], PASSWORD_DEFAULT);
 
         // Insert new user
-        $sql = "INSERT INTO user (name, email, password, age) VALUES (?, ?, ?, ?)";
+        $sql = "INSERT INTO user (name, email, password) VALUES (?, ?, ?)";
         
         try {
             $stmt = mysqli_prepare($this->conn, $sql);
-            mysqli_stmt_bind_param($stmt, 'sssi', 
+            mysqli_stmt_bind_param($stmt, 'sss', 
                 $sanitizedData['name'],
                 $sanitizedData['email'],
-                $hashedPassword,
-                $sanitizedData['age']
+                $hashedPassword
             );
             
             if (mysqli_stmt_execute($stmt)) {
@@ -108,7 +107,7 @@ class AuthController {
             
         } catch (Exception $e) {
             error_log("Registration error: " . $e->getMessage());
-            $this->errorMsg = "An error occurred during registration";
+            $this->errorMsg = $e->getMessage();
             return false;
         }
     }
@@ -120,7 +119,7 @@ class AuthController {
      */
     private function validateRegistrationData(array $data): bool {
         // Check required fields
-        $required = ['name', 'email', 'password', 'confirm_password', 'age'];
+        $required = ['name', 'email', 'password', 'confirm_password'];
         foreach ($required as $field) {
             if (empty($data[$field])) {
                 $this->errorMsg = "All fields are required";
@@ -144,9 +143,7 @@ class AuthController {
         }
 
         // Validate age
-        if (!$this->validateAge($data['age'])) {
-            return false;
-        }
+
 
         return true;
     }
@@ -254,8 +251,7 @@ class AuthController {
         return [
             'name' => htmlspecialchars(trim($data['name']), ENT_QUOTES, 'UTF-8'),
             'email' => filter_var($data['email'], FILTER_SANITIZE_EMAIL),
-            'password' => $data['password'],
-            'age' => filter_var($data['age'], FILTER_SANITIZE_NUMBER_INT)
+            'password' => $data['password']
         ];
     }
 
