@@ -1,11 +1,10 @@
 <?php
 
 // function to fetch user information for the profile
-function select_user_info($id){
-    global $conn;
+function select_user_info($conn,$id){
     //1- sql query : obtain user data (name,email,age,picture)
     $sql="SELECT name , email , age , profile_picture FROM user 
-            WHERE user_id=? ;";
+            WHERE user_id=?";
     //2- prerate the query
     $stmt=mysqli_prepare($conn,$sql);
     if(!$stmt){
@@ -26,13 +25,12 @@ function select_user_info($id){
 
 
 // function to fetch user weights
-function select_user_weights($id){
-    global $conn;
+function select_user_weights($conn,$id){
     //1- sql query
     $sql="SELECT weight_val , taking_date FROM user
     INNER JOIN weight
     ON user.user_id = weight.user_id
-    WHERE user.user_id=? ;";
+    WHERE user.user_id=? ";
 
     //2- prepare the query
     $stmt=mysqli_prepare($conn,$sql);
@@ -54,13 +52,12 @@ function select_user_weights($id){
 
 
 // function to fetch user streak
-function select_user_streak($id){
-    global $conn;
+function select_user_streak($conn,$id){
     //1- sql query string
     $sql="SELECT start_date , state FROM streak
     INNER JOIN user 
     ON user.user_id = streak.user_id
-    WHERE user.user_id = ? ;";
+    WHERE user.user_id = ? ";
     //2- prepare the statement
     $stmt=mysqli_prepare($conn,$sql);
     if(!$stmt){
@@ -86,10 +83,10 @@ function select_user_streak($id){
 
 
 // main function : select all user data to display in the profile
-function select_user_data($id){
-    $info=select_user_info($id); //1- the user info
-    $weights=select_user_weights($id); //2- the user weights
-    $streak=select_user_streak($id);
+function select_user_data($conn,$id){
+    $info=select_user_info($conn,$id); //1- the user info
+    $weights=select_user_weights($conn,$id); //2- the user weights
+    $streak=select_user_streak($conn,$id);
     return array(
         'information' => $info,
         'weights' => $weights,
@@ -101,11 +98,10 @@ function select_user_data($id){
 
 
 //function to update the user weight
-function update_weight($id,$weight,$date){
-    global $conn;
+function update_weight($conn,$id,$weight,$date){
     //1-sql query
     $sql="INSERT INTO weight (user_id, weight_val , taking_weight)
-    VALUES (? , ? , ? ) ;";
+    VALUES (? , ? , ? )";
     //2- prepare the statements
     $stmt=mysqli_prepare($conn,$sql);
     if(!$stmt){
@@ -116,5 +112,10 @@ function update_weight($id,$weight,$date){
     //4-execute the query
     $result=mysqli_stmt_execute($stmt);
     return $result;
+}
+
+//function to insert user additional features
+function insert_user_measures($conn,$height , $weight , $ideal_weight , $age ,$diet_id){
+
 }
 

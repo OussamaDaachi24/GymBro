@@ -12,7 +12,7 @@ class AuthController {
     
     public function __construct($conn) {
         $this->conn = $conn;
-        session_start();
+       // session_start();
     }
 
     /**

@@ -1,24 +1,21 @@
 <?php
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
-require_once __DIR__ . "/../../config/db_connect.php"; // connect to the database
+
 require_once __DIR__ . "/../models/user_model.php"; // user model
 
 function check_login(){
     if(!isset($_SESSION['logged_in'])){
-        include_once __DIR__ . "/../views/auth/login.php";
+        header("Location: /GymBro/user/create");
         exit;
     }
 }
 
 //1- display the profile
-function get_profile_data(){
+function get_profile_data($conn){
     //0- check log-in
     check_login();
     //1- identify the user
     $id=$_SESSION['user_id'];
-    $user_data=select_user_data($id); //array that contains user data
+    $user_data=select_user_data($conn,$id); //array that contains user data
     //2- include the profile view to insert the data
     include_once "../views/profile/profile.php";
 }
@@ -28,7 +25,7 @@ function validate_weight($weight){
 }
 
 //2- update the weight
-function update_user_weight(){
+function update_user_weight($conn){
     //0- check log-in
     check_login();
     //1-obtain the id of the user
@@ -46,7 +43,7 @@ function update_user_weight(){
     }
     $date=date('Y-m-d');
     //3-update the weight
-    $updated=update_weight($id,$weight,$date);
+    $updated=update_weight($conn,$id,$weight,$date);
     //redirect to the profile page
     get_profile_data();
 }

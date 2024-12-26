@@ -57,7 +57,7 @@
     <!--The container of everythiung except the button-->
     <div class="Basic-details-inputs-image-contaier">
       <!--Left side container-->
-      <form class="Basic-details-inputs-container" action="inedx.php" method="POST" enctype="multipart/form-data">
+      <form id="registration-form" class="Basic-details-inputs-container" action="index.php" method="POST" enctype="multipart/form-data">
         <div class="Basic-details-text-container">
           <h1>Basic Details</h1>
         </div>
@@ -90,8 +90,7 @@
     </div>
 
     <div class="Submit-button-container">
-      <button class="Submit-button" type="submit">Submit</button>
-    </div>
+    <button class="Submit-button" type="submit" form="registration-form">Submit</button>    </div>
   </div>
   </div>
 </body>

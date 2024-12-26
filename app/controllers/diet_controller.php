@@ -21,7 +21,7 @@ function valid_meals_num($meal_num){
 }
 //function to valid all the input data
 function valid_data($height,$weight,$weight2,$age,$meal_num){
-    $error [];
+    $error=[];
     if(!valid_height($height)){
         array_push($error,"the height is not valid");
     }
@@ -37,11 +37,12 @@ function valid_data($height,$weight,$weight2,$age,$meal_num){
     if(!valid_meals_num($meal_num)){
         array_push($error,"the number of meals is not vvalid");
     }
-    return error;
+    return $error;
 }
 
 //1- calculate the calorie intake for the user
-function calculate_calories($height, $curr_weight, $GOAL, $age) {
+function calculate_calories($height, $curr_weight, $GOAL, $age):int {
+    
     // Calculate BMR 
     $BMR = $curr_weight * 10 + 6.25 * $height - 5 * $age + 5;
     
@@ -87,8 +88,17 @@ function obtain_macros($calories,$goal,$weight){
 }
 
 //3- find the calorie size for each meal (snacks not included)
-function split_meal_cals($calories,$meal_num){
+function split_meal_cals($calories,$meal_num):int{
     //1- the number of snakes
+    $snack_num=snacks_number($meal_num);
+    //2- the amount of calories in each meal 
+    $calories_for_meals=$calories-(370*$snack_num); // remove the snack calories
+    $calorie_per_meal=floor($calories_for_meals/$meal_num);
+    return $calorie_per_meal; // the calories per 1 meal 
+
+}
+
+function snacks_number($meal_num):int{
     $snack_num;
     if($meal_num<=4 && $meal_num>2){
         $snack_num=1;
@@ -99,19 +109,12 @@ function split_meal_cals($calories,$meal_num){
     else{
         $snack_num=0;
     }
-    //2- the amount of calories in each meal 
-    $calories_for_meals=$calories-(370*$snack_num); // remove the snack calories
-    $calorie_per_meal=floor($calories_for_meals/$meal_num);
-    return $calorie_per_meal; // the calories per 1 meal 
-
+    return $snack_num;
 }
 
 //4- obtain the macros for each meal (snacks not included)
-function macros_per_meal($macros,$meal_num){
+function macros_per_meal($macros,$meal_num):object{
     $macro_meal=new stdClass();
-    if($meal_num==0){
-        //throw an exception
-    }
     $macro_meal->protein=($macro->protein)/$meal_num;
     $macro_meal->fat=($macro->fat)/$meal_num;
     $macro_meal->carbs=($macro->carbs)/$meal_num;
@@ -122,7 +125,7 @@ function macros_per_meal($macros,$meal_num){
 
 // THE MAIN FUNCTION : CREATE THE DIET
 
-function create_diet(){
+function create_diet($conn){
     //the user is logged
     if(!isset($_SESSION['logged_in'])){
         header('Location:/GymBro/login');
@@ -131,6 +134,8 @@ function create_diet(){
     if($_SERVER['REQUEST_METHOD']!='POST'){
         header('Location: ....');
     }
+    mysqli_begin_transaction($conn); //transaction to avoid concurrency problems
+
     $height=$_POST['height'];
     $weight=$_POST['weight'];
     $ideal_weight=$_POST['ideal_weight'];
@@ -138,6 +143,7 @@ function create_diet(){
     $meal_num=$_POST['meal_num'];
     $have_supplement=$_POST['supplements'] ;
     $goal=$_POST['goal'];
+    $id=$_SESSION['user_id'];
     
     //validating the errors
     $errors=valid_data($height,$weight,$ideal_weight,$age,$meal_num);
@@ -152,16 +158,41 @@ function create_diet(){
     // 1- define the variables
 
     //a- find the calories 
-    $calories=calculate_calories($height,$weight,$goal,$meal_num);
+    $calories=calculate_calories($height,$weight,$goal,$meal_num); //integer
     //b- obtain the macros
     $macros=obtain_macros($calories,$goal,$weight);
     //c- calories per meal
-    $cal_per_meal=split_meal_cals($calories,$meal_num);
+    $cal_per_meal=split_meal_cals($calories,$meal_num); //integer
     //d- the macros for each meal
-    $meal_macro=macros_per_meal($macros,$meal_num);
+    $meal_macro=macros_per_meal($macros,$meal_num); //object: obj->protein/fat/carbs
+    //e- the number of snacks & calories
+    $snack_num=snacks_number($meal_num);
+    $snack_cals=370; //370 calorie
 
-    //2- store the data into the data base
-    // a) the diet table : total calories , number of meals , number of snacks
-    // b) the meal table : calories per meal , type (meal/snack) , macros pe meal
-    // c) the user table : height , weight , ideal_weight , age 
+    //--> insert the diet components $ its user
+    if(!insert_diet($conn,$calories,$meal_num,$snack_num,$id)){
+        //throw exception
+    } 
+
+    //--> insert the meal components (after extracting the id)
+    if(!insert_meal($conn,$cal_per_meal,$meal_macro->protein,$meal_macro->carbs,$meal_macro->fat,'meal',$diet_id)){
+        //throw exception
+    }
+    $diet_id=mysqli_insert_id($conn);
+    if(!insert_meal($conn,$cal_per_meal,$meal_macro->protein,$meal_macro->carbs,$meal_macro->fat,'snack',$diet_id)){
+        //throw exception
+    }
+    //--> insert the user data
+    insert_user_measures($conn,$height,$weight,$ideal_weight,$age,$diet_id);
+    mysqli_commit($conn); // commit the transaction operations
+
+}
+
+function show_diet_program(){
+    // check the login
+
+    //1- fetch the user data -> store them in array
+
+    //2- include the diet view
+    require_once __DIR__ . "/../views/diet/myMeals.php";
 }

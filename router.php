@@ -81,7 +81,7 @@ function route($url_path){
                 // Attempt to register
                 if ($authController->register($userData)) {
                     // Redirect to login or home page on success
-                    header("Location: /GymBro/login");
+                    header("Location: /GymBro/home");
                     exit;
                 } else {
                     // Show error message
@@ -93,7 +93,7 @@ function route($url_path){
             }
             break;
         case 'user/create':
-            //create_user() --> create a user
+            include_once __DIR__ . "/app/views/auth/register.php";
             break;
         case 'user/valid':
             //valid_login() --> validate user data for login
@@ -116,11 +116,13 @@ function route($url_path){
         // F) Profile
         case 'profile/view':
             //display_profile_data() --> fetch user from DB & render the profile view
-            get_profile_data();
+            $conn = connect_db();
+            get_profile_data($conn);
             break;
         case 'profile/update':
             //update_weight() --> update user weight input
-            update_user_weight();
+            $conn = connect_db();
+            update_user_weight($conn);
             break;
         default:
             //include_once __DIR__ . "/app/views/static/not_found.php";

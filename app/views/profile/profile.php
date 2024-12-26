@@ -59,12 +59,19 @@
             <h1>My Profile</h1>
             <div class="user_identifier">
               <div class="text_data">
-                <p><?php echo "name : " . htmlspecialchars($user_data['information']['name']) ?></p>
-                <p><?php echo "age : " . htmlspecialchars($user_data['information']['age']) ?></p>
-                <p><?php echo "email : " . htmlspecialchars($user_data['information']['email']) ?></p>
+                <?php if (isset($user_data['information']) || true): ?> <!--check that the user is logged -->
+                <p>Name: <?php echo htmlspecialchars($user_data['information']['name']) ?></p>
+                <p>Age: <?php echo htmlspecialchars($user_data['information']['age']) ?></p>
+                <p>Email: <?php echo htmlspecialchars($user_data['information']['email']) ?></p>
               </div>
+              <?php endif; ?>
               <div class="img_data">
-                <img src="http://localhost/GymBro/public/assets/images/pancake.webp" />
+                <?php 
+                    $profile_pic = isset($user_data['information']['profile_picture'])  //check if the profile picture exist
+                    ? htmlspecialchars($user_data['information']['profile_picture']) //assign the path to the vaariable
+                    : 'http://localhost/GymBro/public/assets/images/pancake.webp';
+                ?>
+                <img src="<?php echo $profile_pic; ?>" /> <!-- put the path variable in img -->
               </div>
             </div>
             <div class="visit_page">
@@ -96,6 +103,7 @@
             <div class="streak">
               <div class="flame">
                 <h2>Daily Streak</h2>
+
                 <img src="http://localhost/GymBro/public/assets/images/flame 1.png" />
               </div>
               <div class="streak_days">

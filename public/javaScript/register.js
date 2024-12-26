@@ -30,6 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function inputvalid() {
     console.log("we start");
+    const form = document.querySelector(".Basic-details-inputs-container");
     let btn = document.querySelector(".Submit-button");
     let confirm = document.querySelector(".confirm-pswd");
     let password = document.querySelector(".pswd");
@@ -37,8 +38,9 @@ function inputvalid() {
     let name = document.querySelector(".inp-name");
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
-    btn.addEventListener('click', () => {
+    form.addEventListener('submit', (event) => {
         console.log("event listened");
+        event.preventDefault(); //prevent the default submission
 
         // Reset previous error states
         confirm.placeholder = "Confirm Password";
@@ -105,15 +107,24 @@ function inputvalid() {
 
         // If there are no errors, clear the form values and redirect
         if (!hasError) {
+            console.log("Form data being submitted:", {
+                name: name.value,
+                email: email.value,
+                password: password.value,
+                confirm: confirm.value
+            });
+            //form.submit();
             // Reset the values and redirect to the new page
             name.value = "";
             email.value = "";
             password.value = "";
             confirm.value = "";
-            window.location.href = "../html/home.html";
-            console.log("Everything works");
+            
+
         }
     });
 }
 
-inputvalid();
+document.addEventListener('DOMContentLoaded', () => {
+    inputvalid();
+});
