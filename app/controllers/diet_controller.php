@@ -21,7 +21,7 @@ function valid_meals_num($meal_num){
 }
 //function to valid all the input data
 function valid_data($height,$weight,$weight2,$age,$meal_num){
-    $error [];
+    $error = [];
     if(!valid_height($height)){
         array_push($error,"the height is not valid");
     }
