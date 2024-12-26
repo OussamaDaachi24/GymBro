@@ -21,7 +21,7 @@ function valid_meals_num($meal_num){
 }
 //function to valid all the input data
 function valid_data($height,$weight,$weight2,$age,$meal_num){
-    $error=[];
+    $error = [];
     if(!valid_height($height)){
         array_push($error,"the height is not valid");
     }
@@ -134,64 +134,103 @@ function create_diet($conn){
     if($_SERVER['REQUEST_METHOD']!='POST'){
         header('Location: ....');
     }
-    mysqli_begin_transaction($conn); //transaction to avoid concurrency problems
+    mysqli_begin_transaction($conn); // Start transaction
 
-    $height=$_POST['height'];
-    $weight=$_POST['weight'];
-    $ideal_weight=$_POST['ideal_weight'];
-    $age=$_POST['age'];
-    $meal_num=$_POST['meal_num'];
-    $have_supplement=$_POST['supplements'] ;
-    $goal=$_POST['goal'];
-    $id=$_SESSION['user_id'];
-    
-    //validating the errors
-    $errors=valid_data($height,$weight,$ideal_weight,$age,$meal_num);
-    if(count($errors)!=0){
-        //store the errors
-        //redirect it to the create page
-        header('Location:......'); //not redirected yet
+  try {
+    // Retrieve form data
+    $height = $_POST['height'];
+    $weight = $_POST['weight'];
+    $ideal_weight = $_POST['ideal_weight'];
+    $age = $_POST['age'];
+    $meal_num = $_POST['meal_num'];
+    $have_supplement = $_POST['supplements'];
+    $goal = $_POST['goal'];
+    $id = $_SESSION['user_id'];
+
+    // Validate input data
+    $errors = valid_data($height, $weight, $ideal_weight, $age, $meal_num);
+    if (count($errors) != 0) {
+        // Store errors in session and redirect back to the form
+        $_SESSION['errors'] = $errors;
+        header('Location: create_diet.php'); // Redirect to the form page
+        exit(); // Stop further execution
     }
 
-    //input is valid --> create the diet
+    // Input is valid --> create the diet
 
-    // 1- define the variables
+    // 1. Define the variables
+    $calories = calculate_calories($height, $weight, $goal, $meal_num); // Integer
+    $macros = obtain_macros($calories, $goal, $weight); // Object
+    $cal_per_meal = split_meal_cals($calories, $meal_num); // Integer
+    $meal_macro = macros_per_meal($macros, $meal_num); // Object: obj->protein/fat/carbs
+    $snack_num = snacks_number($meal_num); // Integer
+    $snack_cals = 370; // Fixed calorie value for snacks
 
-    //a- find the calories 
-    $calories=calculate_calories($height,$weight,$goal,$meal_num); //integer
-    //b- obtain the macros
-    $macros=obtain_macros($calories,$goal,$weight);
-    //c- calories per meal
-    $cal_per_meal=split_meal_cals($calories,$meal_num); //integer
-    //d- the macros for each meal
-    $meal_macro=macros_per_meal($macros,$meal_num); //object: obj->protein/fat/carbs
-    //e- the number of snacks & calories
-    $snack_num=snacks_number($meal_num);
-    $snack_cals=370; //370 calorie
-
-    //--> insert the diet components $ its user
-    if(!insert_diet($conn,$calories,$meal_num,$snack_num,$id)){
-        //throw exception
-    } 
-
-    //--> insert the meal components (after extracting the id)
-    if(!insert_meal($conn,$cal_per_meal,$meal_macro->protein,$meal_macro->carbs,$meal_macro->fat,'meal',$diet_id)){
-        //throw exception
+    // 2. Insert the diet components
+    if (!insert_diet($conn, $calories, $meal_num, $snack_num)) {
+        throw new Exception("Failed to insert diet data.");
     }
-    $diet_id=mysqli_insert_id($conn);
-    if(!insert_meal($conn,$cal_per_meal,$meal_macro->protein,$meal_macro->carbs,$meal_macro->fat,'snack',$diet_id)){
-        //throw exception
+
+    // 3. Retrieve the diet_id after insertion
+    $diet_id = mysqli_insert_id($conn);
+
+    // 4. Insert meals associated with the diet
+    if (!insert_meal($conn, $cal_per_meal, $meal_macro->protein, $meal_macro->carbs, $meal_macro->fat, 'meal', $diet_id)) {
+        throw new Exception("Failed to insert meal data.");
     }
-    //--> insert the user data
-    insert_user_measures($conn,$height,$weight,$ideal_weight,$age,$diet_id);
-    mysqli_commit($conn); // commit the transaction operations
+
+    // 5. Insert snacks associated with the diet
+    if (!insert_meal($conn, $snack_cals, $meal_macro->protein, $meal_macro->carbs, $meal_macro->fat, 'snack', $diet_id)) {
+        throw new Exception("Failed to insert snack data.");
+    }
+
+    // 6. Insert user measures and associate the diet with the user
+    if (!insert_user_measures($conn, $id, $height, $weight, $ideal_weight, $age, $diet_id)) {
+        throw new Exception("Failed to insert user measures.");
+    }
+
+    // Commit the transaction if all operations succeed
+    mysqli_commit($conn);
+
+    // Redirect to success page or display success message
+    header('Location: success_page.php');
+    exit();
+  } catch (Exception $e) {
+    // Rollback the transaction in case of any error
+    mysqli_rollback($conn);
+
+    // Log the error or display it to the user
+    error_log("Error: " . $e->getMessage());
+    $_SESSION['error'] = "An error occurred. Please try again.";
+    header('Location: create_diet.php'); // Redirect back to the form
+    exit();
+  }
 
 }
 
 function show_diet_program(){
     // check the login
-
+    if(!isset($_SESSION['logged_in'])){
+        header('Location:/GymBro/login');
+    }
     //1- fetch the user data -> store them in array
+    if(!isset($_SESSION['user_id'])){
+        //exception
+    }
+    $user_id=$_SESSION['user_id'];
+    /*fetch the diet data
+    diet_data=[
+    'diet': array containg diet components,
+    'meal': array containing meal components (cals,macros,..),
+    'snack': array of snacks data (can be empty if snack=0)
+    ]
+    */
+
+    $diet_data=fetch_diet($user_id);
+    //extract the data from the array / split it
+    $diet_info=$diet_data['diet'];
+    $meal_info=$diet_data['meal'];
+    $snack_data=$diet_data['snack'];
 
     //2- include the diet view
     require_once __DIR__ . "/../views/diet/myMeals.php";
