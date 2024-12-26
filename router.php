@@ -101,7 +101,8 @@ function route($url_path){
         // D) Diet 
         case 'diet/create':
             //create_diet() --> create & store the diet
-            create_diet();
+            $conn=connect_db();
+            create_diet($conn);
             break;
         case 'diet/view':
             // display_user_diet() --> fetch & display user diet
