@@ -1,10 +1,10 @@
 <?php
-
+require_once 'C:\xampp\htdocs\GymBro\config\db_connect.php';
 class DietModel {
     private $conn;
 
     public function __construct($connection) {
-        $this->conn = $connection;
+        $this->conn = $this->connect_db();
     }
 
     /*
