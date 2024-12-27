@@ -34,7 +34,7 @@
         <li><a href="/GymBro/static_meals">myMeals</a></li>
       </ul>
       <div class="profile">
-        <a href="/GymBro/profile/view">
+        <a href="profile/">
           <img src="http://localhost/GymBro/public/assets/icons/profile-circle.png" class="prof_img" />
         </a>
       </div>
@@ -218,7 +218,7 @@
 
       </div>
     </section>
-    <script src="http://localhost/GymBro/javaScript/home.js"></script>
-    <script src=http://localhost/GymBro/javaScript/common.js"></script>
+    <script src="../javaScript/home.js"></script>
+    <script src="../javaScript/common.js"></script>
   </body>
 </html>

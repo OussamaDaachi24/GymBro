@@ -16,10 +16,14 @@
     <link rel="stylesheet" href="http://localhost/GymBro/public/css/common.css" />
   </head>
   <!-- Link for chart.js library -->
-
-
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    const weightData = <?php echo json_encode($user_data['weights']); ?>;
+  </script>
+  <!--  Body section-->
   <body>
     
+
 <header class="head_Bar" id="#head">
       <div class="menu_bar"><img src="http://localhost/GymBro/public/assets/images/menu.png"></div>
       <div class="logo">
@@ -71,10 +75,10 @@
               </div>
             </div>
             <div class="visit_page">
-              <a href="/GymBro/diet/view">
+              <a href="./MyMeals.html">
                 <button class="diet_btn">My Diet</button></a
               >
-              <a href="/GymBro/workout/view">
+              <a href="./see_workout.html">
                 <button class="gym_btn">My Workout</button></a
               >
             </div>
@@ -102,47 +106,38 @@
 
                 <img src="http://localhost/GymBro/public/assets/images/flame 1.png" />
               </div>
-              <div class="streak_indicator">
               <div class="streak_days">
-               <div>
-                  <img src="http://localhost/GymBro/public/assets/images/Group 102.png" />
-               </div>
                 <div>
                   <img src="http://localhost/GymBro/public/assets/images/Group 102.png" />
+                  <p>Tue</p>
                 </div>
                 <div>
                   <img src="http://localhost/GymBro/public/assets/images/Group 102.png" />
+                  <p>Wed</p>
                 </div>
                 <div>
                   <img src="http://localhost/GymBro/public/assets/images/Group 102.png" />
+                  <p>Thu</p>
                 </div>
                 <div>
-                  <img src="http://localhost/GymBro/public/assets/images/Group 102.png" />
+                  <img src="http://localhost/GymBro/public/assets/images/DaysProgress.png" />
+                  <p>Fri</p>
                 </div>
                 <div>
-                  <img src="http://localhost/GymBro/public/assets/images/Group 102.png" />
+                  <img src="http://localhost/GymBro/public/assets/images/DaysProgress.png" />
+                  <p>Sat</p>
+                </div>
+                <div>
+                  <img src="http://localhost/GymBro/public/assets/images/DaysProgress.png" />
+                  <p>Sun</p>
                 </div>
               </div>
-              <br>
-              <h2 style="text-align:center"><?= htmlspecialchars($user_data['streak']) ?> DAYS</h2>
             </div>
-          </div>
-
           </div>
         </div>
       </div>
     </section>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script>//passing the weight data (array of arrays) to the js file
-      let full_weights = <?php echo json_encode($user_data['weights']); ?>;
-      const weightData=[];
-      if(full_weights.length >= 5){
-         weightData=full_weights.slice(-5);  // last 5 items
-      }
-      weightData=full_weights;
-    </script> 
-    <script src="http://localhost/GymBro/public/javaScript/profile.js"></script>  <!--  Body section-->
-    <script src="http://localhost/GymBro/public/javaScript/common.js"></script>
-
   </body>
+  <script src="http://localhost/GymBro/public/javaScript/profile.js"></script>
+  <script src="http://localhost/GymBro/public/javaScript/common.js"></script>
 </html>

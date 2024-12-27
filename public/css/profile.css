@@ -209,17 +209,6 @@ canvas{
     font-size: 0.8rem;
 }
 
-.streak_indicator{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-}
-.streak_indicator h2{
-    font-weight: 300;
-    font-size: 0.8rem;
-    padding-top:15%;
-}
-
 /* Styling the mobile version*/
 
 @media screen and (max-width:680px){

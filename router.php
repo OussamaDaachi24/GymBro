@@ -39,12 +39,10 @@ function route($url_path){
             break;
         // B) home page
         case 'home':
-            $conn=connect_db();
-            display_home($conn);
+            display_home();
             break;
         case '':
-            $conn=connect_db();
-            display_home($conn);
+            display_home();
             break;
         // C) Authentication
         case 'login':
@@ -67,34 +65,35 @@ function route($url_path){
                 include_once __DIR__ . "/app/views/auth/login.php";
             }
             break;
-        case 'register':
-            $conn = connect_db();
-            $authController = new AuthController($conn);
-            // display_register() --> show register page
-            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                // Collect registration data
-                $userData = [
-                    'name' => $_POST['name'] ?? '',
-                    'email' => $_POST['email'] ?? '',
-                    'password' => $_POST['password'] ?? '',
-                    'confirm_password' => $_POST['confirm_password'] ?? '',
-                    //'age' => $_POST['age'] ?? ''
-                ];
-
-                // Attempt to register
-                if ($authController->register($userData)) {
-                    // Redirect to login or home page on success
-                    header("Location: /GymBro/home");
-                    exit;
+            case 'register':
+                $conn = connect_db();
+                $authController = new AuthController($conn);
+            
+                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                    // Collect registration data, including the uploaded file
+                    $userData = [
+                        'name' => $_POST['name'] ?? '',
+                        'email' => $_POST['email'] ?? '',
+                        'password' => $_POST['password'] ?? '',
+                        'confirm_password' => $_POST['confirm_password'] ?? '',
+                        'file' => $_FILES['file'] ?? null // Include the uploaded file
+                    ];
+            
+                    // Attempt to register
+                    if ($authController->register($userData)) {
+                        // Redirect to login or home page on success
+                        header("Location: /GymBro/home");
+                        exit;
+                    } else {
+                        // Show error message
+                        echo $authController->getError();
+                    }
                 } else {
-                    // Show error message
-                    echo $authController->getError();
+                    // Show the registration page
+                    include_once __DIR__ . "/app/views/auth/register.php";
                 }
-            } else {
-                // Show the registration page
-                include_once __DIR__ . "/app/views/auth/register.php";
-            }
-            break;
+                break;
+            
         case 'user/create':
             include_once __DIR__ . "/app/views/auth/register.php";
             break;
@@ -103,17 +102,12 @@ function route($url_path){
             break;
         // D) Diet 
         case 'diet/create':
-            try{
-                $conn=connect_db();
-                create_diet($conn);
-            }catch(Exception $e){
-                echo $e->getMessage();
-            }
-            
+            //create_diet() --> create & store the diet
+            $conn=connect_db();
+            create_diet($conn);
             break;
         case 'diet/view':
-            $conn=connect_db();
-            show_diet_program($conn);
+            // display_user_diet() --> fetch & display user diet
             break;
         // E) workout
         case 'workout/create':
@@ -125,21 +119,13 @@ function route($url_path){
         // F) Profile
         case 'profile/view':
             //display_profile_data() --> fetch user from DB & render the profile view
-            try{
-                $conn = connect_db();
-                get_profile_data($conn);
-            }catch(Exception $e){
-                echo $e->getMessage();
-            }
+            $conn = connect_db();
+            get_profile_data($conn);
             break;
         case 'profile/update':
-            try{
-                $conn = connect_db();
-                update_user_weight($conn);
-            }catch(Exception $e){
-                echo $e->getMessage();
-            }
-           
+            //update_weight() --> update user weight input
+            $conn = connect_db();
+            update_user_weight($conn);
             break;
         default:
             //include_once __DIR__ . "/app/views/static/not_found.php";

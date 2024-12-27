@@ -2,13 +2,10 @@
 
 ctx=document.getElementById('progressChart').getContext('2d');
 //array to store the weights (last 6)
-let weights=[];
-let dates=[];
-weights=weightData.map(entry => entry.weight_val);
-dates = weightData.map(entry => entry.taking_date);
+let weights=[40,50,20,55,100,65];
 //2-costume data for the chart
 const data={
-    labels:dates, // x axis
+    labels:['week1','week2','week3','week4','week5'], // x axis
     datasets:[{
         label:'Your Progress',
         data:weights,
@@ -43,4 +40,3 @@ const config = {
 
 //4- create the chart : 
 const progressLineChart = new Chart(ctx, config);
-
