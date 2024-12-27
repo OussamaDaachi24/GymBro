@@ -47,10 +47,11 @@ function select_user_weights($conn, $id) {
         if (!is_numeric($id) || $id <= 0) {
             throw new Exception("Invalid user ID provided");
         }
-
+        //retrieve all the weigth records in ascending order
         $sql = "SELECT weight_val, taking_date FROM user 
                 INNER JOIN weight ON user.user_id = weight.user_id 
-                WHERE user.user_id = ?";
+                WHERE user.user_id = ?
+                ORDER BY weight.taking_date ";
         
         $stmt = mysqli_prepare($conn, $sql);
         if (!$stmt) {
@@ -67,6 +68,8 @@ function select_user_weights($conn, $id) {
         
         $result = mysqli_stmt_get_result($stmt);
         $user_weights = mysqli_fetch_all($result, MYSQLI_ASSOC);
+        // $user_weights is an array contains thr rows as elements :
+        // $user_weights[0] = ['weight_val' => 70, 'taking_date'] => 2023-07-01
         
         mysqli_stmt_close($stmt);
         return $user_weights;
@@ -77,6 +80,29 @@ function select_user_weights($conn, $id) {
     }
 }
 
+//function to insert a new weight
+function insert_new_weigth($conn,$user_id,$weight_val){
+    try{
+        $sql="INSERT INTO weight (weight_val , taking_date , user_id)
+        VALUES ( ? , ? , ? )";
+        $stmt=mysqli_prepare($conn,$sql);
+        if(!$stmt){
+            throw new Exception(" Error when preparing the statement : " . mysqli_error($conn));
+        }
+        $curr_date=date('Y-m-d');
+        if(!mysqli_stmt_bind_param($stmt,'isi',$weight_val,$curr_date,$user_id)){
+            throw new Exception(" Error in binding the parameters : " . mysqli_error($conn));
+        }
+        if(!mysqli_stmt_execute($stmt)){
+            throw new Exception("Error in executing the statement : " . mysqli_error($conn));
+        }
+        mysqli_stmt_close($stmt);
+        return true;
+    }catch(Exception $e){
+        throw new Exception(" Error in inserting the weight : " . $e->getMessage());
+        return false;
+    }
+}
 
 
 // function to fetch user streak
@@ -115,7 +141,7 @@ function select_user_streak($conn, $id) {
         $days = $start_date->diff($today)->days;
         
         mysqli_stmt_close($stmt);
-        return $days;
+        return $days; //int
         
     } catch (Exception $e) {
         error_log("Error in select_user_streak: " . $e->getMessage());
@@ -148,27 +174,15 @@ function select_user_data($conn, $id) {
 }
 
 
-//function to update the user weight
-function update_weight($conn,$id,$weight,$date){
-    //1-sql query
-    $sql="INSERT INTO weight (user_id, weight_val , taking_weight)
-    VALUES (? , ? , ? )";
-    //2- prepare the statements
-    $stmt=mysqli_prepare($conn,$sql);
-    if(!$stmt){
-        die("error when preparing the statement : " . mysqli_error($conn));
-    }
-    //3- bind the parameters
-    mysqli_stmt_bind_param($stmt,'iis',$id,$weight,$date);
-    //4-execute the query
-    $result=mysqli_stmt_execute($stmt);
-    return $result;
-}
+
 
 //function to insert user additional features
 function insert_user_measures($conn,$height , $weight , $ideal_weight , $age ,$diet_id){
 
 }
+
+
+
 
 //function to insert the streak: initialize the streak: start_date=latest_daty=Current(), duration=0
 function insert_streak($conn,$user_id){

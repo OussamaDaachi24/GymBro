@@ -103,7 +103,6 @@ function route($url_path){
             break;
         // D) Diet 
         case 'diet/create':
-            //create_diet() --> create & store the diet
             try{
                 $conn=connect_db();
                 create_diet($conn);
@@ -113,7 +112,8 @@ function route($url_path){
             
             break;
         case 'diet/view':
-            // display_user_diet() --> fetch & display user diet
+            $conn=connect_db();
+            show_diet_program($conn);
             break;
         // E) workout
         case 'workout/create':
@@ -133,9 +133,13 @@ function route($url_path){
             }
             break;
         case 'profile/update':
-            //update_weight() --> update user weight input
-            $conn = connect_db();
-            update_user_weight($conn);
+            try{
+                $conn = connect_db();
+                update_user_weight($conn);
+            }catch(Exception $e){
+                echo $e->getMessage();
+            }
+           
             break;
         default:
             //include_once __DIR__ . "/app/views/static/not_found.php";

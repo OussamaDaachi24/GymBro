@@ -12,7 +12,7 @@ function insert_diet($conn, $total_cals, $meal_num, $snack_num, $user_id): bool 
             throw new Exception("Failed to prepare statement: " . mysqli_error($conn));
         }
         //bind the parametrs to the query
-        if (!mysqli_bind_param($stmt, 'iii', $total_cals, $meal_num, $snack_num)) {
+        if (!mysqli_stmt_bind_param($stmt, 'iii', $total_cals, $meal_num, $snack_num)) {
             throw new Exception("Parameter binding failed: " . mysqli_error($conn));
         }
         //execute the query
@@ -34,7 +34,7 @@ function insert_diet($conn, $total_cals, $meal_num, $snack_num, $user_id): bool 
 function insert_meal($conn, $cals, $protein, $carbs, $fat, $type, $diet_id) {
     try {
         
-        $sql = "INSERT INTO meal (meal_calories, protein_calories, carb_calories, fat_calories, type, diet_id) 
+        $sql = "INSERT INTO meal (meal_calories, protein_calorie, carb_calorie, fat_calorie, type, diet_id) 
                 VALUES (?, ?, ?, ?, ?, ?)";
         
         $stmt = mysqli_prepare($conn, $sql);
@@ -42,7 +42,7 @@ function insert_meal($conn, $cals, $protein, $carbs, $fat, $type, $diet_id) {
             throw new Exception("Failed to prepare statement: " . mysqli_error($conn));
         }
         
-        if (!mysqli_bind_param($stmt, 'iiiisi', $cals, $protein, $carbs, $fat, $type, $diet_id)) {
+        if (!mysqli_stmt_bind_param($stmt, 'iiiisi', $cals, $protein, $carbs, $fat, $type, $diet_id)) {
             throw new Exception("Parameter binding failed: " . mysqli_error($conn));
         }
         
@@ -61,7 +61,7 @@ function insert_meal($conn, $cals, $protein, $carbs, $fat, $type, $diet_id) {
 
 //3- function to fetch diet based on the user
 function fetch_user_diet($conn,$user_id){
-    
+    RETURN null;
 }
 
 

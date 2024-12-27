@@ -26,29 +26,39 @@ function get_profile_data($conn){
 }
 
 function validate_weight($weight){
-    return ($weight>25 && $weight<200);
+
+     if($weight<25 || $weight>200){
+        throw new Exception('error : weight must be between 25 and 200 kg');
+     }
+     return true;
 }
 
 //2- update the weight
 function update_user_weight($conn){
-    //0- check log-in
-    check_login();
-    //1-obtain the id of the user
-    $id=$_SESSION['user_id'];
-    //2-obtain the updated weight
-    if(!($_SERVER['REQUEST_METHOD']=='POST')||!(isset($_POST['weight'])) ){
-        // the weight is not updated
-        header('location: /GymBro/profile/view');
+    try{
+            //0- check log-in
+            check_login();
+            //1-obtain the id of the user
+            $user_id=$_SESSION['user_id'];
+            //2-obtain the updated weight
+            if(!($_SERVER['REQUEST_METHOD']=='POST')||!(isset($_POST['weight'])) ){
+                throw new Exception('Error in the request method : no weight');
+            }
+            $weight=$_POST['weight'];
+            if(!validate_weight($weight)){
+                throw new Exception('Error : weight is not valid');
+            }
+            //current date
+            $date=date('Y-m-d');
+            //3-update the weight
+            $updated=insert_new_weigth($conn,$user_id,$weight);
+            if(!$updated){
+                throw new Exception('Error in updating the weight');
+            }
+            //redirect to the profile page
+            get_profile_data($conn);
+    }catch(Exception $e){
+        throw new Exception("Error in update_user_weight() : ". $e->getMessage());
     }
-    $weight=$_POST[weight];
-    if(!validate_weight($weight)){
-        // redirect it to the create_diet view
-        $_SESSION['valid_weight']=false; // used in the view to indicate that the weight is not valid
-        header('Location : ../views/profile/profile.php');    
-    }
-    $date=date('Y-m-d');
-    //3-update the weight
-    $updated=update_weight($conn,$id,$weight,$date);
-    //redirect to the profile page
-    get_profile_data();
+   
 }

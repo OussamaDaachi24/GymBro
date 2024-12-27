@@ -218,7 +218,7 @@
 
       </div>
     </section>
-    <script src="../javaScript/home.js"></script>
-    <script src="../javaScript/common.js"></script>
+    <script src="http://localhost/GymBro/javaScript/home.js"></script>
+    <script src=http://localhost/GymBro/javaScript/common.js"></script>
   </body>
 </html>

@@ -91,11 +91,76 @@ function calculate_calories($height, $curr_weight, $GOAL, $age): int {
     }
 }
 
+//2- split the calorie intake into the 3 main nutrients (macros)
+function obtain_macros($calories,$goal,$weight){ 
+    $macros=new stdClass();
+    // 1- determine based on the fitness goal
+    if(strtolower($goal)=='bulk'){
+        $macros->protein=2.45*$weight*4;
+        $macros->fat=$calories*25/100;
+        $macros->carbs=$calories-$macros->protein-$macros->fat;
+    }
+    elseif(strtolower($goal)=='cut'){
+        $macros->protein=2.8*$weight*4;
+        $macros->fat=$calories*15/100;
+        $macros->carbs=$calories-$macros->protein-$macros->fat;
+    }
+    else{
+        $macros->protein=1.9*$weight*4;
+        $macros->fat=$calories*25/100;
+        $macros->carbs=$calories-$macros->protein-$macros->fat;
+    }
+    return $macros;
+}
+
+//3- find the calorie size for each meal (snacks not included)
+function split_meal_cals($calories,$meal_num){
+    //1- the number of snakes
+    $snack_num=snacks_number($meal_num);
+    
+    //2- the amount of calories in each meal 
+    $calories_for_meals=$calories-(370*$snack_num); // remove the snack calories
+    $calorie_per_meal=floor($calories_for_meals/$meal_num);
+    return $calorie_per_meal; // the calories per 1 meal 
+
+}
+
+//4- obtain the macros for each meal (snacks not included)
+function macros_per_meal($macros,$meal_num){
+    $macro_meal=new stdClass();
+    if($meal_num==0){
+        //throw an exception
+    }
+    $macro_meal->protein = $macros->protein/$meal_num;
+    $macro_meal->fat = $macros->fat/$meal_num;
+    $macro_meal->carbs = $macros->carbs/$meal_num;
+    return $macro_meal;
+
+}
+
+function snacks_number($meal_num){
+    $snack_num;
+    if($meal_num<=4 && $meal_num>2){
+        $snack_num=1;
+    }
+    elseif($meal_num>4){
+        $snack_num=2;
+    }
+    else{
+        $snack_num=0;
+    }
+    return $snack_num;
+}
+
 function create_diet($conn) {
     //1- check login
     if (!isset($_SESSION['logged_in'])) {
         throw new Exception("User not authenticated");
     }
+    if(!isset($_SESSION['user_id'])){
+        throw new Exception('User_id not found');
+    }
+    $user_id=$_SESSION['user_id'];
     //2- check the request (Data are sent or not)
     if ($_SERVER['REQUEST_METHOD'] != 'POST') {
         throw new Exception("Invalid request method");
@@ -106,7 +171,7 @@ function create_diet($conn) {
     //3- get the data
     try {
         $height = $_POST['height'];
-        $weight = $_POST['weight'];
+        $weight = $_POST['curr_weight'];
         $ideal_weight = $_POST['ideal_weight'];
         $age = $_POST['age'];
         $meal_num = $_POST['meal_num'];
@@ -128,7 +193,7 @@ function create_diet($conn) {
         $snack_num = snacks_number($meal_num);
         
         //5- insert the diet
-        if (!insert_diet($conn, $calories, $meal_num, $snack_num)) {
+        if (!insert_diet($conn, $calories, $meal_num, $snack_num,$user_id)) {
             throw new Exception("Failed to insert diet");
         }
         //get the diet_id
@@ -161,7 +226,7 @@ function create_diet($conn) {
 
 // function to display the diet & meals for the user
 
-function show_diet_program() {
+function show_diet_program($conn) {
     try {
         if (!isset($_SESSION['logged_in'])) {
             throw new Exception("User not authenticated");
@@ -172,10 +237,11 @@ function show_diet_program() {
         }
         
         $user_id = $_SESSION['user_id'];
-        $diet_data = fetch_diet($user_id);
+        $diet_data = fetch_user_diet($conn,$user_id);
         
         if (!$diet_data) {
-            throw new Exception("No diet plan found");
+            //he didn't make a diet program
+            header('Location: /GymBro/app/views/diet/create_diet.php');
         }
         
         require_once __DIR__ . "/../views/diet/myMeals.php";
