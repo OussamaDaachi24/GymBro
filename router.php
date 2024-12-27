@@ -65,33 +65,35 @@ function route($url_path){
                 include_once __DIR__ . "/app/views/auth/login.php";
             }
             break;
-        case 'register':
-            $conn = connect_db();
-            $authController = new AuthController($conn);
-            // display_register() --> show register page
-            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                // Collect registration data
-                $userData = [
-                    'name' => $_POST['name'] ?? '',
-                    'email' => $_POST['email'] ?? '',
-                    'password' => $_POST['password'] ?? '',
-                    'confirm_password' => $_POST['confirm_password'] ?? ''
-                ];
-
-                // Attempt to register
-                if ($authController->register($userData)) {
-                    // Redirect to login or home page on success
-                    header("Location: /GymBro/home");
-                    exit;
+            case 'register':
+                $conn = connect_db();
+                $authController = new AuthController($conn);
+            
+                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                    // Collect registration data, including the uploaded file
+                    $userData = [
+                        'name' => $_POST['name'] ?? '',
+                        'email' => $_POST['email'] ?? '',
+                        'password' => $_POST['password'] ?? '',
+                        'confirm_password' => $_POST['confirm_password'] ?? '',
+                        'file' => $_FILES['file'] ?? null // Include the uploaded file
+                    ];
+            
+                    // Attempt to register
+                    if ($authController->register($userData)) {
+                        // Redirect to login or home page on success
+                        header("Location: /GymBro/home");
+                        exit;
+                    } else {
+                        // Show error message
+                        echo $authController->getError();
+                    }
                 } else {
-                    // Show error message
-                    echo $authController->getError();
+                    // Show the registration page
+                    include_once __DIR__ . "/app/views/auth/register.php";
                 }
-            } else {
-                // Show the registration page
-                include_once __DIR__ . "/app/views/auth/register.php";
-            }
-            break;
+                break;
+            
         case 'user/create':
             include_once __DIR__ . "/app/views/auth/register.php";
             break;

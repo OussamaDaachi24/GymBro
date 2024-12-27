@@ -3,16 +3,17 @@
 class AuthController {
     private $conn;
     private $errorMsg = '';
-    
+
     // Validation constants
     private const PASSWORD_MIN_LENGTH = 8;
     private const NAME_MIN_LENGTH = 2;
     private const NAME_MAX_LENGTH = 50;
+    private const ALLOWED_FILE_TYPES = ['image/jpeg', 'image/png', 'image/gif'];
+    private const MAX_FILE_SIZE = 5242880; // 5MB in bytes
 
-    
     public function __construct($conn) {
         $this->conn = $conn;
-       // session_start();
+        // session_start();
     }
 
     /**
@@ -87,24 +88,31 @@ class AuthController {
         // Hash password
         $hashedPassword = password_hash($sanitizedData['password'], PASSWORD_DEFAULT);
 
+        // Handle file upload
+        $filePath = $this->saveUploadedFile($userData['file']);
+        if (!$filePath) {
+            return false; // Error message is already set in saveUploadedFile
+        }
+
         // Insert new user
-        $sql = "INSERT INTO user (name, email, password) VALUES (?, ?, ?)";
-        
+        $sql = "INSERT INTO user (name, email, password, profile_picture) VALUES (?, ?, ?, ?)";
+
         try {
             $stmt = mysqli_prepare($this->conn, $sql);
-            mysqli_stmt_bind_param($stmt, 'sss', 
+            mysqli_stmt_bind_param($stmt, 'ssss', 
                 $sanitizedData['name'],
                 $sanitizedData['email'],
-                $hashedPassword
+                $hashedPassword,
+                $filePath
             );
-            
+
             if (mysqli_stmt_execute($stmt)) {
                 return true;
             }
-            
+
             $this->errorMsg = "Registration failed";
             return false;
-            
+
         } catch (Exception $e) {
             error_log("Registration error: " . $e->getMessage());
             $this->errorMsg = $e->getMessage();
@@ -119,7 +127,7 @@ class AuthController {
      */
     private function validateRegistrationData(array $data): bool {
         // Check required fields
-        $required = ['name', 'email', 'password', 'confirm_password'];
+        $required = ['name', 'email', 'password', 'confirm_password', 'file'];
         foreach ($required as $field) {
             if (empty($data[$field])) {
                 $this->errorMsg = "All fields are required";
@@ -142,13 +150,82 @@ class AuthController {
             return false;
         }
 
-        // Validate age
-
+        // Validate file
+        if (!$this->validateFile($data['file'])) {
+            return false;
+        }
 
         return true;
     }
 
     /**
+     * Validate uploaded file
+     * @param array $file File data from $_FILES
+     * @return bool Validation status
+     */
+
+     private function validateFile(array $file): bool {
+        // Check for upload errors
+        if ($file['error'] !== UPLOAD_ERR_OK) {
+            switch ($file['error']) {
+                case UPLOAD_ERR_INI_SIZE:
+                case UPLOAD_ERR_FORM_SIZE:
+                    $this->errorMsg = "File is too large";
+                    break;
+                case UPLOAD_ERR_PARTIAL:
+                    $this->errorMsg = "File was only partially uploaded";
+                    break;
+                case UPLOAD_ERR_NO_FILE:
+                    $this->errorMsg = "No file was uploaded";
+                    break;
+                default:
+                    $this->errorMsg = "File upload error occurred";
+            }
+            return false;
+        }
+
+        // Check file size
+        if ($file['size'] > self::MAX_FILE_SIZE) {
+            $this->errorMsg = "File size must be less than " . (self::MAX_FILE_SIZE / 1048576) . "MB";
+            return false;
+        }
+
+        // Verify MIME type
+        $finfo = finfo_open(FILEINFO_MIME_TYPE);
+        $mimeType = finfo_file($finfo, $file['tmp_name']);
+        finfo_close($finfo);
+
+        if (!in_array($mimeType, self::ALLOWED_FILE_TYPES)) {
+            $this->errorMsg = "Invalid file type. Allowed types: JPEG, PNG, GIF";
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
+     * Save uploaded file to the server
+     * @param array $file File data from $_FILES
+     * @return string|false File path on success, false on failure
+     */
+    private function saveUploadedFile(array $file): string|false {
+        $uploadDir = __DIR__ . '/uploads/';
+        if (!is_dir($uploadDir)) {
+            mkdir($uploadDir, 0777, true);
+        }
+
+        $fileName = uniqid() . '_' . basename($file['name']);
+        $filePath = $uploadDir . $fileName;
+
+        if (!move_uploaded_file($file['tmp_name'], $filePath)) {
+            $this->errorMsg = "Failed to save uploaded file";
+            return false;
+        }
+
+        return $filePath;
+    }
+
+     /**
      * Validate name
      * @param string $name Name to validate
      * @return bool Validation status
@@ -166,11 +243,10 @@ class AuthController {
 
         return true;
     }
-
     /**
-     * Validate email
-     * @param string $email Email to validate
-     * @return bool Validation status
+     * Sanitize registration data
+     * @param array $data Data to sanitize
+     * @return array Sanitized data
      */
     private function validateEmail(string $email): bool {
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -251,7 +327,8 @@ class AuthController {
         return [
             'name' => htmlspecialchars(trim($data['name']), ENT_QUOTES, 'UTF-8'),
             'email' => filter_var($data['email'], FILTER_SANITIZE_EMAIL),
-            'password' => $data['password']
+            'password' => $data['password'],
+            'file' => $data['file'] // Include file in sanitized data
         ];
     }
 
@@ -299,3 +376,5 @@ class AuthController {
         return isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true;
     }
 }
+
+
