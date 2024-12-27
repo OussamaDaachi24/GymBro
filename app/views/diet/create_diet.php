@@ -47,7 +47,7 @@
                 <div class="step">3</div>
             </div>
 
-            <form  action="/GymBro/diet/create" method="POST">
+            <form id="create-diet-form" action="/GymBro/diet/create" method="POST">
                 <!-- Step 1: Basic Details -->
                 <div id="step1" class="form-section active">
                     <h2 class="form-title">Basic Details</h2>

@@ -81,7 +81,7 @@
         </div>
         <div class="Image-input-container">
           <label class="Image-input">
-            <input type="file" accept="image/*" name="image" style="display: none;" >
+            <input type="file" accept="image/*" name="image" style="display: none;" form="registration-form" >
             <img src="http://localhost/GymBro/public/assets/images/PlusImage.png" alt="Upload Image" class="img_input">
           </label>
 

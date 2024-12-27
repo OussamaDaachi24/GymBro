@@ -39,10 +39,12 @@ function route($url_path){
             break;
         // B) home page
         case 'home':
-            display_home();
+            $conn=connect_db();
+            display_home($conn);
             break;
         case '':
-            display_home();
+            $conn=connect_db();
+            display_home($conn);
             break;
         // C) Authentication
         case 'login':
@@ -76,7 +78,7 @@ function route($url_path){
                     'email' => $_POST['email'] ?? '',
                     'password' => $_POST['password'] ?? '',
                     'confirm_password' => $_POST['confirm_password'] ?? '',
-                    'age' => $_POST['age'] ?? ''
+                    //'age' => $_POST['age'] ?? ''
                 ];
 
                 // Attempt to register
@@ -102,8 +104,13 @@ function route($url_path){
         // D) Diet 
         case 'diet/create':
             //create_diet() --> create & store the diet
-            $conn=connect_db();
-            create_diet($conn);
+            try{
+                $conn=connect_db();
+                create_diet($conn);
+            }catch(Exception $e){
+                echo $e->getMessage();
+            }
+            
             break;
         case 'diet/view':
             // display_user_diet() --> fetch & display user diet
@@ -118,8 +125,12 @@ function route($url_path){
         // F) Profile
         case 'profile/view':
             //display_profile_data() --> fetch user from DB & render the profile view
-            $conn = connect_db();
-            get_profile_data($conn);
+            try{
+                $conn = connect_db();
+                get_profile_data($conn);
+            }catch(Exception $e){
+                echo $e->getMessage();
+            }
             break;
         case 'profile/update':
             //update_weight() --> update user weight input

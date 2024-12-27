@@ -3,43 +3,59 @@
 // this model handles meal and diet tables
 
 //1- function to insert the diet components
-function insert_diet($conn,$total_cals,$meal_num,$snack_num,$user_id):bool{
-    $sql="INSERT INTO diet (calories,num_meals,num_snacks)
-    VALUES ( ?, ? , ?)";
-    try{
-        $stmt=mysqli_prepare($conn,$sql);
-        if(!$stmt){
-            error_log("Statement preparation failed: " . mysqli_error($conn));
+function insert_diet($conn, $total_cals, $meal_num, $snack_num, $user_id): bool {
+    try {        
+        $sql = "INSERT INTO diet (calories, num_meals, num_snacks) VALUES (?, ?, ?)";
+        
+        $stmt = mysqli_prepare($conn, $sql);
+        if (!$stmt) { // the preparation failed --> exception
+            throw new Exception("Failed to prepare statement: " . mysqli_error($conn));
         }
-        mysqli_bind_param($stmt,'iii',$total_cals,$meal_num,$snack_num);
-        $result=mysqli_execute($stmt);
-        return $result;
-    }
-    catch (Exception $e) {
+        //bind the parametrs to the query
+        if (!mysqli_bind_param($stmt, 'iii', $total_cals, $meal_num, $snack_num)) {
+            throw new Exception("Parameter binding failed: " . mysqli_error($conn));
+        }
+        //execute the query
+        if (!mysqli_execute($stmt)) {
+            throw new Exception("Execute failed: " . mysqli_error($conn));
+        }
+        
+        mysqli_stmt_close($stmt);
+        return true; //succesful insertion
+        
+    } catch (Exception $e) {
         error_log("Error in insert_diet: " . $e->getMessage());
-        return false;
+        throw new Exception("Failed to insert diet: " . $e->getMessage());
     }
 }
 
+
 //2- function to insert the meal component (meal/snack)
-function insert_meal($conn,$cals,$protein,$carbs,$fat,$type,$diet_id){
-    $sql="INSERT INTO meal (meal_calories ,protein_calories ,carb_calories ,fat_calories ,type ,diet_id)
-    VALUES (? ,? ,? ,? ,? ,? ) ";
-    try{
-        //1-prepare the statement
-        $stmt=mysqli_prepare($conn,$sql);
-        if(!$stmt){
-            error_log("Statement preparation failed: " . mysqli_error($conn));
+function insert_meal($conn, $cals, $protein, $carbs, $fat, $type, $diet_id) {
+    try {
+        
+        $sql = "INSERT INTO meal (meal_calories, protein_calories, carb_calories, fat_calories, type, diet_id) 
+                VALUES (?, ?, ?, ?, ?, ?)";
+        
+        $stmt = mysqli_prepare($conn, $sql);
+        if (!$stmt) {
+            throw new Exception("Failed to prepare statement: " . mysqli_error($conn));
         }
-        //2- bind the parameters
-        mysqli_bind_param($stmt,'iiiisi',$cals,$protein,$carbs,$fat,$type,$diet_id);
-        //3- execute the query
-        $result=mysqli_execute($stmt);
-        return $result;
-    }
-    catch(Exception $e){
-        error_log("Error in meal: " . $e->getMessage());
-        return false;
+        
+        if (!mysqli_bind_param($stmt, 'iiiisi', $cals, $protein, $carbs, $fat, $type, $diet_id)) {
+            throw new Exception("Parameter binding failed: " . mysqli_error($conn));
+        }
+        
+        if (!mysqli_execute($stmt)) {
+            throw new Exception("Execute failed: " . mysqli_error($conn));
+        }
+        
+        mysqli_stmt_close($stmt);
+        return true;
+        
+    } catch (Exception $e) {
+        error_log("Error in insert_meal: " . $e->getMessage());
+        throw new Exception("Failed to insert meal: " . $e->getMessage());
     }
 }
 
