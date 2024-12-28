@@ -69,16 +69,7 @@ class DietModel {
     /**
      * Fetch diet and associated meal/snack data for a user
     */
-    <?php
 
-class DietModel {
-    private $conn;
-
-    public function __construct($connection) {
-        $this->conn = $connection;
-    }
-
- 
     /* Fetch diet/meal/snack data for a user*/
     public function fetchUserDiet($user_id): ?array {
         try {
@@ -164,5 +155,4 @@ class DietModel {
             throw new Exception("Failed to fetch user diet: " . $e->getMessage());
         }
     }
-}
 }
