@@ -40,6 +40,7 @@ function get_workout(){
 include_once __DIR__ . '..//models//workout_model.php';
 include_once __DIR__ . '/..//views//workout//see_workout.php';
 include_once __DIR__ . '/config/db_connect.php'; 
+include_once __DIR__ . '/../views/auth/login.php';
 include 'Workout.php'.  
 
 session_start(); // Start the session to check login status
