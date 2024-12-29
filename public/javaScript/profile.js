@@ -5,13 +5,23 @@ const ctx = document.getElementById('progressChart').getContext('2d');
 let weightData = [];
 
 // Process the PHP-provided data
-if (full_weights && full_weights.length > 0) {
-    weightData = full_weights.length >= 5 ? full_weights.slice(-5) : full_weights;
-} 
+if (typeof full_weights !== 'undefined' && full_weights) {
+    // Take last 5 entries or all if less than 5
+    processedWeights = Array.isArray(full_weights) ? 
+        (full_weights.length >= 5 ? full_weights.slice(-5) : full_weights) : 
+        [];
+}
 
-// Extract weights and dates using const since they won't be reassigned
-const weights = weightData.map(entry => parseFloat(entry.weight_val));
-const dates = weightData.map(entry => entry.taking_date);
+// Safely extract weights and dates, handling potential missing or malformed data
+const weights = processedWeights.map(entry => 
+    typeof entry === 'object' && entry.weight_val ? 
+    parseFloat(entry.weight_val) : 0
+);
+
+const dates = processedWeights.map(entry =>
+    typeof entry === 'object' && entry.taking_date ? 
+    entry.taking_date : ''
+);
 
 // 2. Chart configuration
 const data = {

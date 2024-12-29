@@ -33,6 +33,7 @@ body {
 }
 
 /* Header Styles */
+/*
 .header {
     background-color: var(--clr-secondary-bg);
     padding: 1rem;
@@ -74,7 +75,7 @@ body {
     background: none;
     border: none;
     cursor: pointer;
-}
+}*/
 
 /* Main Content */
 .main-content {

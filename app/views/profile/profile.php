@@ -135,12 +135,7 @@
     </section>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>//passing the weight data (array of arrays) to the js file
-      let full_weights = <?php echo json_encode($user_data['weights']); ?>;
-      const weightData=[];
-      if(full_weights.length >= 5){
-         weightData=full_weights.slice(-5);  // last 5 items
-      }
-      weightData=full_weights;
+    const full_weights = <?php echo json_encode($user_data['weights'] ?? [], JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT); ?>;
     </script> 
     <script src="http://localhost/GymBro/public/javaScript/profile.js"></script>  <!--  Body section-->
     <script src="http://localhost/GymBro/public/javaScript/common.js"></script>
