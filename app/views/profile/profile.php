@@ -55,18 +55,19 @@
             <h1>My Profile</h1>
             <div class="user_identifier">
               <div class="text_data">
-                <?php if (isset($user_data['information']) || true): ?> <!--check that the user is logged -->
+                <?php if (isset($user_data['information'])): ?> <!--check that the user is logged -->
                 <p>Name: <?php echo htmlspecialchars($user_data['information']['name']) ?></p>
                 <p>Age: <?php echo htmlspecialchars($user_data['information']['age']) ?></p>
                 <p>Email: <?php echo htmlspecialchars($user_data['information']['email']) ?></p>
               </div>
               <?php endif; ?>
               <div class="img_data">
-                <?php 
-                    $profile_pic = isset($user_data['information']['profile_picture'])  //check if the profile picture exist
-                    ? htmlspecialchars($user_data['information']['profile_picture']) //assign the path to the vaariable
-                    : 'http://localhost/GymBro/public/assets/images/pancake.webp';
+              <?php
+                  $profile_pic = isset($user_data['information']['profile_picture'])
+                  ? strstr(htmlspecialchars($user_data['information']['profile_picture']), '\GymBro')  // Removed the leading slash
+                   : '/GymBro/public/assets/images/pancake.webp';  // Added leading slash for consistency
                 ?>
+                <?php $newPath = strstr($profile_pic, 'GymBro') ; ?>
                 <img src="<?php echo $profile_pic; ?>" /> <!-- put the path variable in img -->
               </div>
             </div>
@@ -134,12 +135,7 @@
     </section>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>//passing the weight data (array of arrays) to the js file
-      let full_weights = <?php echo json_encode($user_data['weights']); ?>;
-      const weightData=[];
-      if(full_weights.length >= 5){
-         weightData=full_weights.slice(-5);  // last 5 items
-      }
-      weightData=full_weights;
+    const full_weights = <?php echo json_encode($user_data['weights'] ?? [], JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT); ?>;
     </script> 
     <script src="http://localhost/GymBro/public/javaScript/profile.js"></script>  <!--  Body section-->
     <script src="http://localhost/GymBro/public/javaScript/common.js"></script>

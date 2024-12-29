@@ -16,6 +16,9 @@ function get_profile_data($conn){
     //1- identify the user
     try{
         $id=$_SESSION['user_id'];
+        if(!$id){
+            throw new Exception("user id is not valid");
+        }
         $user_data=select_user_data($conn,$id); //array that contains user data
         //2- include the profile view to insert the data
         include_once __DIR__ .  "/../views/profile/profile.php";

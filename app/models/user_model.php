@@ -40,7 +40,6 @@ function select_user_info($conn, $id) {
     }
 }
 
-
 // function to fetch user weights
 function select_user_weights($conn, $id) {
     try {
@@ -176,41 +175,41 @@ function select_user_data($conn, $id) {
 
 
 
-//function to insert user additional features
-function insert_user_measures($conn,$height , $weight , $ideal_weight , $age ,$diet_id){
-
-}
-
-
-
-
 //function to insert the streak: initialize the streak: start_date=latest_daty=Current(), duration=0
-function insert_streak($conn,$user_id){
+function insert_streak($conn, $user_id) {
     $currentDate = date('Y-m-d');
     $duration = 0;
-    $state='ACTIVE';
-    try{
-        //1-sql query
-        $sql="INSERT INTO streak ( start_date , end_date , state , duration , user_id )
-        VALUES ( ? , ? , ? , ? , ? )";
-        //2- prepare the statement
-        $stmt=mysqli_prepare($conn,$sql);
-        if(!$stmt){
-            throw new Exception("Error when preparing the statement : ". mysqli_error($conn));
+    $state = 'ACTIVE';
+
+    try {
+        // SQL query
+        $sql = "INSERT INTO streak (start_date, end_date, state, duration, user_id) 
+                VALUES (?, ?, ?, ?, ?)";
+        
+        // Prepare statement
+        $stmt = mysqli_prepare($conn, $sql);
+        if (!$stmt) {
+            throw new Exception("Error when preparing the statement: " . mysqli_error($conn));
         }
-        //3- bind the parameters
-        if(!mysqli_stmt_bind_param($stmt,'sssii',$currentDate,$currentDate,$state,$duration,$user_id)){
-            throw new Exception("Error in binding the statement : " . mysqli_error($conn));
+
+        // Bind parameters - state is string (s), duration and user_id are integers (i)
+        if (!mysqli_stmt_bind_param($stmt, 'sssis', $currentDate, $currentDate, $state, $duration, $user_id)) {
+            throw new Exception("Error in binding the statement: " . mysqli_error($conn));
         }
-        //4- execute the query
-        if(!mysqli_stmt_execute($stmt)){
+
+        // Execute query
+        if (!mysqli_stmt_execute($stmt)) {
             throw new Exception("Error in executing the statement: " . mysqli_error($conn));
         }
+
         mysqli_stmt_close($stmt);
-    }catch(Exception $e){
-        throw new Exception("Error in insert_streak: " .$e->getMessage());
+        return true;
+
+    } catch (Exception $e) {
+        throw new Exception("Error in insert_streak: " . $e->getMessage());
     }
 }
+
 
 //function to update the streak : update the duration and latest access day
 function increment_streak($conn,$user_id,$start_date){
@@ -233,7 +232,7 @@ function increment_streak($conn,$user_id,$start_date){
             throw new Exception("Error when binding the parametrs : " . mysqli_error($conn));
         }
         //3-execute the query
-        if(!mysqli_execute($stmt)){
+        if(!mysqli_stmt_execute($stmt)){
             throw new Exception("Error in executing the statement : " . mysqli_error($conn));
         }
         mysqli_stmt_close($stmt);
@@ -253,7 +252,7 @@ function get_streak($conn,$user_id){
         if(!mysqli_stmt_bind_param($stmt,"i",$user_id)){
             throw new Exception("Error in binding the parameters : " . mysqli_error($conn));
         }
-        if(!mysqli_execute($stmt)){
+        if(!mysqli_stmt_execute($stmt)){
             throw new Exception("Error in executing the statement : " . mysqli_error($conn));
         }
         // Bind the result variables
@@ -277,7 +276,7 @@ function get_streak($conn,$user_id){
     }
 }
 
-//function to initialize tthe streak
+//function to initialize the streak
 function initialize_streak($conn,$user_id){
     $currentDate = date('Y-m-d');
     $duration = 0;
@@ -330,3 +329,32 @@ function end_streak($conn,$user_id,$start_date,$end_date ){
         throw new Exception("Error when ending the streak : " . $e->getMessage());
     }
 }
+
+
+//function to insert user additional features
+function insert_user_measures($conn,$height , $weight , $ideal_weight , $age ,$diet_id,$user_id){
+    $sql="UPDATE user
+         SET height = ? ,
+         weight = ? ,
+         age = ? ,
+         ideal_weight = ? ,
+         diet_id = ?  
+         WHERE user_id = ? ";
+    try{
+        $stmt=mysqli_prepare($conn,$sql);
+        if(!$stmt){
+            throw new Exception("Error in peparing the statement" . mysqli_error($conn));
+        }
+        if(!mysqli_stmt_bind_param($stmt,"iiiiii",$height,$weight,$age,$ideal_weight,$diet_id,$user_id)){
+            throw new Exception("Error in binding the parameters : " . mysqli_error($conn));
+        }
+        if(!mysqli_stmt_execute($stmt)){
+            throw new Exception("Error in executing the statement : " . mysqli_error($conn));
+        }
+        mysqli_stmt_close($stmt);
+    }catch(Exception $e){
+        throw new Exception($e->getMessage());
+    }
+}
+
+

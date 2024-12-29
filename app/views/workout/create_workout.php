@@ -1,25 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GymBro - Create Workout</title>
-    
-    <!-- Preload fonts -->
+    <title>GymBro - Workout</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <!-- Stylesheet links -->
-    <link rel="stylesheet" href="../../public/css/create_workout.css" />
-    <link rel="stylesheet" href="../../public/css/common.css" />
+    <link rel="stylesheet" href="/GymBro/public/css/create_workout.css" />
+    <link rel="stylesheet" href="/GymBro/public/css/common.css" />
 </head>
 <body>
     <header class="header">
         <nav class="navbar">
             <div class="logo-container">
                 <a href="home.html" class="logo">
-                    <img src="assets/icons/logo.png" alt="GymBro Logo" class="logo-img">
-                    <span class="logo-text">GymBro</span>
+                    <img src="/GymBro/public/assets/icons/logo.png" alt="GymBro Logo" class="logo-img">
                 </a>
             </div>
             
@@ -34,12 +31,13 @@
                 <li><a href="see_diet.html">My Meals</a></li>
                 <li>
                     <a href="profile.html" class="profile-link">
-                        <img src="assets/icons/profile-circle.png" alt="Profile" class="profile-img">
+                        <img src="/GymBro/public/assets/icons/profile-circle.png" alt="Profile" class="profile-img">
                     </a>
                 </li>
             </ul>
         </nav>
-        <section class="mobile_options">
+    </header>
+    <section class="mobile_options">
       <div class="options">
         <a href="./home.html">Home</a>
         <a href="./about.html">About</a>
@@ -47,7 +45,6 @@
         <a href="./static_exercise.html">My Workout </a>
       </div>
     </section>
-    </header>
 
     <main class="main-content">
         <div class="workout-creator">
@@ -61,7 +58,7 @@
                 <div class="step completed" data-step="3">3</div>
             </div>
 
-            <form id="workout-form" action="process_workout.php" method="POST" class="workout-form">
+            <form id="workout-form" action="/GymBro/workout/create" method="POST" class="workout-form">
                 <!-- Step 1: Workout Split -->
                 <div class="form-step" id="step1">
                     <h2 class="step-title">Workout Split</h2>

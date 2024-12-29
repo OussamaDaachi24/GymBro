@@ -39,11 +39,11 @@ function route($url_path){
             break;
         // B) home page
         case 'home':
-            $conn = connect_db();
+            $conn=connect_db();
             display_home($conn);
             break;
         case '':
-            $conn = connect_db();
+            $conn=connect_db();
             display_home($conn);
             break;
         // C) Authentication
@@ -83,6 +83,7 @@ function route($url_path){
             
                     // Attempt to register
                     if ($authController->register($userData)) {
+
                         // Redirect to login or home page on success
                         header("Location: /GymBro/home");
                         exit;
@@ -103,17 +104,30 @@ function route($url_path){
             //valid_login() --> validate user data for login
             break;
         // D) Diet 
+        case 'diet/form':
+            include_once __DIR__ . "/app/views/diet/create_diet.php";
+            break;
         case 'diet/create':
-            //create_diet() --> create & store the diet
-            $conn=connect_db();
-            create_diet($conn);
+            try{
+                $conn=connect_db();
+                create_diet($conn);
+            }catch(Exception $e){
+                print( $e->getMessage());
+            }
+           
             break;
         case 'diet/view':
-            // display_user_diet() --> fetch & display user diet
+            try{
+                $conn=connect_db();
+                show_diet_program($conn); 
+            }catch(Exception $e){
+            }
+          
             break;
         // E) workout
         case 'workout/create':
             //create_workout() --> create and store the workout
+            print_r($_POST);
             break;
         case 'workout/view':
             //display_workout() --> fetch the workout
@@ -122,7 +136,12 @@ function route($url_path){
         case 'profile/view':
             //display_profile_data() --> fetch user from DB & render the profile view
             $conn = connect_db();
-            get_profile_data($conn);
+            try{
+                get_profile_data($conn);
+            }catch(Exception $e){
+                echo "Error in getting profile data : " . $e->getMessage();
+            }
+            
             break;
         case 'profile/update':
             //update_weight() --> update user weight input
@@ -130,7 +149,7 @@ function route($url_path){
             update_user_weight($conn);
             break;
         default:
-            //include_once __DIR__ . "/app/views/static/not_found.php";
+            include_once __DIR__ . "/app/views/static/not_found.php";
         endswitch;
     
 }
