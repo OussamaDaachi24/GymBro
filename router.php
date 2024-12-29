@@ -39,10 +39,12 @@ function route($url_path){
             break;
         // B) home page
         case 'home':
-            display_home();
+            $conn = connect_db();
+            display_home($conn);
             break;
         case '':
-            display_home();
+            $conn = connect_db();
+            display_home($conn);
             break;
         // C) Authentication
         case 'login':
