@@ -50,6 +50,8 @@
       This page will only display the fetched workout image from the data base,
       it's done for the moment
     </h1>
+    <img src=""> <!--include the path here of $workout_pc --> 
+    <!--and also a js script to change this var to workout_phone when it's is below to 600px -->
   </body>
   <script src="http://localhost/GymBro/public/javaScript/common.js"></script>
 </html>
