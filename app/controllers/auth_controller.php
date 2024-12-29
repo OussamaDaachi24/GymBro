@@ -107,6 +107,15 @@ class AuthController {
             );
 
             if (mysqli_stmt_execute($stmt)) {
+                //1- create the sessions
+                //1- create the sessions
+                $_SESSION['logged_in'] = true;
+                $_SESSION['name'] = $userData['name'];
+                $_SESSION['user_id']=mysqli_insert_id($this->conn);
+
+                //2-create the streak : 
+                insert_streak($this->conn,mysqli_insert_id($this->conn));
+                //success
                 return true;
             }
 
