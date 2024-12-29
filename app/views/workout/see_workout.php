@@ -1,3 +1,11 @@
+
+
+  
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -16,14 +24,13 @@
     <link rel="stylesheet" href="http://localhost/GymBro/public/css/common.css" />
   </head>
 
-  <!--  Body section-->
   <body>
     <header class="head_Bar" id="#head">
       <div class="menu_bar"><img src="http://localhost/GymBro/public/assets/images/menu.png" /></div>
       <div class="logo">
         <a href="home.html">
-          <img src="http://localhost/GymBro/public/assets/icons/logo.png" class="logo_img"
-        /></a>
+          <img src="http://localhost/GymBro/public/assets/icons/logo.png" class="logo_img" />
+        </a>
       </div>
       <ul class="navSections">
         <li><a href="home.html">Home</a></li>
@@ -47,11 +54,32 @@
     </section>
 
     <h1>
-      This page will only display the fetched workout image from the data base,
-      it's done for the moment
+      This page will only display the fetched workout image from the database, it's done for the moment
     </h1>
-    <img src=""> <!--include the path here of $workout_pc --> 
-    <!--and also a js script to change this var to workout_phone when it's is below to 600px -->
+    
+    <!-- Dynamically insert image paths -->
+    <img id="workout-image" src="<?php echo $workout_image; ?>" alt="Workout Plan" />
+    
+    <!-- Add JavaScript for responsive image switch -->
+    <script>
+      window.onload = function() {
+        changeImageBasedOnWidth();
+      };
+
+      window.onresize = function() {
+        changeImageBasedOnWidth();
+      };
+
+      function changeImageBasedOnWidth() {
+        var imgElement = document.getElementById('workout-image');
+        var imagePath = window.innerWidth < 600 ? '<?php echo $workout_img_phone; ?>' : '<?php echo $workout_image; ?>';
+        imgElement.src = imagePath;
+      }
+    </script>
+
   </body>
   <script src="http://localhost/GymBro/public/javaScript/common.js"></script>
 </html>
+
+
+
