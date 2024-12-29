@@ -1,102 +1,104 @@
 <!DOCTYPE html>
 <html>
-<title>login</title>
+    <title>login</title>
 
-<head>
-  <meta charset="UTF-8" />
-  <link rel="icon" type="image/png" href="">
-  <meta name="viewport" content="width=device-width">
-  <title> GymBro</title>
-  <!--fonts-->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-    rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Signika:wght@300700&display=swap" rel="stylesheet">
+    <head> 
+        <meta charset="UTF-8" />
+        <link rel="icon" type="image/png" href="">
+        <meta name="viewport" content="width=device-width">
+        <title> GymBro</title>
+        <!--fonts-->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+       <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+       <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+       <link href="https://fonts.googleapis.com/css2?family=Signika:wght@300..700&display=swap" rel="stylesheet">
+        
+       <link rel="stylesheet" href="http://localhost/GymBro/public/css/login.css" />
+       <link rel="stylesheet" href="http://localhost/GymBro/public/css/common.css" />
+       
+    </head>
+    
+       <body>
+        <!--Header section-->
+      
+        <header class="head_Bar" id="#head">
+              <div class="menu_bar"><img src="http://localhost/GymBro/public/assets/images/menu.png"></div>
+              <div class="logo">
+                <a href="/GymBro/home">
+                  <img src="http://localhost/GymBro/public/assets/icons/logo.png" class="logo_img"
+                /></a>
+              </div>
+              <ul class="navSections">
+                <li><a href="/GymBro/home" class="current">Home</a></li>
+                <li><a href="/GymBro/about">About</a></li>
+                <li><a href="/GymBro/static_workout">myWorkouts</a></li>
+                <li><a href="/GymBro/static_meals">myMeals</a></li>
+              </ul>
+              <div class="profile">
+                <a href="profile/view">
+                  <img src="http://localhost/GymBro/public/assets/icons/profile-circle.png" class="prof_img" />
+                </a>
+              </div>
+        </header>
 
-  <link rel="stylesheet" href="http://localhost/GymBro/public/css/register.css" />
-  <link rel="stylesheet" href="http://localhost/GymBro/public/css/common.css" />
-</head>
+          <section class="mobile_options">
+            <div class="options">
+              <a href="./home.html">Home</a>
+              <a href="./about.html">About</a>
+              <a href="./static_food.html*">My Meals</a>
+              <a href="./static_exercise.html">My Workout </a>
+            </div>
+          </section>
 
-<body>
+            
 
-  <!--Header section-->
-  <header class="head_Bar" id="#head">
-    <div class="menu_bar"><img src="http://localhost/GymBro/public/assets/images/menu.png" /></div>
-    <div class="logo">
-      <a href="home.html">
-        <img src="http://localhost/GymBro/public/assets/icons/logo.png" class="logo_img" /></a>
-    </div>
-    <ul class="navSections">
-      <li><a href="home.html">Home</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="static_exercise.html">myWorkouts</a></li>
-      <li><a href="static_food.html">myMeals</a></li>
-    </ul>
-    <div class="profile">
-      <a href="./profile.html">
-        <img src="http://localhost/GymBro/public/assets/icons/profile-circle.png" class="prof_img" />
-      </a>
-    </div>
-  </header>
-  <section class="mobile_options">
-    <div class="options">
-      <a href="./home.html">Home</a>
-      <a href="./about.html">About</a>
-      <a href="./static_food.html">My Meals</a>
-      <a href="./static_exercise.html">My Workout </a>
-    </div>
-  </section>
-  <div class="Welcome-text-container">
-    <h1 class="Welcome-text">Welcome <span>GymBro</span>!</h1>
-  </div>
+                    <!--the blue box container-->
+                    <form id="login-form" onsubmit="return false;">
+                      <div class="login-text-container">
+                      <div class="Title-text-container">
+                      <div class="Welcome-back-container">
+                                <h1>Welcome Back <span>GymBro</span>!</h1>
+                            </div>
+                        </div>
 
-  <div class="login-text-container">
-    <!--The container of everythiung except the button-->
-    <div class="Basic-details-inputs-image-contaier">
-      <!--Left side container-->
-      <form class="Basic-details-inputs-container">
-        <div class="Basic-details-text-container">
-          <h1>Basic Details</h1>
+                        <div class="login-container-khalil">
+                            <div class="inputs-container-khalil">
+                        <div class="email-container-khalil">
+                            <input id="email" name="email" class="email-input-khalil" type="email" placeholder="Enter email" required>
+                        </div>
+
+                        <div class="password-container-khalil">
+                            <input id="password" name="password" class="password-input-khalil" type="password" placeholder="Enter password" required>
+                        </div>
+                    </div>
+                    
+                    <div class="login-button-container-khalil">
+                        <button type="submit" id="login-button" class="login-button-khalil">Login</button>
+                    </div>
+                    
+                    <div class="register-now-container">
+                        <p>Don't have an account? 
+                            <a href="create" class="register-link">Register now</a>
+                        </p>
+                    </div>
+
+                    <!-- Add error message container -->
+                    <div id="error-message" class="error-message" style="display: none; color: red; margin-top: 10px;"></div>
+                </div>
+            </div>
+</form>
+                      
+
+            </div>
         </div>
-        <div class="input-container">
-          <input class="inp-name" placeholder="Enter name">
-        </div>
-        <div class="input-container">
-          <input class="inp-email" placeholder="Enter email">
-        </div>
-        <div class="input-container">
-          <input type="password" class="pswd" placeholder="Enter Password">
-        </div>
-        <div class="input-container">
-          <input type="password" class="confirm-pswd" placeholder="Confirm Password">
-        </div>
-      </form>
-      <!--Right side container-->
-      <div class="Image-container">
-        <div class="Image-text-container">
-          <h1>Image</h1>
-        </div>
-        <div class="Image-input-container">
-          <!--  <input class="Image-input" type="image" src="http://localhost/GymBro/public/assets/images/PlusImage.png" alt="Submit">-->
-          <label class="Image-input">
-            <input type="file" accept="image/*" style="display: none;" >
-            <img src="http://localhost/GymBro/public/assets/images/PlusImage.png" alt="Upload Image" class="img_input">
-          </label>
-
-        </div>
-      </div>
-    </div>
-
-    <div class="Submit-button-container">
-      <button class="Submit-button">Submit</button>
-    </div>
-  </div>
-  </div>
-</body>
-<script src="http://localhost/GymBro/public/javaScript/common.js"></script>
-<script src="http://localhost/GymBro/public/javaScript/register.js"></script>
-
+        <?php if (isset($_SESSION['error'])): ?>
+          <div class="error-message">
+            <?php echo htmlspecialchars($_SESSION['error']); ?>
+            <?php unset($_SESSION['error']); ?>
+          </div>
+        <?php endif; ?>
+       </body>
+        <script src="http://localhost/GymBro/public/javaScript/common.js"></script>
+        <script src="http://localhost/GymBro/public/javaScript/login.js"></script>
 </html>

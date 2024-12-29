@@ -48,19 +48,35 @@ function route($url_path){
             break;
         // C) Authentication
         case 'login':
+            $conn = connect_db();
+            $authController = new AuthController($conn);
+            
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                // Get email and password from the POST request
                 $email = $_POST['email'] ?? '';
                 $password = $_POST['password'] ?? '';
-
-                // Attempt to log in
+                
+                // Check if it's an AJAX request
+                $isAjax = !empty($_SERVER['HTTP_X_REQUESTED_WITH']) && 
+                          strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest';
+                
                 if ($authController->login($email, $password)) {
-                    // Redirect to home or another page on success
-                    header("Location: /GymBro/home");
+                    if ($isAjax) {
+                        header('Content-Type: application/json');
+                        echo json_encode(['success' => true]);
+                    } else {
+                        header("Location: /GymBro/home");
+                    }
                     exit;
                 } else {
-                    // Show error message
-                    echo $authController->getError();
+                    $error = $authController->getError();
+                    if ($isAjax) {
+                        header('Content-Type: application/json');
+                        echo json_encode(['success' => false, 'message' => $error]);
+                    } else {
+                        $_SESSION['error'] = $error;
+                        header("Location: /GymBro/login");
+                    }
+                    exit;
                 }
             } else {
                 // Show the login page
@@ -101,7 +117,7 @@ function route($url_path){
             include_once __DIR__ . "/app/views/auth/register.php";
             break;
         case 'user/valid':
-            //valid_login() --> validate user data for login
+            include_once __DIR__ . "/app/views/auth/login.php";
             break;
         // D) Diet 
         case 'diet/form':

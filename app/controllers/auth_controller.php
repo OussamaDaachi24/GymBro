@@ -23,6 +23,7 @@ class AuthController {
      * @return bool Success status
      */
     public function login(string $email, string $password): bool {
+        session_start();
         // Validate email
         if (!$this->validateEmail($email)) {
             return false;

@@ -91,8 +91,15 @@
 
     <div class="Submit-button-container">
     <button class="Submit-button" type="submit" form="registration-form">Submit</button>    </div>
+    
   </div>
+  <div class="log-in-container">  
+                        <p>Already have an account? 
+                            <a href="valid" class="log-in-link">log in!</a>
+                        </p>
+    </div>
   </div>
+  
 </body>
 <script src="http://localhost/GymBro/public/javaScript/common.js"></script>
 <script src="http://localhost/GymBro/public/javaScript/register.js"></script>
