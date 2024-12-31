@@ -132,26 +132,111 @@
 //         return $result; // Return the list of all workouts
 //     }
 // }
+/*
+ // Controller logic to interact with the workout data
+ $controller = new WorkoutController($conn);
 
-// // Controller logic to interact with the workout data
-// $controller = new WorkoutController($conn);
+ // Fetch workout data (Example with static workout_id for demonstration)
+ $workout_id = $_GET['id'] ?? null;
 
-// // Fetch workout data (Example with static workout_id for demonstration)
-// $workout_id = $_GET['id'] ?? null;
+ if ($workout_id) {
+     // Fetch workout details based on the workout ID
+     $workoutData = $controller->getWorkout($workout_id);
 
-// if ($workout_id) {
-//     // Fetch workout details based on the workout ID
-//     $workoutData = $controller->getWorkout($workout_id);
+     if ($workoutData) {
+         // Pass the fetched data to the view
+         $workout_image = $workoutData['workout_image'];
+         $workout_img_phone = $workoutData['workout_img_phone'];
+         include 'app/views/workout/see_workout.php'; // Include the view to display the workout details
+     } else {
+         echo "Invalid Workout ID or Workout not found."; // Display an error message if the workout is not found
+     }
+ } else {
+     echo "No Workout ID provided."; // Display an error message if no workout ID is provided
+ }
+*/
 
-//     if ($workoutData) {
-//         // Pass the fetched data to the view
-//         $workout_image = $workoutData['workout_image'];
-//         $workout_img_phone = $workoutData['workout_img_phone'];
-//         include 'app/views/workout/see_workout.php'; // Include the view to display the workout details
-//     } else {
-//         echo "Invalid Workout ID or Workout not found."; // Display an error message if the workout is not found
-//     }
-// } else {
-//     echo "No Workout ID provided."; // Display an error message if no workout ID is provided
-// }
-?>
+
+require_once __DIR__ . '/../models/workout_model.php';
+
+class WorkoutController {
+    private $workoutModel;
+
+    public function __construct($db) {
+        $this->workoutModel = new Workout($db);
+    }
+
+    public function getWorkout() {
+        try{
+            if (!isset($_SESSION['logged_in'])) {
+                header('Location: /Gymbro/login');
+                exit();
+            }
+    
+            if (!isset($_SESSION['id'])) {
+                throw new Exception("user_id is not found");
+            }
+            $userId = $_SESSION['id'];
+            $workout = $this->workoutModel->getWorkoutById($userId);
+            
+            include_once __DIR__ . '/../views/workout/see_workout.php';
+            return $workout;
+        }catch(Exception $e){
+
+        }
+       
+    }
+
+    public function createWorkout(array $userInput) {
+        $workoutImages = [
+            'weight_loss' => [
+                'desktop' => 'weight_loss_plan.jpg',
+                'mobile' => 'weight_loss_plan_mobile.jpg'
+            ],
+            'muscle_gain' => [
+                'desktop' => 'muscle_gain_plan.jpg',
+                'mobile' => 'muscle_gain_plan_mobile.jpg'
+            ],
+            'endurance' => [
+                'desktop' => 'endurance_plan.jpg',
+                'mobile' => 'endurance_plan_mobile.jpg'
+            ],
+            'default' => [
+                'desktop' => 'general_plan.jpg',
+                'mobile' => 'general_plan_mobile.jpg'
+            ]
+        ];
+
+        $selectedPlan = $workoutImages[$userInput['goal']] ?? $workoutImages['default'];
+        
+        $this->workoutModel->workout_image = $selectedPlan['desktop'];
+        $this->workoutModel->workout_img_phone = $selectedPlan['mobile'];
+
+        return $this->workoutModel->insertWorkout();
+    }
+
+    public function getWorkoutById($workoutId) {
+        if (!is_numeric($workoutId) || $workoutId <= 0) {
+            error_log("Invalid Workout ID provided: $workoutId");
+            return false;
+        }
+
+        $workout = $this->workoutModel->getWorkoutById($workoutId);
+        
+        if (!$workout) {
+            return false;
+        }
+
+        return [
+            'workout_id' => $this->workoutModel->workout_id,
+            'workout_image' => $this->workoutModel->workout_image,
+            'workout_img_phone' => $this->workoutModel->workout_img_phone
+        ];
+    }
+
+    public function getAllWorkouts() {
+        return $this->workoutModel->getAllWorkouts();
+    }
+}
+
+

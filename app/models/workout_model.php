@@ -1,7 +1,5 @@
 <?php
 
-include 'db_connect.php';
-
 class Workout {
     // Database connection properties
     private $conn;

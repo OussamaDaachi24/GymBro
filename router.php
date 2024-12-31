@@ -142,8 +142,7 @@ function route($url_path){
             break;
         // E) workout
         case 'workout/create':
-            //create_workout() --> create and store the workout
-            print_r($_POST);
+            
             break;
         case 'workout/view':
             //display_workout() --> fetch the workout
