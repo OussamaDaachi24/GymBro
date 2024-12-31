@@ -163,8 +163,21 @@ function route($url_path){
             $conn = connect_db();
             update_user_weight($conn);
             break;
+        case 'logout':
+            $conn = connect_db();
+            $authController = new AuthController($conn);
+            
+            try {
+                $authController->logout();
+                } catch (Exception $e) {
+                    error_log("Logout error: " . $e->getMessage());
+                    // Optionally, redirect to an error page or show an error message
+                    include_once __DIR__ . "/app/views/static/error.php";
+                }
+            break;
         default:
             include_once __DIR__ . "/app/views/static/not_found.php";
+
         endswitch;
     
 }
