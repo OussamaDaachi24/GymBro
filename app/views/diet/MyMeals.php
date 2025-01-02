@@ -37,11 +37,12 @@ $snack_num = $diet_data['diet']['num_snacks'];
           <img src="http://localhost/GymBro/public/assets/icons/logo.png" class="logo_img"
         /></a>
       </div>
-      <ul class="navSections">
+      <ul class="navSections" style='width=50%;'>
         <li><a href="home.html" class="current">Home</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="static_exercise.html">myWorkouts</a></li>
         <li><a href="static_food.html">myMeals</a></li>
+        <li><a href="/GymBro/logout">Logout</a></li>
       </ul>
       <div class="profile">
         <a href="./profile.html">
@@ -55,6 +56,7 @@ $snack_num = $diet_data['diet']['num_snacks'];
         <a href="./about.html">About</a>
         <a href="./static_food.html">My Meals</a>
         <a href="./static_exercise.html">My Workout </a>
+
       </div>
     </section>
 

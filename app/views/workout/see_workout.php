@@ -37,6 +37,7 @@
         <li><a href="about.html">About</a></li>
         <li><a href="./static_exercise.html">myWorkouts</a></li>
         <li><a href="./static_food.html">myMeals</a></li>
+        <li><a href="/GymBro/logout">Logout</a></li>
       </ul>
       <div class="profile">
         <a href="./profile.html">
@@ -54,7 +55,7 @@
     </section>
 
     <h1>
-      This page will only display the fetched workout image from the database, it's done for the moment
+      <img src=<?= '/GymBro/public/desktop45workouts/' . $workout['workout_image'] ?>>
     </h1>
     
     <!-- Dynamically insert image paths -->

@@ -27,11 +27,12 @@
           <img src="http://localhost/GymBro/public/assets/icons/logo.png" class="logo_img"
         /></a>
       </div>
-      <ul class="navSections">
+      <ul class="navSections" style='width=50%;'>
         <li><a href="/GymBro/home" class="current">Home</a></li>
         <li><a href="/GymBro/about">About</a></li>
         <li><a href="/GymBro/static_workout">myWorkouts</a></li>
         <li><a href="/GymBro/static_meals">myMeals</a></li>
+        <li><a href="/GymBro/login">login</a></li>
       </ul>
       <div class="profile">
         <a href="/GymBro/profile/view">

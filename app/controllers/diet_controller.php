@@ -256,3 +256,5 @@ function show_diet_program($conn) {
         throw new Exception($e->getMessage());
     }
 }
+
+?>

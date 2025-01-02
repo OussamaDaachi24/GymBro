@@ -24,13 +24,21 @@
     box-sizing: border-box;
 }
 
+
 body {
     font-family: var(--ff-primary);
     background-color: var(--clr-primary-bg);
     color: var(--clr-light-white);
     line-height: 1.6;
     background-image: url(../assets/images/BgForms.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    min-height: 100vh;
 }
+    
+
 
 /* Header Styles */
 /*

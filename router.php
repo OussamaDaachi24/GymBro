@@ -112,6 +112,15 @@ function route($url_path){
                     include_once __DIR__ . "/app/views/auth/register.php";
                 }
                 break;
+        case 'logout':
+            $conn = connect_db();
+            $authController = new AuthController($conn);
+            try{
+                $authController->logout();
+            }catch(Exception $e){
+                echo $e->getMessage();
+            }
+            
             
         case 'user/create':
             include_once __DIR__ . "/app/views/auth/register.php";
@@ -141,11 +150,27 @@ function route($url_path){
           
             break;
         // E) workout
+        case 'workout/form':
+            include_once __DIR__ . "/app/views/workout/create_workout.php";
+            break;
         case 'workout/create':
-            
+            try{
+                $conn=connect_db();
+                $workoutController = new WorkoutController($conn);
+                $workoutController->select_appropriate_workout();
+            }catch(Exception $e){
+                echo $e->getMessage();
+            }
             break;
         case 'workout/view':
-            //display_workout() --> fetch the workout
+            try{
+                $conn=connect_db();
+                $workoutController = new WorkoutController($conn);
+                $workoutController->getWorkout();
+            }catch(Exception $e){
+                echo $e->getMessage();
+            }
+            
             break;
         // F) Profile
         case 'profile/view':
@@ -181,3 +206,5 @@ function route($url_path){
         endswitch;
     
 }
+
+?>

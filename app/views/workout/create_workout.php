@@ -11,12 +11,119 @@
     <link rel="stylesheet" href="/GymBro/public/css/create_workout.css" />
     <link rel="stylesheet" href="/GymBro/public/css/common.css" />
 </head>
+<style>
+    .header {
+    background-color: var(--clr-secondary-bg-light);
+    width: 100%;
+    height: 8vh;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    padding: 0 5rem;
+}
+
+/* Logo Styles */
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.logo-img {
+    width: 50px;
+    height: auto;
+}
+
+.logo-text {
+    color: var(--clr-light-white);
+    font-size: 1.5rem;
+    font-weight: var(--fw-bold);
+}
+
+/* Navigation Menu */
+.nav-menu {
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-menu a {
+    color: var(--clr-light-white);
+    font-size: 1.3rem;
+    font-weight: var(--fw-medium);
+    transition: color 0.3s ease;
+}
+
+.nav-menu a:hover {
+    color: var(--clr-button-midtext);
+}
+
+/* Profile Section */
+.profile-link {
+    display: flex;
+    align-items: center;
+}
+
+.profile-img {
+    width: 35px;
+    height: auto;
+}
+
+/* Mobile Menu Toggle */
+.menu-toggle {
+    display: none;
+}
+
+/* Mobile Menu */
+.mobile_options {
+    display: none;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .nav-menu {
+        display: none;
+    }
+
+    .menu-toggle {
+        display: block;
+        background: none;
+        border: none;
+        cursor: pointer;
+    }
+
+    .mobile_options {
+        display: block;
+        width: 100%;
+    }
+
+    .options {
+        background-color: var(--clr-secondary-bg-light);
+        display: flex;
+        justify-content: space-around;
+        padding: 1rem;
+        margin-top: 1rem;
+    }
+}
+
+</style>
 <body>
-    <header class="header">
+<header class="header">
         <nav class="navbar">
             <div class="logo-container">
-                <a href="home.html" class="logo">
+                <a href="/GymBro/app/views/home/home.php" class="logo">
                     <img src="/GymBro/public/assets/icons/logo.png" alt="GymBro Logo" class="logo-img">
+                    <span class="logo-text"></span>
                 </a>
             </div>
             
@@ -25,26 +132,28 @@
             </button>
             
             <ul class="nav-menu">
-                <li><a href="home.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="see_workout.html">My Workouts</a></li>
-                <li><a href="see_diet.html">My Meals</a></li>
-                <li>
-                    <a href="profile.html" class="profile-link">
-                        <img src="/GymBro/public/assets/icons/profile-circle.png" alt="Profile" class="profile-img">
-                    </a>
-                </li>
+                <li><a href="/GymBro/app/views/home/home.php">Home</a></li>
+                <li><a href="/GymBro/app/views/static/about.php">About</a></li>
+                <li><a href="/GymBro/app/views/workout/see_workout.php">My Workouts</a></li>
+                <li><a href="/GymBro/app/views/diet/myMeals.php">My Meals</a></li>
+                <li><a href="/GymBro/logout">Logout</a></li>
+
             </ul>
+            <div>
+                <a href="/GymBro/app/views/profile/profile.php" class="profile-link">
+                    <img src="/GymBro/public/assets/icons/profile-circle.png" alt="Profile" class="profile-img">
+                </a>
+            </div>
         </nav>
+        <section class="mobile_options">
+            <div class="options">
+                <a href="/GymBro/app/views/home/home.php">Home</a>
+                <a href="/GymBro/app/views/static/about.php">About</a>
+                <a href="/GymBro/app/views/diet/myMeals.php">My Meals</a>
+                <a href="/GymBro/app/views/workout/see_workout.php">My Workout</a>
+            </div>
+        </section>
     </header>
-    <section class="mobile_options">
-      <div class="options">
-        <a href="./home.html">Home</a>
-        <a href="./about.html">About</a>
-        <a href="./static_food.html">My Meals</a>
-        <a href="./static_exercise.html">My Workout </a>
-      </div>
-    </section>
 
     <main class="main-content">
         <div class="workout-creator">
@@ -111,9 +220,9 @@
                             <input type="radio" name="workout_objective" value="muscle" style="display:none;">
                             Muscle
                         </button>
-                        <button type="button" class="objective-btn" data-objective="endurance">
-                            <input type="radio" name="workout_objective" value="endurance" style="display:none;">
-                            Endurance
+                        <button type="button" class="objective-btn" data-objective="weight">
+                            <input type="radio" name="workout_objective" value="weight" style="display:none;">
+                            Lose Weight
                         </button>
                     </div>
                     

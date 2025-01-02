@@ -16,6 +16,10 @@ class AuthController {
         // session_start();
     }
     public function logout(): void {
+        //the  user must be logged
+        if(!isset($_SESSION['is_logged'])){
+            header('Location: /GymBro/home');
+        }
         // Ensure a session is active
         if (session_status() === PHP_SESSION_NONE) {
             session_start();
@@ -31,12 +35,16 @@ class AuthController {
         if (!session_regenerate_id(true)) {
             error_log("Failed to regenerate session ID", 0);
         }
+        //destroying the cookies :
+        setcookie('user_id', '', time() - 3600, '/');
+        setcookie('name', '', time() - 3600, '/');
+        setcookie('logged_in', '', time() - 3600, '/');
 
         try {
-            header('Location: /user/login');
+            header('Location: /Gymbro/home');
             exit();
         } catch (Exception $e) {
-            error_log("Redirection failed: " . $e->getMessage(), 0);
+            throw new Exception($e->getMessage());
         }
     }
     
@@ -76,9 +84,10 @@ class AuthController {
                     $_SESSION['name'] = $user['name'];
                     $_SESSION['logged_in'] = true;
                     
+                    // Set cookies
                     setcookie('user_id', $_SESSION['user_id'], time() + (30 * 24 * 60 * 60), '/');
                     setcookie('name', $_SESSION['name'], time() + (30 * 24 * 60 * 60), '/'); 
-                    setcookie('logged_in', 'true', time() + (30 * 24 * 60 * 60), '/'); 
+                    setcookie('logged_in', true, time() + (30 * 24 * 60 * 60), '/'); 
 
                     return true;
                 }
@@ -144,7 +153,7 @@ class AuthController {
 
                 setcookie('user_id', $_SESSION['user_id'], time() + (30 * 24 * 60 * 60), '/');
                 setcookie('name', $_SESSION['name'], time() + (30 * 24 * 60 * 60), '/'); 
-                setcookie('logged_in', 'true', time() + (30 * 24 * 60 * 60), '/'); 
+                setcookie('logged_in', true, time() + (30 * 24 * 60 * 60), '/'); 
 
                 //2-create the streak : 
                 insert_streak($this->conn,mysqli_insert_id($this->conn));
@@ -397,11 +406,12 @@ class AuthController {
     /**
      * Logout user and destroy session
      */
+    /*
     public function logout(): void {
         session_unset();
         session_destroy();
     }
-
+*/
     /**
      * Get the last error message
      * @return string Error message

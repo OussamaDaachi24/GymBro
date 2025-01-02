@@ -161,58 +161,143 @@ require_once __DIR__ . '/../models/workout_model.php';
 
 class WorkoutController {
     private $workoutModel;
-
-    public function __construct($db) {
-        $this->workoutModel = new Workout($db);
+    // it's the model who holds the connection object
+    public function __construct($conn) {
+        $this->workoutModel = new Workout($conn);
     }
 
     public function getWorkout() {
+        
         try{
             if (!isset($_SESSION['logged_in'])) {
                 header('Location: /Gymbro/login');
                 exit();
             }
     
-            if (!isset($_SESSION['id'])) {
+            if (!isset($_SESSION['user_id'])) {
                 throw new Exception("user_id is not found");
             }
-            $userId = $_SESSION['id'];
-            $workout = $this->workoutModel->getWorkoutById($userId);
-            
+            $userId = $_SESSION['user_id'];
+            $workout = $this->workoutModel->get_user_workout($userId);
+            if(!$workout){ //workout was not found --> create one
+                header('Location: /Gymbro/workout/form');
+            }
             include_once __DIR__ . '/../views/workout/see_workout.php';
-            return $workout;
         }catch(Exception $e){
-
+            throw new Exception("Error in getting user workout : " . $e->getMessage());
         }
        
     }
 
-    public function createWorkout(array $userInput) {
-        $workoutImages = [
-            'weight_loss' => [
-                'desktop' => 'weight_loss_plan.jpg',
-                'mobile' => 'weight_loss_plan_mobile.jpg'
-            ],
-            'muscle_gain' => [
-                'desktop' => 'muscle_gain_plan.jpg',
-                'mobile' => 'muscle_gain_plan_mobile.jpg'
-            ],
-            'endurance' => [
-                'desktop' => 'endurance_plan.jpg',
-                'mobile' => 'endurance_plan_mobile.jpg'
-            ],
-            'default' => [
-                'desktop' => 'general_plan.jpg',
-                'mobile' => 'general_plan_mobile.jpg'
-            ]
-        ];
+    //function to determine the number of days --> returns string
+    public function determine_days($num_days){
+        try{
+            if(isset($num_days) && ($num_days <2 || $num_days >6)){
+                throw new Exception("Number of training days is not valid");
+            }
+            switch ($num_days):
+                case 1 :
+                    return '1';
+                case 2 :
+                    return '2';
+                case 3 :
+                    return '3';
+                case 4 : 
+                    return '4';
+                case 5 : 
+                    return '5';
+                case 6 : 
+                    return '6';
+            endswitch;
+        }catch(Exception $e){
+            throw $e;
+        }
+    }
 
-        $selectedPlan = $workoutImages[$userInput['goal']] ?? $workoutImages['default'];
-        
-        $this->workoutModel->workout_image = $selectedPlan['desktop'];
-        $this->workoutModel->workout_img_phone = $selectedPlan['mobile'];
+    //function to determine the intensity --> returns string
+    public function determine_intensity($intensity){
+        //convert to lowercase
+        $intensity=strtolower($intensity);
+        if($intensity==='low'){
+            return 'L';
+        }
+        elseif($intensity==='medium'){
+            return 'M';
+        }
+        elseif($intensity==='high'){
+            return 'H';
+        }
+        else{
+            throw new Exception('invalid intensity value');
+        }
+    }
 
-        return $this->workoutModel->insertWorkout();
+    //function to determine the goal --> returns string
+    public function determine_goal($goal){
+        //convert to lowercase
+        $goal = strtolower($goal);
+        if($goal==='power'){
+            return 'P';
+        }
+        elseif($goal==='muscle'){
+            return 'M';
+        }
+        elseif($goal==='weight'){
+            return 'L';
+        }
+        else{
+            throw new Exception("The goal is not vald");
+        }
+    }
+
+    public function select_appropriate_workout(){
+        try{
+        if($_SERVER['REQUEST_METHOD']!=='POST'){
+            throw new Exception("No post request was recieved");
+        }
+        if(!isset($_SESSION['logged_in'])){
+            throw new Exception('User is not logged in');
+        }
+        if(!isset($_SESSION['user_id'])){
+            throw new Exception("user_id not found");
+        }
+        //1- extract data from the POST 
+        $user_id = $_SESSION['user_id'];
+        $num_days = isset($_POST['workout_days'])? $_POST['workout_days'] : null; 
+        $intensity = isset($_POST['workout_intensity'])? $_POST['workout_intensity'] : null; 
+        $goal = isset($_POST['workout_objective'])? $_POST['workout_objective'] : null; 
+
+        //2- sanitize the values
+        try{
+            $days = $this->determine_days($num_days);
+        }catch(Exception $e){
+            throw $e;
+        }
+        try{
+            $intense = $this->determine_intensity($intensity);
+        }catch(Exception $e){
+            throw $e;
+        }
+        try{
+            $objective = $this->determine_goal($goal);
+        }catch(Exception $e){
+            throw $e;
+        }
+        // select the workout
+        $workout_name = 'D' . $days . '_' . $intense . '_' . $objective . '.png';
+        $workout = $this->workoutModel->getWorkoutByName($workout_name);
+        if(!$workout){
+            throw new Exception("Workout name not found in the database");
+        }
+        // add it to the user :  --> stored in the user table
+        $this->workoutModel->add_workout_to_user($user_id,$workout['workout_id']);
+
+        //if successful --> display it to the user
+        header('Location: /GymBro/workout/view');
+
+        }catch(Exception $e){
+            throw new Exception("Error in selecting appropriate workout : " . $e->getMessage());
+        }
     }
 
     public function getWorkoutById($workoutId) {

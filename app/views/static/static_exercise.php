@@ -28,6 +28,7 @@
         <a href="./about.html">About</a>
         <a href="./static_exercise.html">My Meals</a>
         <a href="./static_food.html">My Workout </a>
+        
       </div>
     </section>
 
