@@ -222,4 +222,6 @@
     <script src="../javaScript/home.js"></script>
     <script src="../javaScript/common.js"></script>
   </body>
+  <script> window.chtlConfig = { chatbotId: "9142794298" } </script>
+<script async data-id="9142794298" id="chatling-embed-script" type="text/javascript" src="https://chatling.ai/js/embed.js"></script>
 </html>
