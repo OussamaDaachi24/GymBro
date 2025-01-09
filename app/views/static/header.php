@@ -11,6 +11,7 @@
       <li><a href="about" class="current">About</a></li>
       <li><a href="./static_workout">myWorkouts</a></li>
       <li><a href="./static_meals">myMeals</a></li>
+      <li><a href="/GymBro/logout">Logout</a></li>
     </ul>
     <div class="profile">
       <a href="./profile/view">

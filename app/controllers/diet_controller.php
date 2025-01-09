@@ -211,17 +211,22 @@ function create_diet($conn) {
         }
         
         // insert the user measures (height,weigth,age,diet_id as f-key)
-        if (!insert_user_measures($conn, $id, $height, $weight, $ideal_weight, $age, $diet_id)) {
-            throw new Exception("Failed to insert user measures");
+        try{
+            insert_user_measures($conn,$height, $weight, $ideal_weight, $age, $diet_id,$id);
+        }catch(Exception $e){
+            throw new Exception("Error in inserting user measures : " . $e->getMessage());
         }
         
         mysqli_commit($conn);
-        return true; //the insertion is successful
+        // now we show the diet program
+        header('Location: /GymBro/diet/view');
+
         
     } catch (Exception $e) {
         mysqli_rollback($conn);
         throw new Exception("Diet creation failed: " . $e->getMessage());
     }
+
 }
 
 // function to display the diet & meals for the user
@@ -237,18 +242,19 @@ function show_diet_program($conn) {
         }
         
         $user_id = $_SESSION['user_id'];
-        $diet_data = fetch_user_diet($conn,$user_id);
+        $diet_data = fetchUserDiet($conn,$user_id);
         
         if (!$diet_data) {
             //he didn't make a diet program
-            header('Location: /GymBro/app/views/diet/create_diet.php');
+            header('Location: /GymBro/diet/form');
         }
-        
+        //display the diet program
         require_once __DIR__ . "/../views/diet/myMeals.php";
         
     } catch (Exception $e) {
         $_SESSION['error'] = $e->getMessage(); // the errors session will be displayed in the error page
-        header('Location: /../views/static/not_found.php');
-        exit();
+        throw new Exception($e->getMessage());
     }
 }
+
+?>

@@ -14,10 +14,18 @@ function get_profile_data($conn){
     //0- check log-in
     check_login();
     //1- identify the user
-    $id=$_SESSION['user_id'];
-    $user_data=select_user_data($conn,$id); //array that contains user data
-    //2- include the profile view to insert the data
-    include_once "../views/profile/profile.php";
+    try{
+        $id=$_SESSION['user_id'];
+        if(!$id){
+            throw new Exception("user id is not valid");
+        }
+        $user_data=select_user_data($conn,$id); //array that contains user data
+        //2- include the profile view to insert the data
+        include_once __DIR__ .  "/../views/profile/profile.php";
+    }catch(Exception $e){
+        throw new Exception("Error in getProfileData () : ". $e->getMessage());
+    }                   
+    
 }
 
 function validate_weight($weight){

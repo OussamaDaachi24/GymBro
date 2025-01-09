@@ -24,15 +24,24 @@
     box-sizing: border-box;
 }
 
+
 body {
     font-family: var(--ff-primary);
     background-color: var(--clr-primary-bg);
     color: var(--clr-light-white);
     line-height: 1.6;
     background-image: url(../assets/images/BgForms.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    min-height: 100vh;
 }
+    
+
 
 /* Header Styles */
+/*
 .header {
     background-color: var(--clr-secondary-bg);
     padding: 1rem;
@@ -74,7 +83,7 @@ body {
     background: none;
     border: none;
     cursor: pointer;
-}
+}*/
 
 /* Main Content */
 .main-content {

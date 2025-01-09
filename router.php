@@ -39,26 +39,44 @@ function route($url_path){
             break;
         // B) home page
         case 'home':
-            display_home();
+            $conn=connect_db();
+            display_home($conn);
             break;
         case '':
-            display_home();
+            $conn=connect_db();
+            display_home($conn);
             break;
         // C) Authentication
         case 'login':
+            $conn = connect_db();
+            $authController = new AuthController($conn);
+            
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                // Get email and password from the POST request
                 $email = $_POST['email'] ?? '';
                 $password = $_POST['password'] ?? '';
-
-                // Attempt to log in
+                
+                // Check if it's an AJAX request
+                $isAjax = !empty($_SERVER['HTTP_X_REQUESTED_WITH']) && 
+                          strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest';
+                
                 if ($authController->login($email, $password)) {
-                    // Redirect to home or another page on success
-                    header("Location: /GymBro/home");
+                    if ($isAjax) {
+                        header('Content-Type: application/json');
+                        echo json_encode(['success' => true]);
+                    } else {
+                        header("Location: /GymBro/home");
+                    }
                     exit;
                 } else {
-                    // Show error message
-                    echo $authController->getError();
+                    $error = $authController->getError();
+                    if ($isAjax) {
+                        header('Content-Type: application/json');
+                        echo json_encode(['success' => false, 'message' => $error]);
+                    } else {
+                        $_SESSION['error'] = $error;
+                        header("Location: /GymBro/login");
+                    }
+                    exit;
                 }
             } else {
                 // Show the login page
@@ -81,6 +99,7 @@ function route($url_path){
             
                     // Attempt to register
                     if ($authController->register($userData)) {
+
                         // Redirect to login or home page on success
                         header("Location: /GymBro/home");
                         exit;
@@ -93,42 +112,99 @@ function route($url_path){
                     include_once __DIR__ . "/app/views/auth/register.php";
                 }
                 break;
+        case 'logout':
+            $conn = connect_db();
+            $authController = new AuthController($conn);
+            try{
+                $authController->logout();
+            }catch(Exception $e){
+                echo $e->getMessage();
+            }
+            
             
         case 'user/create':
             include_once __DIR__ . "/app/views/auth/register.php";
             break;
         case 'user/valid':
-            //valid_login() --> validate user data for login
+            include_once __DIR__ . "/app/views/auth/login.php";
             break;
         // D) Diet 
+        case 'diet/form':
+            include_once __DIR__ . "/app/views/diet/create_diet.php";
+            break;
         case 'diet/create':
-            //create_diet() --> create & store the diet
-            $conn=connect_db();
-            create_diet($conn);
+            try{
+                $conn=connect_db();
+                create_diet($conn);
+            }catch(Exception $e){
+                print( $e->getMessage());
+            }
+           
             break;
         case 'diet/view':
-            // display_user_diet() --> fetch & display user diet
+            try{
+                $conn=connect_db();
+                show_diet_program($conn); 
+            }catch(Exception $e){
+            }
+          
             break;
         // E) workout
+        case 'workout/form':
+            include_once __DIR__ . "/app/views/workout/create_workout.php";
+            break;
         case 'workout/create':
-            //create_workout() --> create and store the workout
+            try{
+                $conn=connect_db();
+                $workoutController = new WorkoutController($conn);
+                $workoutController->select_appropriate_workout();
+            }catch(Exception $e){
+                echo $e->getMessage();
+            }
             break;
         case 'workout/view':
-            //display_workout() --> fetch the workout
+            try{
+                $conn=connect_db();
+                $workoutController = new WorkoutController($conn);
+                $workoutController->getWorkout();
+            }catch(Exception $e){
+                echo $e->getMessage();
+            }
+            
             break;
         // F) Profile
         case 'profile/view':
             //display_profile_data() --> fetch user from DB & render the profile view
             $conn = connect_db();
-            get_profile_data($conn);
+            try{
+                get_profile_data($conn);
+            }catch(Exception $e){
+                echo "Error in getting profile data : " . $e->getMessage();
+            }
+            
             break;
         case 'profile/update':
             //update_weight() --> update user weight input
             $conn = connect_db();
             update_user_weight($conn);
             break;
+        case 'logout':
+            $conn = connect_db();
+            $authController = new AuthController($conn);
+            
+            try {
+                $authController->logout();
+                } catch (Exception $e) {
+                    error_log("Logout error: " . $e->getMessage());
+                    // Optionally, redirect to an error page or show an error message
+                    include_once __DIR__ . "/app/views/static/error.php";
+                }
+            break;
         default:
-            //include_once __DIR__ . "/app/views/static/not_found.php";
+            include_once __DIR__ . "/app/views/static/not_found.php";
+
         endswitch;
     
 }
+
+?>

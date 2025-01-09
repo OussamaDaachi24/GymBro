@@ -15,7 +15,39 @@ class AuthController {
         $this->conn = $conn;
         // session_start();
     }
+    public function logout(): void {
+        //the  user must be logged
+        if(!isset($_SESSION['is_logged'])){
+            header('Location: /GymBro/home');
+        }
+        // Ensure a session is active
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
 
+        session_unset();
+    
+        if (!session_destroy()) {
+            error_log("Failed to destroy the session", 0);
+        }
+    
+        // Regenerate session ID for security
+        if (!session_regenerate_id(true)) {
+            error_log("Failed to regenerate session ID", 0);
+        }
+        //destroying the cookies :
+        setcookie('user_id', '', time() - 3600, '/');
+        setcookie('name', '', time() - 3600, '/');
+        setcookie('logged_in', '', time() - 3600, '/');
+
+        try {
+            header('Location: /Gymbro/home');
+            exit();
+        } catch (Exception $e) {
+            throw new Exception($e->getMessage());
+        }
+    }
+    
     /**
      * Validate and handle login form submission
      * @param string $email User email
@@ -23,6 +55,7 @@ class AuthController {
      * @return bool Success status
      */
     public function login(string $email, string $password): bool {
+        session_start();
         // Validate email
         if (!$this->validateEmail($email)) {
             return false;
@@ -51,6 +84,11 @@ class AuthController {
                     $_SESSION['name'] = $user['name'];
                     $_SESSION['logged_in'] = true;
                     
+                    // Set cookies
+                    setcookie('user_id', $_SESSION['user_id'], time() + (30 * 24 * 60 * 60), '/');
+                    setcookie('name', $_SESSION['name'], time() + (30 * 24 * 60 * 60), '/'); 
+                    setcookie('logged_in', true, time() + (30 * 24 * 60 * 60), '/'); 
+
                     return true;
                 }
             }
@@ -107,6 +145,19 @@ class AuthController {
             );
 
             if (mysqli_stmt_execute($stmt)) {
+                //1- create the sessions
+                //1- create the sessions
+                $_SESSION['logged_in'] = true;
+                $_SESSION['name'] = $userData['name'];
+                $_SESSION['user_id']=mysqli_insert_id($this->conn);
+
+                setcookie('user_id', $_SESSION['user_id'], time() + (30 * 24 * 60 * 60), '/');
+                setcookie('name', $_SESSION['name'], time() + (30 * 24 * 60 * 60), '/'); 
+                setcookie('logged_in', true, time() + (30 * 24 * 60 * 60), '/'); 
+
+                //2-create the streak : 
+                insert_streak($this->conn,mysqli_insert_id($this->conn));
+                //success
                 return true;
             }
 
@@ -355,11 +406,12 @@ class AuthController {
     /**
      * Logout user and destroy session
      */
+    /*
     public function logout(): void {
         session_unset();
         session_destroy();
     }
-
+*/
     /**
      * Get the last error message
      * @return string Error message
