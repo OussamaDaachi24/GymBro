@@ -42,9 +42,9 @@
     </header>
     <section class="mobile_options">
       <div class="options"><a href="./home.html" id="currMobile">Home</a>
-        <a href="./about.html">About</a>
-        <a href="./static_exercise.html">Workouts</a>
-        <a href="./static_food.html"> Meals </a>
+        <a href="/GymBro/about">About</a>
+        <a href="/GymBro/static_workout">Workouts</a>
+        <a href="/GymBro/static_meals"> Meals </a>
       </div>
       
      
@@ -129,7 +129,7 @@
         <div class="muscle_groups curr_class">
           <div class="muscle_img"><img class="img_muscle" src="http://localhost/GymBro/public/assets/images/abdominals.png"></div>
           <div class="check-exo">
-            <a href="./static_exercise.html#abdo">
+            <a href="/GymBro/static_workout">
             <div class="content">
               <p>Exercises for</p>
               <h2>Abdominals</h2>
@@ -141,7 +141,7 @@
         <!-- card 2  -->
         <div class="muscle_groups" id="chest">
           <div class="muscle_img"><img src="http://localhost/GymBro/public/assets/images/abdominals.png"></div>
-          <div class="check-exo"><a href="./static_exercise.html#chest">
+          <div class="check-exo"><a href="/GymBro/static_workout">
             <div class="content">
               <p>Exercises for</p>
               <h2>Chest</h2>
@@ -154,7 +154,7 @@
         <!-- card 3  -->
         <div class="muscle_groups mob_hidden" id="back" >
           <div class="muscle_img"><img src="http://localhost/GymBro/public/assets/images/abdominals.png"></div>
-          <div class="check-exo"><a href="./static_exercise.html#back">
+          <div class="check-exo"><a href="/GymBro/static_workout">
             <div class="content">
               <p>Exercises for</p>
               <h2>Back</h2>
@@ -167,7 +167,7 @@
         <!-- card 4  -->
         <div class="muscle_groups mob_hidden" id="leg">
           <div class="muscle_img"><img src="http://localhost/GymBro/public/assets/images/abdominals.png"></div>
-          <div class="check-exo"><a href="./static_exercise.html#leg">
+          <div class="check-exo"><a href="/GymBro/static_workout">
             <div class="content">
               <p>Exercises for</p>
               <h2>Legs</h2>
@@ -181,11 +181,11 @@
       <div class="recipes">
         <div class="food_intro">
           <div>Every recipe with detailed calorie intake amount </div>
-          <a href="./static_food.html"><button>See More</button></a>
+          <a href="/GymBro/static_meals"><button>See More</button></a>
         </div>
         <div class="recipe_section">
          <div class="recipe">
-            <a href="./static_bulk.html"><div class="recipe_img" id="bghrir"></div></a>
+            <a href="/GymBro/bulk"><div class="recipe_img" id="bghrir"></div></a>
             <div class="recipe_content">
               <div class="recipe_name">Baghrir</div>
               <div class="recipe_type">Bulk</div>
@@ -194,7 +194,7 @@
           </div>
 
           <div class="recipe">
-            <a href="./static_cut.html"><div class="recipe_img" id="gtaif"></div></a>
+            <a href="/GymBro/bulk"><div class="recipe_img" id="gtaif"></div></a>
             <div class="recipe_content" >
               <div class="recipe_name">Rezzat El Kadi</div>
               <div class="recipe_type">Bulk</div>
@@ -203,7 +203,7 @@
           </div>
 
           <div class="recipe">
-            <a href="./static_healthy.html"><div class="recipe_img" id="pancakes"></div></a>
+            <a href="/GymBro/cut"><div class="recipe_img" id="pancakes"></div></a>
             <div class="recipe_content">
               <div class="recipe_name">Pancakes</div>
               <div class="recipe_type">Cut</div>

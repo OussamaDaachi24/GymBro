@@ -25,3 +25,23 @@
 --fw-bold: 600;
 --fw-extra-bold:900;
 }
+
+.container_wkout{
+    background-color: black;
+}
+body{
+    background-color:rgb(85, 84, 84);
+}
+.container_wkout h1{
+    text-align: center;
+    color: white;
+    font-size: 2rem;
+    font-weight: var(--fw-bold);
+    margin: 1rem 0;
+    padding:5%;
+    overflow:hidden;
+}
+
+.container_wkout img{
+    margin : 70px;
+}

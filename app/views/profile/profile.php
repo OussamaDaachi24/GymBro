@@ -46,10 +46,10 @@
 
     <section class="mobile_options">
       <div class="options">
-        <a href="./home.html">Home</a>
-        <a href="./about.html">About</a>
-        <a href="./static_food.html">My Meals</a>
-        <a href="./static_exercise.html">My Workout </a>
+        <a href="/GymBro/home">Home</a>
+        <a href="/GymBro/about">About</a>
+        <a href="/GymBro/static_meals">My Meals</a>
+        <a href="/GymBro/static_workout">My Workout </a>
       </div>
     </section>
     <section class="rest">
@@ -69,7 +69,7 @@
               <?php
                   $profile_pic = isset($user_data['information']['profile_picture'])
                   ? strstr(htmlspecialchars($user_data['information']['profile_picture']), '\GymBro')  // Removed the leading slash
-                   : '/GymBro/public/assets/images/pancake.webp';  // Added leading slash for consistency
+                   : '/GymBro/public/assets/images/default.jpg';  // Added leading slash for consistency
                 ?>
                 <?php $newPath = strstr($profile_pic, 'GymBro') ; ?>
                 <img src="<?php echo $profile_pic; ?>" /> <!-- put the path variable in img -->

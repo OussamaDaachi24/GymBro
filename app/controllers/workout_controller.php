@@ -190,7 +190,7 @@ class WorkoutController {
     }
 
     //function to determine the number of days --> returns string
-    public function determine_days($num_days){
+    private function determine_days($num_days){
         try{
             if(isset($num_days) && ($num_days <2 || $num_days >6)){
                 throw new Exception("Number of training days is not valid");
@@ -215,7 +215,7 @@ class WorkoutController {
     }
 
     //function to determine the intensity --> returns string
-    public function determine_intensity($intensity){
+    private function determine_intensity($intensity){
         //convert to lowercase
         $intensity=strtolower($intensity);
         if($intensity==='low'){
@@ -233,7 +233,7 @@ class WorkoutController {
     }
 
     //function to determine the goal --> returns string
-    public function determine_goal($goal){
+    private function determine_goal($goal){
         //convert to lowercase
         $goal = strtolower($goal);
         if($goal==='power'){

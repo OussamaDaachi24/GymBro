@@ -54,29 +54,12 @@
       </div>
     </section>
 
+  <div class="container_workout">
     <h1>
       <img src=<?= '/GymBro/public/desktop45workouts/' . $workout['workout_image'] ?>>
     </h1>
-    
-    <!-- Dynamically insert image paths -->
-    <img id="workout-image" src="<?php echo $workout_image; ?>" alt="Workout Plan" />
-    
-    <!-- Add JavaScript for responsive image switch -->
-    <script>
-      window.onload = function() {
-        changeImageBasedOnWidth();
-      };
+  </div>   
 
-      window.onresize = function() {
-        changeImageBasedOnWidth();
-      };
-
-      function changeImageBasedOnWidth() {
-        var imgElement = document.getElementById('workout-image');
-        var imagePath = window.innerWidth < 600 ? '<?php echo $workout_img_phone; ?>' : '<?php echo $workout_image; ?>';
-        imgElement.src = imagePath;
-      }
-    </script>
 
   </body>
   <script src="http://localhost/GymBro/public/javaScript/common.js"></script>

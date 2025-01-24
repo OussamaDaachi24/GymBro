@@ -5,6 +5,8 @@ if (!isset($diet_data) || empty($diet_data)) {
   exit;
 }
 
+
+
 // Extract meal and snack numbers
 $meal_num = $diet_data['diet']['num_meals'];
 $snack_num = $diet_data['diet']['num_snacks'];
@@ -65,6 +67,297 @@ $snack_num = $diet_data['diet']['num_snacks'];
     [meal] => Array ( [0] => Array ( [calories] => 425 [protein] => 129 [carbs] => 300 [fat] => 143 ) ) 
     [snack] => Array ( [0] => Array ( [calories] => 370 [protein] => 129 [carbs] => 300 [fat] => 143 ) ) )
 -->
+
+<?php
+
+$meals = [
+    'meal 1' => [
+        'carb' => [
+            'source1' => [
+                'name' => 'Oatmeal',
+                'calories' => 389
+            ],
+            'source2' => [
+                'name' => 'Whole Wheat Bread',
+                'calories' => 247
+            ],
+            'source3' => [
+                'name' => 'Banana',
+                'calories' => 89
+            ],
+            'source4' => [
+                'name' => 'Corn Flakes',
+                'calories' => 357
+            ]
+        ],
+        'protein' => [
+            'source1' => [
+                'name' => 'Whole Eggs',
+                'calories' => 155
+            ],
+            'source2' => [
+                'name' => 'Greek Yogurt',
+                'calories' => 59
+            ],
+            'source3' => [
+                'name' => 'Milk',
+                'calories' => 42
+            ],
+            'source4' => [
+                'name' => 'Turkey Ham',
+                'calories' => 107
+            ]
+        ],
+        'fat' => [
+            'source1' => [
+                'name' => 'Peanut Butter',
+                'calories' => 588
+            ],
+            'source2' => [
+                'name' => 'Butter',
+                'calories' => 717
+            ],
+            'source3' => [
+                'name' => 'Almonds',
+                'calories' => 579
+            ],
+            'source4' => [
+                'name' => 'Cheese',
+                'calories' => 402
+            ]
+        ]
+    ],
+    'meal 2' => [
+        'carb' => [
+            'source1' => [
+                'name' => 'White Rice',
+                'calories' => 130
+            ],
+            'source2' => [
+                'name' => 'Spaghetti',
+                'calories' => 158
+            ],
+            'source3' => [
+                'name' => 'Sweet Potato',
+                'calories' => 86
+            ],
+            'source4' => [
+                'name' => 'White Bread',
+                'calories' => 265
+            ]
+        ],
+        'protein' => [
+            'source1' => [
+                'name' => 'Chicken Breast',
+                'calories' => 165
+            ],
+            'source2' => [
+                'name' => 'Tuna',
+                'calories' => 116
+            ],
+            'source3' => [
+                'name' => 'Ground Beef',
+                'calories' => 332
+            ],
+            'source4' => [
+                'name' => 'Salmon',
+                'calories' => 208
+            ]
+        ],
+        'fat' => [
+            'source1' => [
+                'name' => 'Olive Oil',
+                'calories' => 884
+            ],
+            'source2' => [
+                'name' => 'Mixed Nuts',
+                'calories' => 607
+            ],
+            'source3' => [
+                'name' => 'Avocado',
+                'calories' => 160
+            ],
+            'source4' => [
+                'name' => 'Peanut Butter',
+                'calories' => 588
+            ]
+        ]
+    ],
+    'meal 3' => [
+        'carb' => [
+            'source1' => [
+                'name' => 'Brown Rice',
+                'calories' => 111
+            ],
+            'source2' => [
+                'name' => 'Penne Pasta',
+                'calories' => 158
+            ],
+            'source3' => [
+                'name' => 'Potato',
+                'calories' => 77
+            ],
+            'source4' => [
+                'name' => 'White Rice',
+                'calories' => 130
+            ]
+        ],
+        'protein' => [
+            'source1' => [
+                'name' => 'Chicken Thigh',
+                'calories' => 177
+            ],
+            'source2' => [
+                'name' => 'Beef Steak',
+                'calories' => 271
+            ],
+            'source3' => [
+                'name' => 'Sardines',
+                'calories' => 208
+            ],
+            'source4' => [
+                'name' => 'Ground Turkey',
+                'calories' => 203
+            ]
+        ],
+        'fat' => [
+            'source1' => [
+                'name' => 'Butter',
+                'calories' => 717
+            ],
+            'source2' => [
+                'name' => 'Walnuts',
+                'calories' => 654
+            ],
+            'source3' => [
+                'name' => 'Olive Oil',
+                'calories' => 884
+            ],
+            'source4' => [
+                'name' => 'Cashews',
+                'calories' => 553
+            ]
+        ]
+    ],
+    'meal 4' => [
+        'carb' => [
+            'source1' => [
+                'name' => 'White Rice',
+                'calories' => 130
+            ],
+            'source2' => [
+                'name' => 'Fusilli Pasta',
+                'calories' => 158
+            ],
+            'source3' => [
+                'name' => 'Sweet Potato',
+                'calories' => 86
+            ],
+            'source4' => [
+                'name' => 'Brown Rice',
+                'calories' => 111
+            ]
+        ],
+        'protein' => [
+            'source1' => [
+                'name' => 'Chicken Breast',
+                'calories' => 165
+            ],
+            'source2' => [
+                'name' => 'White Fish',
+                'calories' => 105
+            ],
+            'source3' => [
+                'name' => 'Ground Beef',
+                'calories' => 332
+            ],
+            'source4' => [
+                'name' => 'Canned Tuna',
+                'calories' => 116
+            ]
+        ],
+        'fat' => [
+            'source1' => [
+                'name' => 'Olive Oil',
+                'calories' => 884
+            ],
+            'source2' => [
+                'name' => 'Almonds',
+                'calories' => 579
+            ],
+            'source3' => [
+                'name' => 'Peanut Butter',
+                'calories' => 588
+            ],
+            'source4' => [
+                'name' => 'Butter',
+                'calories' => 717
+            ]
+        ]
+    ],
+    'meal 5' => [
+        'carb' => [
+            'source1' => [
+                'name' => 'Oatmeal',
+                'calories' => 389
+            ],
+            'source2' => [
+                'name' => 'Rice Cakes',
+                'calories' => 387
+            ],
+            'source3' => [
+                'name' => 'Whole Wheat Bread',
+                'calories' => 247
+            ],
+            'source4' => [
+                'name' => 'Sweet Potato',
+                'calories' => 86
+            ]
+        ],
+        'protein' => [
+            'source1' => [
+                'name' => 'Cottage Cheese',
+                'calories' => 98
+            ],
+            'source2' => [
+                'name' => 'Greek Yogurt',
+                'calories' => 59
+            ],
+            'source3' => [
+                'name' => 'Protein Shake',
+                'calories' => 380
+            ],
+            'source4' => [
+                'name' => 'Canned Tuna',
+                'calories' => 116
+            ]
+        ],
+        'fat' => [
+            'source1' => [
+                'name' => 'Peanut Butter',
+                'calories' => 588
+            ],
+            'source2' => [
+                'name' => 'Cashews',
+                'calories' => 553
+            ],
+            'source3' => [
+                'name' => 'Almonds',
+                'calories' => 579
+            ],
+            'source4' => [
+                'name' => 'Mixed Nuts',
+                'calories' => 607
+            ]
+        ]
+    ]
+];
+
+?>
+
+
+?>
+
     <div class="Title">
       <h1>Explore Your Custom <span>Meals</span>!</h1>
     </div>
@@ -118,7 +411,7 @@ $snack_num = $diet_data['diet']['num_snacks'];
                 >
                   <circle cx="6" cy="6.5" r="6" fill="#1677FF" />
                 </svg>
-                <h1><?= htmlspecialchars(number_format($diet_data['meal'][0]['carbs']/350*100),0) ?> g of White rice (raw)</h1>
+                <h1><?= htmlspecialchars(number_format($diet_data['meal'][0]['carbs']/$meals['meal '.$i]['carb']['source1']['calories']*100),0) ?> g of <?= $meals['meal '.$i]['carb']['source1']['name']?></h1>
               </div>
               <div class="source-2 Asource">
                 <svg
@@ -130,7 +423,7 @@ $snack_num = $diet_data['diet']['num_snacks'];
                 >
                   <circle cx="6" cy="6.5" r="6" fill="#1677FF" />
                 </svg>
-                <h1><?= htmlspecialchars(number_format($diet_data['meal'][0]['carbs']/370*100),0) ?> g of Oatmeal</h1>
+                <h1><?= htmlspecialchars(number_format($diet_data['meal'][0]['carbs']/$meals['meal '.$i]['carb']['source2']['calories']*100),0) ?> g of <?= $meals['meal '.$i]['carb']['source2']['name']?></h1>
               </div>
               <div class="source-3 Asource">
                 <svg
@@ -142,7 +435,7 @@ $snack_num = $diet_data['diet']['num_snacks'];
                 >
                   <circle cx="6" cy="6.5" r="6" fill="#1677FF" />
                 </svg>
-                <h1><?= htmlspecialchars(number_format($diet_data['meal'][0]['carbs']/86*100),0) ?> g of Sweet Potato</h1>
+                <h1><?= htmlspecialchars(number_format($diet_data['meal'][0]['carbs']/$meals['meal '.$i]['carb']['source3']['calories']*100),0) ?> g of <?= $meals['meal '.$i]['carb']['source3']['name']?></h1>
               </div>
               <div class="source-4 Asource">
                 <svg
@@ -154,7 +447,7 @@ $snack_num = $diet_data['diet']['num_snacks'];
                 >
                   <circle cx="6" cy="6.5" r="6" fill="#1677FF" />
                 </svg>
-                <h1><?= htmlspecialchars(number_format($diet_data['meal'][0]['carbs']/370*100),0) ?> g of Pasta (Spaguetti) </h1>
+                <h1><?= htmlspecialchars(number_format($diet_data['meal'][0]['carbs']/$meals['meal '.$i]['carb']['source4']['calories']*100),0) ?> g of <?= $meals['meal '.$i]['carb']['source4']['name']?> </h1>
               </div>
             </div>
           </div>
@@ -193,7 +486,7 @@ $snack_num = $diet_data['diet']['num_snacks'];
             </svg>
           </div>
           <div class="description">
-            <h1>This meal contains <?= htmlspecialchars(number_format($diet_data['meal'][0]['protein']),0) ?>g of protein</h1>
+            <h1>This meal contains <?= htmlspecialchars(number_format($diet_data['meal'][0]['protein']),0) ?> calories of protein</h1>
           </div>
           <div class="source">
             <div class="you-gif">
@@ -210,7 +503,7 @@ $snack_num = $diet_data['diet']['num_snacks'];
                 >
                   <circle cx="6" cy="6.5" r="6" fill="#1677FF" />
                 </svg>
-                <h1><?= htmlspecialchars(number_format($diet_data['meal'][0]['protein']/112*100),0) ?> g of Chicken Breasts</h1>
+                <h1><?= htmlspecialchars(number_format($diet_data['meal'][0]['protein']/$meals['meal '.$i]['protein']['source1']['calories']*100),0) ?> g of <?= $meals['meal '.$i]['protein']['source1']['name']?></h1>
               </div>
               <div class="source-2 Asource">
                 <svg
@@ -222,7 +515,7 @@ $snack_num = $diet_data['diet']['num_snacks'];
                 >
                   <circle cx="6" cy="6.5" r="6" fill="#1677FF" />
                 </svg>
-                <h1><?= htmlspecialchars(number_format($diet_data['meal'][0]['protein']/112*100),0) ?> g of Steak</h1>
+                <h1><?= htmlspecialchars(number_format($diet_data['meal'][0]['protein']/$meals['meal '.$i]['protein']['source2']['calories']*100),0) ?> g of <?= $meals['meal '.$i]['protein']['source2']['name']?></h1>
               </div>
               <div class="source-3 Asource">
                 <svg
@@ -234,7 +527,7 @@ $snack_num = $diet_data['diet']['num_snacks'];
                 >
                   <circle cx="6" cy="6.5" r="6" fill="#1677FF" />
                 </svg>
-                <h1><?= htmlspecialchars(number_format($diet_data['meal'][0]['protein']/80),0) ?> Eggs</h1>
+                <h1><?= htmlspecialchars(number_format($diet_data['meal'][0]['protein']/80+1),0) ?> Eggs</h1>
               </div>
               <div class="source-4 Asource">
                 <svg
@@ -246,7 +539,7 @@ $snack_num = $diet_data['diet']['num_snacks'];
                 >
                   <circle cx="6" cy="6.5" r="6" fill="#1677FF" />
                 </svg>
-                <h1><?= htmlspecialchars(number_format($diet_data['meal'][0]['protein']/100*100),0) ?>g of Fish</h1>
+                <h1><?= htmlspecialchars(number_format($diet_data['meal'][0]['protein']/$meals['meal '.$i]['protein']['source2']['calories']*100),0) ?>g of <?= $meals['meal '.$i]['protein']['source4']['name']?></h1>
               </div>
             </div>
           </div>
@@ -278,7 +571,7 @@ $snack_num = $diet_data['diet']['num_snacks'];
             </svg>
           </div>
           <div class="description">
-            <h1>This meal contains <?= htmlspecialchars($diet_data['meal'][0]['fat']) ?> of fats</h1>
+            <h1>This meal contains <?= htmlspecialchars($diet_data['meal'][0]['fat']) ?> calories of fats</h1>
           </div>
           <div class="source">
             <div class="you-gif">
@@ -295,7 +588,7 @@ $snack_num = $diet_data['diet']['num_snacks'];
                 >
                   <circle cx="6" cy="6.5" r="6" fill="#1677FF" />
                 </svg>
-                <h1><?= htmlspecialchars(number_format($diet_data['meal'][0]['fat']/580*100),0) ?> g of Penaut Butter</h1>
+                <h1><?= htmlspecialchars(number_format($diet_data['meal'][0]['fat']/$meals['meal '.$i]['fat']['source1']['calories']*100),0) ?> g of <?= $meals['meal '.$i]['fat']['source1']['name']?></h1>
               </div>
               <div class="source-2 Asource">
                 <svg
@@ -307,7 +600,7 @@ $snack_num = $diet_data['diet']['num_snacks'];
                 >
                   <circle cx="6" cy="6.5" r="6" fill="#1677FF" />
                 </svg>
-                <h1><?= htmlspecialchars(number_format($diet_data['meal'][0]['fat']/880*100),0) ?> g of Olive oil</h1>
+                <h1><?= htmlspecialchars(number_format($diet_data['meal'][0]['fat']/$meals['meal '.$i]['fat']['source2']['calories']*100),0) ?> g of  <?= $meals['meal '.$i]['fat']['source2']['name']?></h1>
               </div>
               <div class="source-3 Asource">
                 <svg
@@ -319,7 +612,7 @@ $snack_num = $diet_data['diet']['num_snacks'];
                 >
                   <circle cx="6" cy="6.5" r="6" fill="#1677FF" />
                 </svg>
-                <h1><?= htmlspecialchars(number_format($diet_data['meal'][0]['fat']/710*100),0) ?> g of Butter</h1>
+                <h1><?= htmlspecialchars(number_format($diet_data['meal'][0]['fat']/$meals['meal '.$i]['fat']['source3']['calories']*100),0) ?> g of <?= $meals['meal '.$i]['fat']['source3']['name']?></h1>
               </div>
               <div class="source-4 Asource">
                 <svg
@@ -331,7 +624,7 @@ $snack_num = $diet_data['diet']['num_snacks'];
                 >
                   <circle cx="6" cy="6.5" r="6" fill="#1677FF" />
                 </svg>
-                <h1>Nuts</h1>
+                <h1>Nuts [ Almond , Penaut , .. ]</h1>
               </div>
             </div>
           </div>
@@ -378,7 +671,7 @@ $snack_num = $diet_data['diet']['num_snacks'];
             </svg>
           </div>
           <div class="description">
-            <h1>For your *PLAN* you will need *999* calories</h1>
+            <h1>For your PLAN you will need <?= htmlspecialchars($diet_data['snack'][0]['carbs']) ?> calories</h1>
           </div>
           <div class="source">
             <div class="you-gif">
@@ -395,19 +688,7 @@ $snack_num = $diet_data['diet']['num_snacks'];
                 >
                   <circle cx="6" cy="6.5" r="6" fill="#1677FF" />
                 </svg>
-                <h1>ffzfzf</h1>
-              </div>
-              <div class="source-2 Asource">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="12"
-                  height="13"
-                  viewBox="0 0 12 13"
-                  fill="none"
-                >
-                  <circle cx="6" cy="6.5" r="6" fill="#1677FF" />
-                </svg>
-                <h1>zdadad</h1>
+                <h1>Fruits ( 1 banana , 1 apple , ... ) </h1>
               </div>
               <div class="source-3 Asource">
                 <svg
@@ -419,7 +700,7 @@ $snack_num = $diet_data['diet']['num_snacks'];
                 >
                   <circle cx="6" cy="6.5" r="6" fill="#1677FF" />
                 </svg>
-                <h1>zdada</h1>
+                <h1>Granola (oat)</h1>
               </div>
               <div class="source-4 Asource">
                 <svg
@@ -431,7 +712,7 @@ $snack_num = $diet_data['diet']['num_snacks'];
                 >
                   <circle cx="6" cy="6.5" r="6" fill="#1677FF" />
                 </svg>
-                <h1>dzddd</h1>
+                <h1>bread with honey</h1>
               </div>
             </div>
           </div>
@@ -470,7 +751,7 @@ $snack_num = $diet_data['diet']['num_snacks'];
             </svg>
           </div>
           <div class="description">
-            <h1>For your *PLAN* you will need *999* calories</h1>
+            <h1>For your PLAN you will need <?= htmlspecialchars($diet_data['snack'][0]['protein']) ?> calories</h1>
           </div>
           <div class="source">
             <div class="you-gif">
@@ -487,7 +768,7 @@ $snack_num = $diet_data['diet']['num_snacks'];
                 >
                   <circle cx="6" cy="6.5" r="6" fill="#1677FF" />
                 </svg>
-                <h1>ffzfzf</h1>
+                <h1>Greek Yogurt (60 g)</h1>
               </div>
               <div class="source-2 Asource">
                 <svg
@@ -499,7 +780,7 @@ $snack_num = $diet_data['diet']['num_snacks'];
                 >
                   <circle cx="6" cy="6.5" r="6" fill="#1677FF" />
                 </svg>
-                <h1>zdadad</h1>
+                <h1>1 protein bar</h1>
               </div>
               <div class="source-3 Asource">
                 <svg
@@ -511,20 +792,9 @@ $snack_num = $diet_data['diet']['num_snacks'];
                 >
                   <circle cx="6" cy="6.5" r="6" fill="#1677FF" />
                 </svg>
-                <h1>zdada</h1>
+                <h1>seeds</h1>
               </div>
-              <div class="source-4 Asource">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="12"
-                  height="13"
-                  viewBox="0 0 12 13"
-                  fill="none"
-                >
-                  <circle cx="6" cy="6.5" r="6" fill="#1677FF" />
-                </svg>
-                <h1>dzddd</h1>
-              </div>
+
             </div>
           </div>
         </div>
@@ -555,7 +825,7 @@ $snack_num = $diet_data['diet']['num_snacks'];
             </svg>
           </div>
           <div class="description">
-            <h1>For your *PLAN* you will need *999* calories</h1>
+            <h1>For your PLAN you will need <?= htmlspecialchars($diet_data['snack'][0]['fat']) ?> calories</h1>
           </div>
           <div class="source">
             <div class="you-gif">
@@ -572,7 +842,7 @@ $snack_num = $diet_data['diet']['num_snacks'];
                 >
                   <circle cx="6" cy="6.5" r="6" fill="#1677FF" />
                 </svg>
-                <h1>ffzfzf</h1>
+                <h1>penaut buttter</h1>
               </div>
               <div class="source-2 Asource">
                 <svg
@@ -584,19 +854,7 @@ $snack_num = $diet_data['diet']['num_snacks'];
                 >
                   <circle cx="6" cy="6.5" r="6" fill="#1677FF" />
                 </svg>
-                <h1>zdadad</h1>
-              </div>
-              <div class="source-3 Asource">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="12"
-                  height="13"
-                  viewBox="0 0 12 13"
-                  fill="none"
-                >
-                  <circle cx="6" cy="6.5" r="6" fill="#1677FF" />
-                </svg>
-                <h1>zdada</h1>
+                <h1>Almond milk</h1>
               </div>
               <div class="source-4 Asource">
                 <svg
@@ -608,7 +866,7 @@ $snack_num = $diet_data['diet']['num_snacks'];
                 >
                   <circle cx="6" cy="6.5" r="6" fill="#1677FF" />
                 </svg>
-                <h1>dzddd</h1>
+                <h1>Olives</h1>
               </div>
             </div>
           </div>
