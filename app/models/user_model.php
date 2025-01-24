@@ -41,112 +41,61 @@ function select_user_info($conn, $id) {
 }
 
 // function to fetch user weights
-function select_user_weights($conn, $id) {
-    try {
-        if (!is_numeric($id) || $id <= 0) {
-            throw new Exception("Invalid user ID provided");
-        }
-        //retrieve all the weigth records in ascending order
-        $sql = "SELECT weight_val, taking_date FROM user 
-                INNER JOIN weight ON user.user_id = weight.user_id 
-                WHERE user.user_id = ?
-                ORDER BY weight.taking_date ";
-        
-        $stmt = mysqli_prepare($conn, $sql);
-        if (!$stmt) {
-            throw new Exception("Statement preparation failed: " . mysqli_error($conn));
-        }
-        
-        if (!mysqli_stmt_bind_param($stmt, 'i', $id)) {
-            throw new Exception("Parameter binding failed: " . mysqli_error($conn));
-        }
-        
-        if (!mysqli_stmt_execute($stmt)) {
-            throw new Exception("Query execution failed: " . mysqli_error($conn));
-        }
-        
-        $result = mysqli_stmt_get_result($stmt);
-        $user_weights = mysqli_fetch_all($result, MYSQLI_ASSOC);
-        // $user_weights is an array contains thr rows as elements :
-        // $user_weights[0] = ['weight_val' => 70, 'taking_date'] => 2023-07-01
-        
-        mysqli_stmt_close($stmt);
-        return $user_weights;
-        
-    } catch (Exception $e) {
-        error_log("Error in select_user_weights: " . $e->getMessage());
-        throw $e;
-    }
-}
+function select_user_weights($conn,$id){
+    //1- sql query
+    $sql="SELECT weight_val , taking_date FROM user
+    INNER JOIN weight
+    ON user.user_id = weight.user_id
+    WHERE user.user_id=? ";
 
-//function to insert a new weight
-function insert_new_weigth($conn,$user_id,$weight_val){
-    try{
-        $sql="INSERT INTO weight (weight_val , taking_date , user_id)
-        VALUES ( ? , ? , ? )";
-        $stmt=mysqli_prepare($conn,$sql);
-        if(!$stmt){
-            throw new Exception(" Error when preparing the statement : " . mysqli_error($conn));
-        }
-        $curr_date=date('Y-m-d');
-        if(!mysqli_stmt_bind_param($stmt,'isi',$weight_val,$curr_date,$user_id)){
-            throw new Exception(" Error in binding the parameters : " . mysqli_error($conn));
-        }
-        if(!mysqli_stmt_execute($stmt)){
-            throw new Exception("Error in executing the statement : " . mysqli_error($conn));
-        }
-        mysqli_stmt_close($stmt);
-        return true;
-    }catch(Exception $e){
-        throw new Exception(" Error in inserting the weight : " . $e->getMessage());
-        return false;
+    //2- prepare the query
+    $stmt=mysqli_prepare($conn,$sql);
+    if(!$stmt){
+        die("error when preparing the statement : " . mysqli_error($conn));
     }
+    //3- bind the parameters
+    mysqli_stmt_bind_param($stmt,'i',$id);
+    //4- execute the query
+    if(!mysqli_stmt_execute($stmt)){
+        die("error when executing the query : " . mysqli_error($conn));
+    }
+    //5- get the result set
+    $result=mysqli_stmt_get_result($stmt);
+    //6- fetch the result
+    $user_weights=mysqli_fetch_all($result,MYSQLI_ASSOC);
+    return $user_weights;
 }
 
 
 // function to fetch user streak
-function select_user_streak($conn, $id) {
-    try {
-        if (!is_numeric($id) || $id <= 0) {
-            throw new Exception("Invalid user ID provided");
-        }
-
-        $sql = "SELECT start_date, state FROM streak 
-                INNER JOIN user ON user.user_id = streak.user_id 
-                WHERE user.user_id = ?";
-        
-        $stmt = mysqli_prepare($conn, $sql);
-        if (!$stmt) {
-            throw new Exception("Statement preparation failed: " . mysqli_error($conn));
-        }
-        
-        if (!mysqli_stmt_bind_param($stmt, 'i', $id)) {
-            throw new Exception("Parameter binding failed: " . mysqli_error($conn));
-        }
-        
-        if (!mysqli_stmt_execute($stmt)) {
-            throw new Exception("Query execution failed: " . mysqli_error($conn));
-        }
-        
-        $result = mysqli_stmt_get_result($stmt);
-        $streak = mysqli_fetch_assoc($result);
-        
-        if (!$streak) {
-            throw new Exception("No streak found for user: " . $id);
-        }
-        
-        $start_date = new DateTime($streak['start_date']);
-        $today = new DateTime();
-        $days = $start_date->diff($today)->days;
-        
-        mysqli_stmt_close($stmt);
-        return $days; //int
-        
-    } catch (Exception $e) {
-        error_log("Error in select_user_streak: " . $e->getMessage());
-        throw $e;
+function select_user_streak($conn,$id){
+    //1- sql query string
+    $sql="SELECT start_date , state FROM streak
+    INNER JOIN user 
+    ON user.user_id = streak.user_id
+    WHERE user.user_id = ? ";
+    //2- prepare the statement
+    $stmt=mysqli_prepare($conn,$sql);
+    if(!$stmt){
+        die("error when preparing the statement : " . mysqli_error($conn));
     }
-}
+    //3-bind the id parameter
+    mysqli_stmt_bind_param($stmt,'i',$id);
+    //4-execute the query
+    if(!mysqli_stmt_execute($stmt)){
+        die("error when executing the query : " . mysqli_error($conn));
+    }
+    //5-obtain the result data
+    $result=mysqli_stmt_get_result($stmt);
+    //fetch all the data
+    $streak=mysqli_fetch_assoc($result);
+    //find the number of days
+    $start_date = new DateTime($streak['start_date']);
+    $today = new DateTime();
+    $days = $start_date->diff($today)->days;
+
+    return $days;
+} 
 
 
 // main function : select all user data to display in the profile

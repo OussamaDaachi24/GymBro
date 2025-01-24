@@ -48,7 +48,7 @@
                 <div class="step">3</div>
             </div>
 
-            <form id="create-diet-form" action="/GymBro/diet/create" method="POST">
+            <form  action="/GymBro/diet/create" method="POST">
                 <!-- Step 1: Basic Details -->
                 <div id="step1" class="form-section active">
                     <h2 class="form-title">Basic Details</h2>
@@ -116,7 +116,8 @@
             </form>
         </div>
     </div>
-
+    <script> window.chtlConfig = { chatbotId: "9142794298" } </script>
+    <script async data-id="9142794298" id="chatling-embed-script" type="text/javascript" src="https://chatling.ai/js/embed.js"></script>
     <script src="http://localhost/GymBro/public/javaScript/create_diet.js"></script>
     <script src="http://localhost/GymBro/public/javaScript/common.js"></script>
 </body>

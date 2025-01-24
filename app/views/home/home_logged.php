@@ -35,7 +35,7 @@
         <li><a href="/GymBro/logout">Logout</a></li>
       </ul>
       <div class="profile">
-        <a href="/GymBro/profile/view">
+        <a href="profile/">
           <img src="http://localhost/GymBro/public/assets/icons/profile-circle.png" class="prof_img" />
         </a>
       </div>
